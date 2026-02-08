@@ -1,0 +1,57 @@
+% --- Section 1.0: Introduction ---
+\section[INTRODUCTION]{Introduction}
+
+\paragraph{Overview of the Research Domain}
+In mechanisms such as Personal Identification Numbers (PINs) and passwords are increasingly becoming single points of failure \cite{pirzado2021keystroke}. They are susceptible to vulnerabilities like shoulder surfing, brute-force attacks, and social engineering \cite{pirzado2021keystroke, kiyani2020continuous}. To address these vulnerabilities, Behavioral Biometrics---specifically Keystroke Dynamics and Mouse/Touch Dynamics---has emerged as a powerful alternative \cite{rahman2021scalable, kim2024kdprint}. Unlike static passwords, behavioral biometrics allow for continuous, passive authentication, verifying a user's identity based on \textit{how} they interact with a device rather than \textit{what} they know \cite{shepherd1995continuous, monrose1999hardening}.
+
+
+% This is where you will write your general introduction.
+% It should provide an overview of Behavioral Authentication and its importance.
+
+\subsection{Problem Statement}
+The primary problem addressed by this research is the critical trade-off between \textbf{user privacy} and \textbf{system latency} in behavioral authentication systems on resource-constrained mobile devices. While behavioral biometrics---such as keystroke dynamics and touch interactions---offer a robust solution for continuous authentication, the storage and processing of these behavioral patterns present significant security risks \cite{rahman2021scalable}.
+
+This issue affects millions of mobile banking and enterprise users who rely on smartphones for sensitive transactions. Unlike passwords, behavioral biometrics are immutable; a user cannot change their typing rhythm or hand geometry if the biometric template is compromised. Therefore, a breach of raw behavioral data constitutes a permanent loss of digital identity \cite{pirzado2021keystroke}.
+
+Current approaches fail to address this problem effectively due to a technical dichotomy between accuracy and efficiency:
+
+\begin{itemize}
+    \item \textbf{Privacy Gaps in High-Accuracy Models:} State-of-the-art deep learning frameworks, such as those utilizing Recurrent Neural Networks (RNNs) or Image-based Encoding (e.g., KDPrint), achieve low Equal Error Rates (EER) but typically require the storage of \textbf{raw behavioral features} \cite{kim2024kdprint, kiyani2020continuous}. This creates a single point of failure where the database becomes a high-value target for attackers.
+    
+    \item \textbf{Efficiency Gaps in Privacy-Preserving Methods:} Conversely, strong cryptographic solutions like Fully Homomorphic Encryption (FHE) allow for secure computation but suffer from prohibitive computational overhead. Research indicates that such heavy encryption schemes often introduce latencies ranging from seconds to minutes, rendering them impractical for \textbf{real-time, continuous authentication} where decisions must be made in milliseconds to maintain a seamless user experience \cite{rahman2021scalable}.
+\end{itemize}
+
+There is currently no lightweight framework that effectively balances these conflicting requirements. This research seeks to bridge this gap by utilizing \textbf{Orthogonal Random Projections} to secure templates without degrading the speed or accuracy required for mobile devices.
+
+
+% Write your problem statement here. 
+% Focus on the trade-off between privacy, accuracy, and system latency.
+
+\subsection{Research Aim and Objectives}
+
+\paragraph{} The primary aim of this research is to develop a lightweight, privacy-preserving framework for continuous behavioral authentication on mobile devices. This framework seeks to balance recognition accuracy and system latency by utilizing Orthogonal Random Projections for template security and Deep Support Vector Data Description (Deep SVDD) for efficient anomaly detection.
+
+\begin{enumerate}
+    \item \textbf{To design a privacy-preserving feature transformation pipeline:} Develop a mechanism using \textbf{Orthogonal Random Projections (Johnson-Lindenstrauss Lemma)} \cite{johnson1984extensions} that secures behavioral biometric templates (making them mathematically irreversible) while preserving the Euclidean distances required for accurate pattern recognition.
+    
+    \item \textbf{To optimize feature engineering for mobile efficiency:} Implement \textbf{KDPrint-style standardization} to transform raw time-series data into standardized image encodings, ensuring high recognition accuracy without the noise sensitivity of Min-Max scaling \cite{kim2024kdprint}.
+    
+    \item \textbf{To implement a lightweight anomaly detection model:} Develop a \textbf{Deep SVDD (Support Vector Data Description)} classifier \cite{ruff2018deepsvdd} capable of running offline on mid-range mobile devices to distinguish between genuine users and imposters with minimal computational overhead.
+    
+    \item \textbf{To evaluate the trade-off between privacy, accuracy, and latency:} Conduct a comparative analysis of the proposed framework against existing baselines (such as raw-data RNNs and Homomorphic Encryption), measuring performance metrics including \textbf{Equal Error Rate (EER)}, \textbf{System Latency (ms)}, and \textbf{Memory Usage} \cite{kiyani2020continuous, ruff2018deepsvdd}.
+\end{enumerate}
+
+
+
+\subsection{Research Questions}
+
+To address the identified gaps in privacy and efficiency, this research aims to answer the following key questions:
+
+\begin{enumerate}
+    \item \textbf{Primary Research Question:} To what extent can \textbf{Orthogonal Random Projections} (based on the Johnson-Lindenstrauss Lemma) balance the conflicting requirements of template privacy, recognition accuracy, and system latency in behavioral authentication? 
+    \item \textbf{Impact on Privacy and Irreversibility:} How effective is the proposed projection mechanism in rendering behavioral templates mathematically irreversible to attackers, compared to storing raw features or using standard Min-Max scaling? 
+    
+    \item \textbf{Feasibility for Mobile Environments:} Can a \textbf{Deep SVDD} (Support Vector Data Description) anomaly detection model achieve real-time authentication latency (e.g., $<100$ms) on mid-range mobile devices without exceeding memory constraints? 
+\end{enumerate}
+
+\newpage

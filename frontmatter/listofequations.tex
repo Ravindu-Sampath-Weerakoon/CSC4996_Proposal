@@ -1,0 +1,19 @@
+% --- List of Equations Page ---
+\clearpage
+\thispagestyle{plain} % Shows the Roman numeral 'vi' at the bottom
+
+% Centers your custom title
+\begin{center}
+    \textbf{\Large List of Equations}
+\end{center}
+\vspace{0.5cm}
+
+% Use a group to locally hide the default \listofequations title
+\begingroup
+\renewcommand{\listequationsname}{} % This removes the second "List of Equations" title
+\listofequations 
+\endgroup
+
+% Adds the "LIST OF EQUATIONS" entry to the Table of Contents
+\addcontentsline{toc}{section}{LIST OF EQUATIONS}
+\newpage

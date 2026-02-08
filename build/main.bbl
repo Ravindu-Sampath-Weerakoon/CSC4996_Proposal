@@ -16,5 +16,322 @@
   {}
 \endgroup
 
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global/global}
+    \entry{pirzado2021keystroke}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=8e0b391814491856c1c82498dd1736be}{%
+           family={Pirzado},
+           familyi={P\bibinitperiod},
+           given={S.\bibnamedelimi S.},
+           giveni={S\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=38026ba4ee6b102b47bf3ffb41325c8f}{%
+           family={al.},
+           familyi={a\bibinitperiod},
+           prefix={et},
+           prefixi={e\bibinitperiod}}}%
+      }
+      \strng{namehash}{891d0b795d05beed2dc35fa6d3558deb}
+      \strng{fullhash}{891d0b795d05beed2dc35fa6d3558deb}
+      \strng{fullhashraw}{891d0b795d05beed2dc35fa6d3558deb}
+      \strng{bibnamehash}{891d0b795d05beed2dc35fa6d3558deb}
+      \strng{authorbibnamehash}{891d0b795d05beed2dc35fa6d3558deb}
+      \strng{authornamehash}{891d0b795d05beed2dc35fa6d3558deb}
+      \strng{authorfullhash}{891d0b795d05beed2dc35fa6d3558deb}
+      \strng{authorfullhashraw}{891d0b795d05beed2dc35fa6d3558deb}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Mehran University Research Journal of Engineering and Technology}
+      \field{number}{1}
+      \field{title}{Keystroke Dynamics Based Technique to Enhance the Security in Smart Devices}
+      \field{volume}{40}
+      \field{year}{2021}
+      \field{pages}{123\bibrangedash 133}
+      \range{pages}{11}
+    \endentry
+    \entry{kiyani2020continuous}{article}{}{}
+      \name{author}{5}{}{%
+        {{hash=02c95d60e5e79d023b4b35d6be30b603}{%
+           family={Kiyani},
+           familyi={K\bibinitperiod},
+           given={A.\bibnamedelimi T.},
+           giveni={A\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+        {{hash=1a33f04c8929f33ca0b03f48fee5692a}{%
+           family={Lasebae},
+           familyi={L\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=0e1d4cb22bac7f79d21aa6f12bc00bb3}{%
+           family={Ali},
+           familyi={A\bibinitperiod},
+           given={K.},
+           giveni={K\bibinitperiod}}}%
+        {{hash=778d0bdb09e476b822ba571b05627258}{%
+           family={Rehman},
+           familyi={R\bibinitperiod},
+           given={M.\bibnamedelimi U.},
+           giveni={M\bibinitperiod\bibinitdelim U\bibinitperiod}}}%
+        {{hash=afc5fbd58d947eb688f042948d291046}{%
+           family={Haq},
+           familyi={H\bibinitperiod},
+           given={B.},
+           giveni={B\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{0f22bd778479ac2fbc1d2bc3ec8fc7f4}
+      \strng{fullhash}{cf57f53e25644db2990d996f740802ea}
+      \strng{fullhashraw}{cf57f53e25644db2990d996f740802ea}
+      \strng{bibnamehash}{cf57f53e25644db2990d996f740802ea}
+      \strng{authorbibnamehash}{cf57f53e25644db2990d996f740802ea}
+      \strng{authornamehash}{0f22bd778479ac2fbc1d2bc3ec8fc7f4}
+      \strng{authorfullhash}{cf57f53e25644db2990d996f740802ea}
+      \strng{authorfullhashraw}{cf57f53e25644db2990d996f740802ea}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Access}
+      \field{title}{Continuous User Authentication Featuring Keystroke Dynamics Based on Robust Recurrent Confidence Model and Ensemble Learning Approach}
+      \field{volume}{8}
+      \field{year}{2020}
+      \field{pages}{156177\bibrangedash 156189}
+      \range{pages}{13}
+    \endentry
+    \entry{rahman2021scalable}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=7f4d4de3640c56f6bb20fb1e0f2782f1}{%
+           family={Rahman},
+           familyi={R\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=38026ba4ee6b102b47bf3ffb41325c8f}{%
+           family={al.},
+           familyi={a\bibinitperiod},
+           prefix={et},
+           prefixi={e\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {MDPI}%
+      }
+      \strng{namehash}{5193fe2c667deafb1973420556bc3283}
+      \strng{fullhash}{5193fe2c667deafb1973420556bc3283}
+      \strng{fullhashraw}{5193fe2c667deafb1973420556bc3283}
+      \strng{bibnamehash}{5193fe2c667deafb1973420556bc3283}
+      \strng{authorbibnamehash}{5193fe2c667deafb1973420556bc3283}
+      \strng{authornamehash}{5193fe2c667deafb1973420556bc3283}
+      \strng{authorfullhash}{5193fe2c667deafb1973420556bc3283}
+      \strng{authorfullhashraw}{5193fe2c667deafb1973420556bc3283}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Sensors}
+      \field{number}{14}
+      \field{title}{Scalable Behavioral Authentication for Mobile Devices}
+      \field{volume}{21}
+      \field{year}{2021}
+      \field{pages}{4890}
+      \range{pages}{1}
+    \endentry
+    \entry{kim2024kdprint}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=03f38c879ca0bc9f1dcbada69ea0519a}{%
+           family={Kim},
+           familyi={K\bibinitperiod},
+           given={Y.},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=108e5df81e3ab26dd5a60071fa737a9c}{%
+           family={Shin},
+           familyi={S\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod}}}%
+        {{hash=f4005919c6ce0da6d55d0fd2da03f2ef}{%
+           family={Kwon},
+           familyi={K\bibinitperiod},
+           given={N.},
+           giveni={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{499440a1d8b77c6b87db7df8e9934128}
+      \strng{fullhash}{90a4ea4cf072080ef455f097e8063d96}
+      \strng{fullhashraw}{90a4ea4cf072080ef455f097e8063d96}
+      \strng{bibnamehash}{90a4ea4cf072080ef455f097e8063d96}
+      \strng{authorbibnamehash}{90a4ea4cf072080ef455f097e8063d96}
+      \strng{authornamehash}{499440a1d8b77c6b87db7df8e9934128}
+      \strng{authorfullhash}{90a4ea4cf072080ef455f097e8063d96}
+      \strng{authorfullhashraw}{90a4ea4cf072080ef455f097e8063d96}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint arXiv:2405.01080}
+      \field{note}{Accessed via arXiv}
+      \field{title}{KDPrint: Passive Authentication Using Keystroke Dynamics-to-Image Encoding via Standardization}
+      \field{year}{2024}
+    \endentry
+    \entry{shepherd1995continuous}{inproceedings}{}{}
+      \name{author}{1}{}{%
+        {{hash=0952a513650ab830dac54b0d4b244a8b}{%
+           family={Shepherd},
+           familyi={S\bibinitperiod},
+           given={S.\bibnamedelimi J.},
+           giveni={S\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {IET}%
+      }
+      \strng{namehash}{0952a513650ab830dac54b0d4b244a8b}
+      \strng{fullhash}{0952a513650ab830dac54b0d4b244a8b}
+      \strng{fullhashraw}{0952a513650ab830dac54b0d4b244a8b}
+      \strng{bibnamehash}{0952a513650ab830dac54b0d4b244a8b}
+      \strng{authorbibnamehash}{0952a513650ab830dac54b0d4b244a8b}
+      \strng{authornamehash}{0952a513650ab830dac54b0d4b244a8b}
+      \strng{authorfullhash}{0952a513650ab830dac54b0d4b244a8b}
+      \strng{authorfullhashraw}{0952a513650ab830dac54b0d4b244a8b}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{European Convention on Security and Detection}
+      \field{title}{Continuous Authentication by Analysis of Keyboard Typing Characteristics}
+      \field{year}{1995}
+      \field{pages}{111\bibrangedash 114}
+      \range{pages}{4}
+    \endentry
+    \entry{monrose1999hardening}{inproceedings}{}{}
+      \name{author}{2}{}{%
+        {{hash=e78ca4ddcc9d78c6deba88ea9fdf172c}{%
+           family={Monrose},
+           familyi={M\bibinitperiod},
+           given={Fabian},
+           giveni={F\bibinitperiod}}}%
+        {{hash=965642065f2b3bc3ffcbcb6a2dea0f92}{%
+           family={Rubin},
+           familyi={R\bibinitperiod},
+           given={Aviel\bibnamedelima D.},
+           giveni={A\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{756b64df7df0ac247459cdb9466e3e18}
+      \strng{fullhash}{756b64df7df0ac247459cdb9466e3e18}
+      \strng{fullhashraw}{756b64df7df0ac247459cdb9466e3e18}
+      \strng{bibnamehash}{756b64df7df0ac247459cdb9466e3e18}
+      \strng{authorbibnamehash}{756b64df7df0ac247459cdb9466e3e18}
+      \strng{authornamehash}{756b64df7df0ac247459cdb9466e3e18}
+      \strng{authorfullhash}{756b64df7df0ac247459cdb9466e3e18}
+      \strng{authorfullhashraw}{756b64df7df0ac247459cdb9466e3e18}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 6th ACM Conference on Computer and Communications Security (CCS)}
+      \field{title}{Password Hardening Based on Keystroke Dynamics}
+      \field{year}{1999}
+      \field{pages}{73\bibrangedash 82}
+      \range{pages}{10}
+    \endentry
+    \entry{johnson1984extensions}{incollection}{}{}
+      \name{author}{2}{}{%
+        {{hash=7ddf283c4fbbed10234ac444cb8f581a}{%
+           family={Johnson},
+           familyi={J\bibinitperiod},
+           given={William\bibnamedelima B},
+           giveni={W\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=cf4de3a2525fc4f04f6287aea5ce124c}{%
+           family={Lindenstrauss},
+           familyi={L\bibinitperiod},
+           given={Joram},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Contemporary Mathematics, American Mathematical Society}%
+      }
+      \strng{namehash}{f25336c78118bd992dfa8522eb89904d}
+      \strng{fullhash}{f25336c78118bd992dfa8522eb89904d}
+      \strng{fullhashraw}{f25336c78118bd992dfa8522eb89904d}
+      \strng{bibnamehash}{f25336c78118bd992dfa8522eb89904d}
+      \strng{authorbibnamehash}{f25336c78118bd992dfa8522eb89904d}
+      \strng{authornamehash}{f25336c78118bd992dfa8522eb89904d}
+      \strng{authorfullhash}{f25336c78118bd992dfa8522eb89904d}
+      \strng{authorfullhashraw}{f25336c78118bd992dfa8522eb89904d}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Conference in modern analysis and probability}
+      \field{title}{Extensions of Lipschitz mappings into a Hilbert space}
+      \field{year}{1984}
+      \field{pages}{189\bibrangedash 206}
+      \range{pages}{18}
+    \endentry
+    \entry{ruff2018deepsvdd}{inproceedings}{}{}
+      \name{author}{8}{}{%
+        {{hash=002c037bd5c44a3c55a7523254ff0522}{%
+           family={Ruff},
+           familyi={R\bibinitperiod},
+           given={Lukas},
+           giveni={L\bibinitperiod}}}%
+        {{hash=1e584159c8f4d32a1e55772b4b798844}{%
+           family={Vandermeulen},
+           familyi={V\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod}}}%
+        {{hash=d225927675f1b50ada7afdcd7141a590}{%
+           family={Goernitz},
+           familyi={G\bibinitperiod},
+           given={Nico},
+           giveni={N\bibinitperiod}}}%
+        {{hash=99c57c6d6c2549166bb9eb10bd8357a9}{%
+           family={Deecke},
+           familyi={D\bibinitperiod},
+           given={Lucas},
+           giveni={L\bibinitperiod}}}%
+        {{hash=bd8bba2630e23a75ca49955d86a02888}{%
+           family={Siddiqui},
+           familyi={S\bibinitperiod},
+           given={Shoaib\bibnamedelima A.},
+           giveni={S\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=d122a2a87d21da4007f460564975e967}{%
+           family={Binder},
+           familyi={B\bibinitperiod},
+           given={Alexander},
+           giveni={A\bibinitperiod}}}%
+        {{hash=d2949700f8a8fdee1e69d478901c51d7}{%
+           family={Müller},
+           familyi={M\bibinitperiod},
+           given={Emmanuel},
+           giveni={E\bibinitperiod}}}%
+        {{hash=5f7a97296025f5dcf9ed79d67caa64fc}{%
+           family={Kloft},
+           familyi={K\bibinitperiod},
+           given={Marius},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{f49556d617d4a5ffe2baa6d71026cde2}
+      \strng{fullhash}{4417d8ac0d3cec728bb95beefe7efb6f}
+      \strng{fullhashraw}{4417d8ac0d3cec728bb95beefe7efb6f}
+      \strng{bibnamehash}{f49556d617d4a5ffe2baa6d71026cde2}
+      \strng{authorbibnamehash}{f49556d617d4a5ffe2baa6d71026cde2}
+      \strng{authornamehash}{f49556d617d4a5ffe2baa6d71026cde2}
+      \strng{authorfullhash}{4417d8ac0d3cec728bb95beefe7efb6f}
+      \strng{authorfullhashraw}{4417d8ac0d3cec728bb95beefe7efb6f}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 35th International Conference on Machine Learning (ICML)}
+      \field{title}{Deep One-Class Classification}
+      \field{year}{2018}
+      \field{pages}{4393\bibrangedash 4402}
+      \range{pages}{10}
+    \endentry
+  \enddatalist
+\endrefsection
 \endinput
 

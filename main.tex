@@ -5,44 +5,103 @@
 \usepackage{titlesec}
 \usepackage{hyperref}
 \usepackage{graphicx}
-
 \usepackage{setspace}
-\doublespacing
+\usepackage{amsmath} % Required for math and equations
+\usepackage[style=ieee]{biblatex} % Mandatory IEEE Citation Style
+\usepackage{tocloft}
+\usepackage[printonlyused]{acronym} % For auto-updating List of Abbreviations
 
-\usepackage[style=ieee]{biblatex} % Mandatory IEEE Style [cite: 1165]
+% --- 1. Table of Contents & Lists Global Styling ---
+% --- 1. Table of Contents & Lists Global Styling ---
+\makeatletter
+\renewcommand{\@dotsep}{2} 
+\makeatother
+
+\renewcommand{\cftsecdotsep}{\cftdotsep} 
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}} 
+\renewcommand{\cftsecfont}{\bfseries} 
+\renewcommand{\cftsecpagefont}{\bfseries}
+
+% --- SPACING SETTINGS ---
+% 1. Space between Section number "1.0" and title "Introduction"
+\setlength{\cftsecnumwidth}{3.0em} 
+
+% 2. Vertical space between Section (1.0) and Subsection (1.1)
+\setlength{\cftbeforesecskip}{1.0em}    % Space above "1.0 Introduction"
+\setlength{\cftbeforesubsecskip}{0.4em} % Space above "1.1 Problem Statement"
+
+% 3. Indentation for Subsections
+\setlength{\cftsecindent}{0pt}
+\setlength{\cftsubsecindent}{3.0em} 
+\renewcommand{\cftsubsecfont}{\normalfont}
+
+% --- 2. Custom Font Sizes for Main Body ---
+% Section (1.0, 2.0) - 16pt, Bold, Left Aligned
+\titleformat{\section}
+  {\normalfont\fontsize{16pt}{20pt}\bfseries}{\thesection}{1em}{}
+
+% Subsection (1.1, 2.1) - 14pt, Bold, Left Aligned
+\titleformat{\subsection}
+  {\normalfont\fontsize{14pt}{18pt}\bfseries}{\thesubsection}{1em}{}
+
+% --- 3. Section Numbering Format (X.0) ---
+\renewcommand{\thesection}{\arabic{section}.0}
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+
+% --- 4. List of Equations Auto-Update Setup ---
+\newcommand{\listequationsname}{List of Equations}
+\newlistof{equations}{equ}{\listequationsname}
+\newcommand{\myequation}[1]{%
+    \addcontentsline{equ}{equations}{\protect\numberline{\theequation}#1}%
+}
+
 \addbibresource{references.bib}
 
 \begin{document}
 
-% --- Cover Page [cite: 1095-1104] ---
+% --- PART 1: FRONT MATTER (Roman Numerals) ---
+\pagenumbering{roman} 
+\setcounter{page}{1}
 
+% Page i: Title Page
+\input{titlepage} 
+\clearpage
 
+% Pages ii - vii: Standard Front Matter
+\input{frontmatter/preface.tex}         % Page ii
+\input{frontmatter/tableofcontents.tex}  % Page iii
+\input{frontmatter/listoffigures.tex}    % Page iv
+\input{frontmatter/listoftables.tex}     % Page v
+\input{frontmatter/listofequations.tex}  % Page vi
+\input{frontmatter/abbreviations.tex}    % Page vii
 
-\begin{center}
-    \vspace*{1cm}
-    {\fontsize{26pt}{32pt}\selectfont \textbf{\MakeUppercase{A Lightweight Framework for Privacy-Preserving Behavioral Authentication: Balancing Recognition Accuracy and System Latency}}}\\[.5cm]
-    A PROJECT PROPOSAL SUBMITTED BY\\[0.5cm]
-    \textbf{W.M.T.R.S Weerakoon}\\
-    (S20545)\\[1cm]
-    to the\\
-    \textbf{DEPARTMENT OF STATISTICS AND COMPUTER SCIENCE}\\[0.5cm]
-    in partial fulfillment of the requirements of the\\
-    \textbf{Degree of Bachelor of Science (Honours) in Computer Science}\\[0.5cm]
-    of the\\
-    \textbf{UNIVERSITY OF PERADENIYA, SRI LANKA}\\[1cm]
-    2 February, 2026
-\end{center}
-\newpage
+% --- PART 2: MAIN CONTENT (Arabic Numerals) ---
+\clearpage
+\pagenumbering{arabic}
+\setcounter{page}{1} % Introduction starts at Page 1
 
-% \input{sections/0_frontmatter}
-\pagenumbering{arabic} % Start page 1 at Introduction
+% University of Peradeniya usually requires 1.5 or double spacing
+\onehalfspacing 
 
-% \input{sections/1_introduction}
-% \input{sections/2_background}
-% \input{sections/3_methodology}
-% \input{sections/4_results_schedule}
+\input{sections/1_introduction} % 1.0 Introduction
+\input{sections/2_background}   % 2.0 Background
+\input{sections/3_methodology}  % 3.0 Methodology
+\input{sections/4_results}      % 4.0 Anticipated Results/Final Products
+\input{sections/5_project_schedule} % 5.0 Project Schedule
 
-% --- References [cite: 1164] ---
-% \printbibliography[title={References}]
+% --- 5. BIBLIOGRAPHY (IEEE Style) ---
+\clearpage
+
+% --- REFERENCES ---
+% 1. Define a custom style: Title Case for Body, UPPERCASE for TOC
+\defbibheading{upperbib}{%
+    \section*{References} % The '*' makes it unnumbered
+    \addcontentsline{toc}{section}{REFERENCES} 
+}
+% 2. Print the bibliography using that style
+\printbibliography[heading=upperbib]
+
+% --- APPENDICES ---
+\input{sections/appendices}
 
 \end{document}
