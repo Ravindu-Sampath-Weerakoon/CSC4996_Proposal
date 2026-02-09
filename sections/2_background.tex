@@ -8,6 +8,28 @@
 % It should introduce the broader field and why this area is significant.
 
 \subsection{Technical and Theoretical Background}
+\subsubsection{Keystroke Dynamics}
+\paragraph{} This is the measurement of biomechanical typing patterns. The fundamental features include Dwell Time (duration a key is pressed) and Flight Time (latency between releasing one key and pressing the next). These features form a unique "digital signature" for each user.
+
+
+\subsubsection{Mouse Dynamics}
+\paragraph{} This involves analyzing the unique behavioral patterns of a user's mouse interactions. Unlike simple click-tracking, this research focuses on complex motor-skill features:
+\begin{itemize}
+    \item \textbf{Movement Efficiency:} The ratio of the straight-line distance to the actual path taken (analyzing hand jitter and curvature).
+    \item \textbf{Velocity \& Acceleration Profiles:} The rate of speed change as the cursor approaches a target (e.g., users often decelerate differently when clicking a button).
+    \item \textbf{Click-to-Click Latency:} The timing between releasing a button and moving to the next location.
+    \item \textbf{Drag-and-Drop characteristics::} The pressure and speed consistency during sustained click events.
+\end{itemize}
+
+
+\subsubsection{Recurrent Neural Networks (RNNs) \& LSTMs}
+\paragraph{} Since keystroke data is inherently sequential (a time-series of events), standard feed-forward networks often fail to capture temporal dependencies. RNNs, and specifically Long Short-Term Memory (LSTM) networks, are theoretically suited for this task as they maintain a "memory" of previous inputs, allowing them to model complex, non-linear typing rhythms over time.
+
+\subsubsection{Johnson-Lindenstrauss (JL) Lemma} 
+\paragraph{} To address the "curse of dimensionality" and system latency, this research utilizes the JL Lemma. This mathematical theorem states that points in a high-dimensional space can be projected into a lower-dimensional space using Orthogonal Random Projections while approximately preserving the Euclidean distances between them. This allows for lightweight processing without significant loss of accuracy.
+
+\subsubsection{Homomorphic Encryption (HE)} 
+\paragraph{}  To ensure privacy, the system employs Homomorphic Encryption, a cryptographic form that allows computations to be performed on encrypted data without first decrypting it. This ensures that the user's raw biometric template is never exposed in plaintext during the authentication process.
 
 % Discuss the fundamental theories and technologies relevant to your work.
 % For example, explain the basics of RNNs, Behavioral Biometrics, or Authentication protocols.
@@ -15,11 +37,39 @@
 
 \subsection{Literature Review}
 
+\subsubsection{Foundational Studies (Static Authentication)}
+\paragraph{} Early research laid the groundwork for typing pattern analysis. Gaines et al. (1980) demonstrated that typing rhythms are unique to individuals, identifying that even simple digraph latencies could distinguish users with high confidence. Building on this, Joyce and Gupta (1990) formalized the use of "latency signatures" for identity verification, showing that comparing a test signature against a mean reference signature could achieve low impostor pass rates. Monrose et al. (1999) extended this concept to "password hardening," combining typing rhythms with passwords to increase entropy against offline attacks.
+
+\subsubsection{Feature Engineering and Adaptive Systems}
+\paragraph{} As research matured, the focus shifted to handling the variability in human behavior. Kim et al. (2018) highlighted the limitations of fixed-text authentication and proposed "user-adaptive feature extraction." Their work demonstrated that by dynamically selecting features based on a user's specific typing speed ranks (rather than a fixed keyboard layout), the Equal Error Rate (EER) could be significantly reduced. This underscored the need for personalized models in behavioral authentication.
+
+\subsubsection{Mouse Dynamics and Multimodal Fusion}
+\paragraph{} Research into mouse dynamics has evolved from simple statistics to complex trajectory analysis. Ahmed and Traore (2007) pioneered the use of movement speed and direction histograms, achieving reasonable accuracy but noting high false-positive rates in unconstrained environments. Later, Zheng et al. (2011) improved this by analyzing "point-by-point" angle-based metrics, proving that fine-grained motor skills are harder to forge than simple click statistics.
+\paragraph{} Recent studies have shifted toward Multimodal Authentication, combining keystroke and mouse data to overcome the weaknesses of single-modality systems. Mondal and Bours (2017) demonstrated that fusing these two biometrics significantly reduces the Equal Error Rate (EER) because an imposter is unlikely to mimic both a user's typing rhythm and their mouse hand-eye coordination simultaneously. However, existing multimodal frameworks often simply concatenate feature vectors, leading to massive dimensionality that slows down real-time processing—a problem this research aims to solve using the JL Lemma.
+
+
+\subsubsection{Deep Learning and Continuous Authentication}
+\paragraph{} Recent approaches have adopted Machine Learning (ML) and Deep Learning (DL) to improve accuracy. Zareen et al. (2018) utilized Bayesian Regularized Feed-Forward Neural Networks, achieving an EER of 0.9\%, which outperformed many standard statistical methods. Kiyani et al. (2020) proposed a "Robust Recurrent Confidence Model" (R-RCM) using ensemble learning. Their system verified identity on a per-action basis (Continuous Authentication), validating the effectiveness of sequential models for real-time monitoring.  
+
+\subsubsection{Scalability and System Performance} 
+\paragraph{} While accuracy has improved, scalability remains a challenge. Islam et al. (2021) introduced the notion of "Scalable Behavioral Authentication," analyzing how verification error rates increase as the user database grows. They proposed a "doppelganger-based" personalized verification algorithm to mitigate error growth, highlighting that system performance must be evaluated not just on accuracy, but on its ability to handle large-scale deployments.
+
 % critically analyze existing work. 
 % Do not just list papers; group them by themes (e.g., "Previous Approaches to Latency", "Privacy Methods").
 % Highlight what they achieved and where they fell short.
 
 \subsection{Research Gap}
+
+\paragraph{} Despite the extensive literature on improving the accuracy of keystroke dynamics (Kiyani et al., 2020; Zareen et al., 2018), a critical trilemma remains unsolved: balancing Accuracy, Efficiency, and Privacy.
+
+% numbered list of gaps
+\begin{enumerate}
+    \item \textbf{Computation vs. Latency in Multimodal Systems:} Integrating Mouse Dynamics with Keystroke Dynamics doubles the feature space complexity. Processing this high-dimensional, multimodal stream (typing + mouse trajectories) using deep models (RNNs) creates a bottleneck that current systems fail to address efficiently.
+    \item \textbf{Privacy Vulnerability:} Most existing frameworks (Kim et al., 2018; Joyce, 1990) focus on verifying raw feature vectors. They lack robust "template protection" mechanisms. If the central database is compromised, the user's raw behavioral biometrics are lost forever.
+    \item \textbf{Lack of Integrated Privacy-Preserving Architectures:} While encryption exists, standard encryption prevents the system from performing the distance calculations needed for authentication (like Euclidean distance or KL-divergence mentioned in Islam et al.).
+\end{enumerate}
+
+\paragraph{Gap Definition:} There is currently no unified framework that utilizes Orthogonal Random Projections (JL Lemma) to compress the combined feature space of both Keystroke and Mouse Dynamics for lightweight processing, while simultaneously preserving privacy using Homomorphic Encryption. This study aims to bridge this gap by creating a fast, privacy-preserving, multimodal authentication system.
 
 % Based on your literature review, clearly state what is missing.
 % This justifies why your specific research is necessary.
@@ -29,6 +79,20 @@
 
 % List the limitations and scope of your project.
 \begin{itemize}
-    \item \textbf{Assumptions:} The system assumes users have a smartphone with standard accelerometer and gyroscope sensors.
-    \item \textbf{Constraints:} The model must run offline on mid-range mobile devices without exceeding 50MB of memory usage.
+    \item \textbf{Assumptions:} 
+    \begin{itemize}
+        \item It is assumed that the user’s typing behavior is relatively stable over short periods but may exhibit gradual "concept drift" which the model must accommodate.
+        \item It is assumed that the users are utilizing standard physical keyboards; virtual/touchscreen keyboards are outside the scope of this specific study (unless specified otherwise).
+        \item It is assumed that the mouse data collection frequency (e.g., 50Hz) is sufficient to capture micro-movements without overwhelming the system bus.
+        \item The "trust" of the endpoint device (personal laptop) is assumed for the initial data capture phase before encryption.
+    \end{itemize}
+    \item \textbf{Constraints:}
+    \begin{itemize}
+        \item \textbf{Hardware Limitations:} The proposed model must be lightweight enough to run on standard consumer hardware (e.g., a laptop with a mid-range GPU like an RTX 3050) without causing noticeable input lag.
+        \item \textbf{Data Availability:} The research is constrained by the need to collect a custom dataset or use public datasets that may not perfectly reflect the specific "free-text" behavior required for continuous authentication.
+        \item \textbf{Encryption Overhead:} Homomorphic Encryption introduces significant computational overhead. The system is constrained to optimize this trade-off to ensure the authentication decision happens within a usable timeframe (e.g., under 200ms per window).
+    \end{itemize}
+   
 \end{itemize}
+
+\newpage
