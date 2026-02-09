@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.28)  10 FEB 2026 01:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.28)  10 FEB 2026 02:16
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -570,30 +570,30 @@ Package: xstring 2023/08/22 v1.86 String manipulations (CT)
 \cftafterequtitleskip=\skip114
 \@quotelevel=\count443
 \@quotereset=\count444
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 60.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 72.
  (C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) (d:\My University\CSC4996 Research\Research Proposal\CSC4996_Proposal\build\main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -629,7 +629,7 @@ LaTeX Font Info:    ... okay on input line 60.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring OFF on input line 60.
+Package hyperref Info: Link coloring OFF on input line 72.
 (d:\My University\CSC4996 Research\Research Proposal\CSC4996_Proposal\build\main.out) (d:\My University\CSC4996 Research\Research Proposal\CSC4996_Proposal\build\main.out)
 \@outlinefile=\write4
 \openout4 = `main.out'.
@@ -672,8 +672,8 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'main.bbl' found.
  (d:\My University\CSC4996 Research\Research Proposal\CSC4996_Proposal\build\main.bbl)
-Package biblatex Info: Reference section=0 on input line 60.
-Package biblatex Info: Reference segment=0 on input line 60.
+Package biblatex Info: Reference section=0 on input line 72.
+Package biblatex Info: Reference segment=0 on input line 72.
  (titlepage.tex [1
 
 {C:/Users/Ravin/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}]) (frontmatter/preface.tex [2
@@ -697,13 +697,13 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <7> on input line 1.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 1.
-)
+ [3
+
+])
 \tf@toc=\write5
 \openout5 = `main.toc'.
 
- [3
-
-] [4]) (frontmatter/listoffigures.tex (d:\My University\CSC4996 Research\Research Proposal\CSC4996_Proposal\build\main.lof)
+ [4]) (frontmatter/listoffigures.tex (d:\My University\CSC4996 Research\Research Proposal\CSC4996_Proposal\build\main.lof)
 \tf@lof=\write6
 \openout6 = `main.lof'.
 
@@ -755,19 +755,28 @@ Overfull \hbox (17.14885pt too wide) in paragraph at lines 27--28
 \OT1/lmr/m/n/12 KeyUP$\OML/lmm/m/it/12 n$ $\OMS/lmsy/m/n/12 !$ \OT1/lmr/m/n/12 KeyDOWN$[]$) and *Dwell Time* (du-ra-tion of KeyDOWN$\OML/lmm/m/it/12 n$
  []
 
-[9{C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}]) (sections/4_results.tex [10]) (sections/5_project_schedule.tex) [11]
-Overfull \hbox (11.31856pt too wide) in paragraph at lines 102--102
+[9{C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}] [10] [11]
+LaTeX Font Info:    Trying to load font information for OT1+lmtt on input line 121.
+ (C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmtt.fd
+File: ot1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+) [12{C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rmtt.enc}]
+Overfull \hbox (7.69441pt too wide) in paragraph at lines 176--177
+\OT1/lmr/bx/n/12 Ho-mo-mor-phic En-cryp-tion\OT1/lmr/m/n/12 , the fol-low-ing com-pu-ta-tional met-rics will be recorded: 
+ []
+
+[13]) (sections/4_results.tex [14{C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}]) (sections/5_project_schedule.tex) [15]
+Overfull \hbox (11.31856pt too wide) in paragraph at lines 115--115
 []\OT1/lmr/m/n/12 Y. Kim, D. Shin, and N. Kwon, ``Kd-print: Pas-sive au-then-ti-ca-tion us-ing keystroke
  []
 
 
-Overfull \hbox (31.94298pt too wide) in paragraph at lines 102--102
+Overfull \hbox (31.94298pt too wide) in paragraph at lines 115--115
 \OT1/lmr/m/n/12 dynamics-to-image en-cod-ing via stan-dard-iza-tion,'' \OT1/lmr/m/it/12 arXiv preprint arXiv:2405.01080\OT1/lmr/m/n/12 ,
  []
 
-(sections/appendices.tex [12
+(sections/appendices.tex [16
 
-]) [13
+]) [17
 
 ] (d:\My University\CSC4996 Research\Research Proposal\CSC4996_Proposal\build\main.aux)
  ***********
@@ -775,23 +784,23 @@ LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-29>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: EBCF9C5AD442E9E78537CE009C985A20;6995.
+(rerunfilecheck)             Checksum: D6D542178FABF9765E9CEABA5E1822AC;8699.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 18759 strings out of 467871
- 331313 string characters out of 5418376
- 1175373 words of memory out of 5000000
- 47268 multiletter control sequences out of 15000+600000
- 689845 words of font info for 74 fonts, out of 8000000 for 9000
+ 18845 strings out of 467871
+ 332683 string characters out of 5418376
+ 1176891 words of memory out of 5000000
+ 47326 multiletter control sequences out of 15000+600000
+ 690155 words of font info for 75 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,8n,79p,971b,1229s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb>
-Output written on "d:\My University\CSC4996 Research\Research Proposal\CSC4996_Proposal\build\main.pdf" (21 pages, 263383 bytes).
+<C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt12.pfb>
+Output written on "d:\My University\CSC4996 Research\Research Proposal\CSC4996_Proposal\build\main.pdf" (25 pages, 354708 bytes).
 PDF statistics:
- 410 PDF objects out of 1000 (max. 8388607)
- 96 named destinations out of 1000 (max. 500000)
- 313 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 514 PDF objects out of 1000 (max. 8388607)
+ 118 named destinations out of 1000 (max. 500000)
+ 369 words of extra memory for PDF output out of 10000 (max. 10000000)
 

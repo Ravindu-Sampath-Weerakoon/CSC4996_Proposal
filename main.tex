@@ -12,7 +12,6 @@
 \usepackage[printonlyused]{acronym} % For auto-updating List of Abbreviations
 
 % --- 1. Table of Contents & Lists Global Styling ---
-% --- 1. Table of Contents & Lists Global Styling ---
 \makeatletter
 \renewcommand{\@dotsep}{2} 
 \makeatother
@@ -48,12 +47,25 @@
 \renewcommand{\thesection}{\arabic{section}.0}
 \renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
 
-% --- 4. List of Equations Auto-Update Setup ---
+% =========================================================
+% --- 4. LIST OF EQUATIONS SETUP (Updated) ---
+% =========================================================
+
+% A. Define the new list (creates .equ file)
 \newcommand{\listequationsname}{List of Equations}
 \newlistof{equations}{equ}{\listequationsname}
-\newcommand{\myequation}[1]{%
+
+% B. Define the command to be used INSIDE your equation blocks
+% Usage: \eqname{My Equation Title}
+\newcommand{\eqname}[1]{%
     \addcontentsline{equ}{equations}{\protect\numberline{\theequation}#1}%
 }
+
+% C. Style the list to match your TOC indentation
+\setlength{\cftequationsnumwidth}{2.5em} % Width of number box (1.1)
+\setlength{\cftequationsindent}{1.5em}   % Indent from left
+
+% =========================================================
 
 \addbibresource{references.bib}
 
@@ -68,6 +80,7 @@
 \clearpage
 
 % Pages ii - vii: Standard Front Matter
+% Ensure your frontmatter/listofequations.tex contains the command \listofequations
 \input{frontmatter/preface.tex}         % Page ii
 \input{frontmatter/tableofcontents.tex}  % Page iii
 \input{frontmatter/listoffigures.tex}    % Page iv

@@ -42,11 +42,90 @@
 
 \subsection{Data Collection}
 
+To ensure the proposed privacy-preserving framework is robust, scalable, and generalizes well to real-world scenarios, this research utilizes a \textbf{Hybrid Multi-Source Dataset} approach. Data is aggregated from five distinct, high-impact repositories, covering both fixed-text and free-text typing scenarios, as well as multimodal (Keystroke + Mouse) interactions.
+
+\subsubsection{Primary Datasets (Multimodal \& Cross-Device)}
+The core training and fusion phases utilize two datasets that offer high-granularity sensor data.
+
+\begin{itemize}
+    \item \textbf{SU-AIS BB-MAS (Behavioral Biometrics Multi-device and multi-Activity from Same users):} 
+    This dataset serves as the primary source for training the Deep SVDD model due to its user volume and cross-device consistency.
+    \begin{itemize}
+        \item \textbf{Source:} Syracuse University \& Assured Information Security.
+        \item \textbf{Population:} $N = 117$ unique subjects.
+        \item \textbf{Volume:} Approximately 11,760 keystrokes per user (Desktop subset).
+        \item \textbf{Relevance:} It allows for the analysis of behavioral stability across different physical interfaces.
+    \end{itemize}
+
+    \item \textbf{Edge Hill KMT (CyberSignature Dataset):}
+    This dataset is critical for the \textit{Multimodal Fusion} layer, as it captures simultaneous mouse and keyboard interactions.
+    \begin{itemize}
+        \item \textbf{Source:} Edge Hill University, UK.
+        \item \textbf{Scenario:} Financial form filling (names, addresses, credit card details), representing a high-security context.
+        \item \textbf{Population:} 88 user sessions with 1,760 interaction instances.
+        \item \textbf{Features:} Captures Keystroke, Mouse (trajectory, velocity, click), and Touchscreen events.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Benchmark Datasets (Scalability \& Standardization)}
+To validate the model against state-of-the-art standards and ensure scalability, two benchmark datasets are employed.
+
+\begin{itemize}
+    \item \textbf{Aalto University ``136M Keystrokes'' Dataset:}
+    Used for \textit{Transfer Learning} to pre-train the LSTM feature extractors on general typing patterns.
+    \begin{itemize}
+        \item \textbf{Scale:} The largest available public keystroke dataset ($>136$ million keystrokes).
+        \item \textbf{Population:} over 168,000 participants.
+        \item \textbf{Type:} Free-text typing collected via an online web test.
+    \end{itemize}
+
+    \item \textbf{CMU Keystroke Dynamics Benchmark:}
+    Used as a baseline control group to compare Error Rates (EER) against existing literature.
+    \begin{itemize}
+        \item \textbf{Source:} Carnegie Mellon University Biometrics Research.
+        \item \textbf{Population:} 51 subjects.
+        \item \textbf{Type:} Fixed-text password entry (e.g., string ``.tie5Roanl'').
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Supplementary Data}
+\begin{itemize}
+    \item \textbf{Feature Engineered Mouse Data (Figshare ID: 29386898):}
+    A pre-processed dataset containing engineered features such as trajectory straightness, jitter, and movement efficiency. This is utilized to fine-tune the mouse dynamics anomaly detection module without requiring raw signal processing.
+\end{itemize}
+
+% Summary Table
+\begin{table}[ht]
+\centering
+\caption{Summary of Experimental Datasets}
+\label{tab:datasets}
+\begin{tabular}{|l|l|c|l|}
+\hline
+\textbf{Dataset} & \textbf{Modality} & \textbf{Users} & \textbf{Primary Role} \\ \hline
+Edge Hill KMT & Key + Mouse & 88 & Multimodal Fusion Training \\ \hline
+SU-AIS BB-MAS & Key + Sensors & 117 & Deep Learning (LSTM) Training \\ \hline
+Aalto 136M & Keystroke & 168k+ & Scalability \& Transfer Learning \\ \hline
+CMU Benchmark & Keystroke & 51 & Baseline Validation \\ \hline
+Figshare Mouse & Mouse & N/A & Feature Engineering \\ \hline
+\end{tabular}
+\end{table}
 % Describe your data sources.
 % Are you using a public dataset (e.g., HMOG, UCI)? 
 % Or are you collecting your own data? If so, describe the sensors and sampling rate.
 
 \subsection{Ethical Considerations}
+
+This research utilizes \textbf{secondary data} obtained from open-access academic repositories and public benchmarks (SU-AIS BB-MAS, Edge Hill KMT, and Aalto University). As such, this study does not involve direct interaction with human participants, and no new personal data collection is performed.
+
+\paragraph{Data Privacy and Anonymity:}
+The datasets used in this study have been previously de-identified by the original data custodians. All records are referenced by unique alphanumeric identifiers (e.g., \texttt{User\_001}), ensuring that no \textbf{Personally Identifiable Information (PII)}---such as names, addresses, or actual passwords---is processed or accessible. 
+\begin{itemize}
+    \item In the \textbf{Edge Hill KMT dataset}, the original collection protocol ensured that users entered \textit{fictitious} financial information; thus, no real sensitive financial data is exposed.
+    \item In the \textbf{SU-AIS BB-MAS dataset}, demographic attributes (age, gender) are provided in an anonymized format that prevents the re-identification of specific individuals.
+\end{itemize}
+
+\paragraph{Compliance and Licensing:}
+All data is used in strict accordance with their respective licensing agreements (e.g., Creative Commons Attribution 4.0 International). The data is utilized solely for the purpose of academic research to train and validate the proposed privacy-preserving authentication model. No attempt will be made to deanonymize the data subjects.
 
 % Discuss any ethical issues related to your data or subjects.
 % For behavioral biometrics, privacy is a key concern.
@@ -54,11 +133,93 @@
 
 \subsection{Evaluation and Validation}
 
+The performance of the proposed privacy-preserving authentication framework will be rigorously evaluated using a comprehensive suite of biometric and system performance metrics. The evaluation strategy is designed to quantify the trade-offs between authentication accuracy, computational latency, and privacy overhead.
+
+\subsubsection{Experimental Design}
+The validation process will follow a \textbf{$k$-fold Cross-Validation} ($k=10$) protocol to ensure statistical reliability. The dataset will be partitioned into:
+\begin{itemize}
+    \item \textbf{Training Set (60\%):} Used to train the Deep SVDD model to learn the user's normal behavioral boundary.
+    \item \textbf{Validation Set (20\%):} Used for hyperparameter tuning (e.g., LSTM layer size, JL projection dimension $k$).
+    \item \textbf{Testing Set (20\%):} Used to evaluate the final performance on unseen data.
+\end{itemize}
+To simulate real-world attacks, \textbf{Zero-Effort Impostor} testing will be conducted, where every other user in the dataset acts as an impostor against the target user.
+
+\subsubsection{Biometric Performance Metrics}
+The primary measure of authentication success is the system's ability to correctly distinguish the legitimate user from impostors.
+
+\begin{itemize}
+    \item \textbf{False Acceptance Rate (FAR):} The probability that an unauthorized user (impostor) is incorrectly accepted by the system.
+    \begin{equation}
+        FAR = \frac{FP}{FP + TN} \times 100
+        \label{eq:far}
+        \eqname{False Acceptance Rate (FAR)}
+    \end{equation}
+    \textit{Where $FP$ is False Positives and $TN$ is True Negatives.}
+
+    \item \textbf{False Rejection Rate (FRR):} The probability that the legitimate user is incorrectly rejected by the system.
+    \begin{equation}
+        FRR = \frac{FN}{FN + TP} \times 100
+        \label{eq:frr}
+        \eqname{False Rejection Rate (FRR)}
+    \end{equation}
+    \textit{Where $FN$ is False Negatives and $TP$ is True Positives.}
+
+    \item \textbf{Equal Error Rate (EER):} The operating point where $FAR = FRR$. A lower EER indicates a more accurate system.
+    \begin{equation}
+        EER = \{ FAR \mid FAR = FRR \}
+        \label{eq:eer}
+        \eqname{Equal Error Rate (EER) Condition}
+    \end{equation}
+\end{itemize}
+
+\subsubsection{System Efficiency \& Scalability Metrics}
+To validate the effectiveness of the \textbf{Johnson-Lindenstrauss (JL) Lemma} and \textbf{Homomorphic Encryption}, the following computational metrics will be recorded:
+
+\begin{itemize}
+    \item \textbf{Inference Latency ($L_{inf}$):} The time taken to process a single authentication request.
+    \begin{equation}
+        L_{inf} = T_{proj} + T_{enc} + T_{score}
+        \label{eq:latency}
+        \eqname{System Inference Latency Model}
+    \end{equation}
+    \textit{Target:} $L_{inf} < 200ms$ (Real-time threshold).
+
+    \item \textbf{Encryption Overhead Ratio ($E_{ratio}$):} The ratio of processing time in the encrypted domain versus the plaintext domain.
+    \begin{equation}
+        E_{ratio} = \frac{T_{encrypted}}{T_{plaintext}}
+        \label{eq:overhead}
+        \eqname{Encryption Overhead Ratio}
+    \end{equation}
+\end{itemize}
+
+\subsubsection{Privacy and Security Evaluation}
+Given the cybersecurity focus of this research, quantifying the strength of the privacy-preserving mechanisms is critical.
+
+\begin{itemize}
+    \item \textbf{Indistinguishability (Adversarial Advantage):} 
+    To verify semantic security (IND-CPA), we measure the probability that an adversary $\mathcal{A}$ can distinguish between two encrypted biometric templates.
+    \begin{equation}
+        Adv_{\mathcal{A}} = \left| \Pr[\mathcal{A}(E(m_0)) = 1] - \Pr[\mathcal{A}(E(m_1)) = 1] \right|
+        \label{eq:adv_advantage}
+        \eqname{Adversarial Advantage (Indistinguishability)}
+    \end{equation}
+
+    \item \textbf{Reconstruction Resistance (Feature Recovery Attack):}
+    To simulate a database breach, an inverse-mapping Deep Neural Network (Decoder $\mathcal{D}$) will be trained to attempt to reconstruct the original raw features $X$ from the stored templates $T$. Privacy is quantified by the maximization of the Reconstruction Error (MSE):
+    \begin{equation}
+        MSE_{recon} = \frac{1}{N} \sum_{i=1}^{N} (X_i - \mathcal{D}(T_i))^2
+        \label{eq:mse_recon}
+        \eqname{Reconstruction Error (MSE) for Privacy}
+    \end{equation}
+
+    \item \textbf{Information Leakage (Mutual Information):}
+    We quantify the dependency between the raw biometric vector $X$ and the projected/encrypted vector $Z$ using Shannon's Mutual Information:
+    \begin{equation}
+        I(X; Z) = \sum_{x \in X} \sum_{z \in Z} p(x,z) \log \left( \frac{p(x,z)}{p(x)p(z)} \right)
+        \label{eq:mutual_info}
+        \eqname{Mutual Information (Information Leakage)}
+    \end{equation}
+\end{itemize}
+
 % How will you measure success?
 % metric examples:
-\begin{itemize}
-    \item \textbf{False Acceptance Rate (FAR)}
-    \item \textbf{False Rejection Rate (FRR)}
-    \item \textbf{Equal Error Rate (EER)}
-    \item \textbf{System Latency (ms)}
-\end{itemize}
