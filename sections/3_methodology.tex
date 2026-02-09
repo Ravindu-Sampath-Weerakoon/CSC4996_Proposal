@@ -4,10 +4,37 @@
 % [METHODOLOGY AND PROJECT DESIGN] ensures it appears uppercase in the Table of Contents
 \section[METHODOLOGY AND PROJECT DESIGN]{Methodology and Project Design}
 
+\paragraph{ Rationale for Chosen Methods: }
+
+\begin{itemize}
+    \item \textbf{Multimodal Fusion:} Single-modality systems (keystroke only) are prone to mimicry attacks. Fusion with mouse dynamics increases the entropy of the user profile, making forgery exponentially harder.
+    \item \textbf{Deep SVDD \& LSTMs:} Unlike static classifiers (e.g., SVM), Long Short-Term Memory (LSTM) networks are selected for their ability to model the temporal dependencies in sequential data. Deep Support Vector Data Description (Deep SVDD) is chosen as the anomaly detector because it is a "one-class" classifier, meaning it can train on only the legitimate user's data without requiring impostor data during the training phase.
+    
+    \item \textbf{Johnson-Lindenstrauss (JL) Lemma: } To counter the computational overhead of Homomorphic Encryption, the JL Lemma is applied to project high-dimensional biometric feature vectors into a lower-dimensional space. This allows for faster encrypted computations with mathematically guaranteed distance preservation.
+
+\end{itemize}
 % This section outlines how you will conduct your research.
 % It should be detailed enough that another researcher could replicate your study.
 
 \subsection{Overview of the Proposed Methodology/Research Design}
+
+\paragraph{} The proposed system architecture is designed as a post-acquisition processing pipeline. It assumes the availability of raw timestamped log files containing keystroke and mouse events. The methodology follows a sequential four-phase workflow:
+
+\begin{enumerate}
+    \item  \textbf{Feature Extraction \& Temporal Fusion:} The system ingests raw event logs and converts them into synchronized time-series feature vectors.
+    
+    \begin{itemize}
+        \item \textbf {Keystroke Features:}  Extraction of Flight Time (latency between KeyUP${n}$ $\rightarrow$ KeyDOWN${n+1}$) and *Dwell Time* (duration of KeyDOWN${n}$ $\rightarrow$ KeyUP${n}$).
+        \item \textbf{Mouse Features:} Calculation of higher-order motor metrics including Velocity Profiles, Angular Velocity, and Curvature Distance Ratio (efficiency of movement).
+        \item \textbf{Multimodal Fusion:}The two independent streams are aligned using sliding time windows (e.g., $t=10s$) to create unified "behavioral frames" representing the user's complete interaction state.
+        
+    
+    \end{itemize}
+
+    \item \textbf{Dimensionality Reduction (JL Layer):} To mitigate the "curse of dimensionality" caused by fusing two biometric streams, the high-dimensional fused vector ($d$) is projected onto a lower-dimensional subspace ($k$, where $k \ll d$) using the Johnson-Lindenstrauss (JL) Lemma. This is achieved by multiplying the feature vector by a sparse random matrix ($R$) to produce a compressed, privacy-hardened embedding.
+    \item \textbf{Privacy-Preserving Transformation:} The compressed embeddings are encrypted using a Partially Homomorphic Encryption (PHE) scheme (e.g., Paillier). This ensures that all subsequent distance calculations required for authentication are performed in the encrypted domain, preventing the exposure of the user's behavioral template.
+    \item  \textbf{Anomaly Detection (Deep SVDD):} The encrypted vectors are fed into a Deep Support Vector Data Description (Deep SVDD) model. This model learns a compact hypersphere boundary encapsulating the legitimate user's "normal" behavior. During the verification phase, any input vector falling outside this learned boundary is flagged as an anomaly (potential impostor) without ever decrypting the data.
+\end{enumerate}
 
 % Provide a high-level summary of your approach.
 % You might want to include a system architecture diagram here later.

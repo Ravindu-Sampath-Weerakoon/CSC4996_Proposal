@@ -291,6 +291,7 @@ INPUT .\sections\3_methodology.tex
 INPUT .\sections\3_methodology.tex
 INPUT .\sections\3_methodology.tex
 INPUT sections\3_methodology.tex
+INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathsy.enc
 INPUT .\sections\4_results.tex
 INPUT .\sections\4_results.tex
 INPUT .\sections\4_results.tex
@@ -325,3 +326,5 @@ INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmr17.p
 INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmr17.pfb
 INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmri12.pfb
 INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmri12.pfb
+INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmsy10.pfb
+INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmsy10.pfb

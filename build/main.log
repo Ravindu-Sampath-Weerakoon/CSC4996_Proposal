@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.28)  10 FEB 2026 00:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.28)  10 FEB 2026 01:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -750,11 +750,12 @@ Overfull \hbox (0.7063pt too wide) in paragraph at lines 32--33
 \OT1/lmr/m/n/12 frame-work for con-tin-u-ous be-hav-ioral au-then-ti-ca-tion on mo-bile de-vices. This frame-
  []
 
-[2] [3{C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}]) (sections/2_background.tex [4] [5] [6] [7] [8]) (sections/3_methodology.tex) (sections/4_results.tex) (sections/5_project_schedule.tex
+[2] [3{C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}]) (sections/2_background.tex [4] [5] [6] [7] [8]) (sections/3_methodology.tex
+Overfull \hbox (17.14885pt too wide) in paragraph at lines 27--28
+\OT1/lmr/m/n/12 KeyUP$\OML/lmm/m/it/12 n$ $\OMS/lmsy/m/n/12 !$ \OT1/lmr/m/n/12 KeyDOWN$[]$) and *Dwell Time* (du-ra-tion of KeyDOWN$\OML/lmm/m/it/12 n$
+ []
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[9]) [10]
+[9{C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}]) (sections/4_results.tex [10]) (sections/5_project_schedule.tex) [11]
 Overfull \hbox (11.31856pt too wide) in paragraph at lines 102--102
 []\OT1/lmr/m/n/12 Y. Kim, D. Shin, and N. Kwon, ``Kd-print: Pas-sive au-then-ti-ca-tion us-ing keystroke
  []
@@ -764,9 +765,9 @@ Overfull \hbox (31.94298pt too wide) in paragraph at lines 102--102
 \OT1/lmr/m/n/12 dynamics-to-image en-cod-ing via stan-dard-iza-tion,'' \OT1/lmr/m/it/12 arXiv preprint arXiv:2405.01080\OT1/lmr/m/n/12 ,
  []
 
-(sections/appendices.tex [11
+(sections/appendices.tex [12
 
-]) [12
+]) [13
 
 ] (d:\My University\CSC4996 Research\Research Proposal\CSC4996_Proposal\build\main.aux)
  ***********
@@ -780,17 +781,17 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 18751 strings out of 467871
- 331239 string characters out of 5418376
+ 18759 strings out of 467871
+ 331313 string characters out of 5418376
  1175373 words of memory out of 5000000
  47268 multiletter control sequences out of 15000+600000
  689845 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,8n,79p,971b,1229s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb>
-Output written on "d:\My University\CSC4996 Research\Research Proposal\CSC4996_Proposal\build\main.pdf" (20 pages, 252046 bytes).
+<C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb>
+Output written on "d:\My University\CSC4996 Research\Research Proposal\CSC4996_Proposal\build\main.pdf" (21 pages, 263383 bytes).
 PDF statistics:
- 393 PDF objects out of 1000 (max. 8388607)
- 89 named destinations out of 1000 (max. 500000)
+ 410 PDF objects out of 1000 (max. 8388607)
+ 96 named destinations out of 1000 (max. 500000)
  313 words of extra memory for PDF output out of 10000 (max. 10000000)
 

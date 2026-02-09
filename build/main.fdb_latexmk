@@ -1,15 +1,16 @@
 # Fdb version 4
-["biber build/main"] 1770663256.51976 "build/main.bcf" "build/main.bbl" "build/main" 1770664997.08125 0
-  "build/main.bcf" 1770664996 109052 6681a7e19b3d4ab38010519ff608100a "pdflatex"
+["biber build/main"] 1770663256.51976 "build/main.bcf" "build/main.bbl" "build/main" 1770667397.59754 0
+  "build/main.bcf" 1770667397 109052 6681a7e19b3d4ab38010519ff608100a "pdflatex"
   "references.bib" 1770539990 5638 652ee67f5aac8c0147ae635f7c2cf561 ""
   (generated)
   "build/main.bbl"
   "build/main.blg"
   (rewritten before read)
-["pdflatex"] 1770664995.63736 "d:/My University/CSC4996 Research/Research Proposal/CSC4996_Proposal/main.tex" "build/main.pdf" "main" 1770664997.08198 0
+["pdflatex"] 1770667396.05795 "d:/My University/CSC4996 Research/Research Proposal/CSC4996_Proposal/main.tex" "build/main.pdf" "main" 1770667397.59829 0
   "C:/Users/Ravin/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1770531877 81107 70b8516c68c2e617189c5e44bfd16b96 ""
   "C:/Users/Ravin/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1769592013 13333487 34672f6932475314df55cabe1cc21192 ""
   "C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc" 1256929440 2405 5dcf2c1b967ee25cc46c58cd52244aed ""
+  "C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc" 1256929440 2840 216e6e45ad352e2456e1149f28885bee ""
   "C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc" 1256929440 2327 9d6df24f9c4f7368395224341a95523a ""
   "C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc" 1256929440 3031 6c4d3515bf7115d8518af1c9ab97ca44 ""
   "C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmr12.tfm" 1136765053 1288 655e228510b4c2a1abe905c368440826 ""
@@ -43,6 +44,7 @@
   "C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb" 1256929440 113634 9384aebdf26f9881e046a4b5574566db ""
   "C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb" 1256929440 119752 1bd8d06e4079df624bf59ce3ad7c9aa6 ""
   "C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb" 1256929440 109265 e6c7d377db6dfccd4a123fb26da8cffb ""
+  "C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb" 1256929440 27863 09ce3735688ffde955e72da27c95b61a ""
   "C:/Users/Ravin/AppData/Local/Programs/MiKTeX/tex/context/base/mkii/supp-pdf.mkii" 1580390158 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "C:/Users/Ravin/AppData/Local/Programs/MiKTeX/tex/generic/bigintcalc/bigintcalc.sty" 1576433602 40635 c40361e206be584d448876bba8a64a3b ""
   "C:/Users/Ravin/AppData/Local/Programs/MiKTeX/tex/generic/bitset/bitset.sty" 1575926576 33961 6b5c75130e435b2bfdb9f480a09a39f9 ""
@@ -120,14 +122,14 @@
   "C:/Users/Ravin/AppData/Local/Programs/MiKTeX/tex/latex/tocloft/tocloft.sty" 1578908763 37263 3e78d14f0f4b1a30560fea5e04de805d ""
   "C:/Users/Ravin/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/Ravin/AppData/Local/Programs/MiKTeX/tex/latex/xstring/xstring.sty" 1693735632 123 a302f2c651a95033260db60e51527ae8 ""
-  "build/main.aux" 1770664996 9244 9c656d75aa12a2de993332bdf5b808d7 "pdflatex"
+  "build/main.aux" 1770667397 9457 6f70cc740fe4d482329a1854937f1e0b "pdflatex"
   "build/main.bbl" 1770663258 14205 f9107cd32f0d9c69b10a1338b540bc55 "biber build/main"
-  "build/main.equ" 1770664996 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "build/main.lof" 1770664996 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "build/main.lot" 1770664996 94 461da127e458a77f5001fa7186d31a39 "pdflatex"
-  "build/main.out" 1770664996 6995 ebcf9c5ad442e9e78537ce009c985a20 "pdflatex"
-  "build/main.run.xml" 1770664996 2402 05765085d18e81025e591027ecbce8c4 "pdflatex"
-  "build/main.toc" 1770664996 4115 28d68e67fc2d1adcb3d2b6a3b01a88f3 "pdflatex"
+  "build/main.equ" 1770667397 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "build/main.lof" 1770667397 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "build/main.lot" 1770667397 94 85ffb1ef9c058d4844ef3809c37c99a6 "pdflatex"
+  "build/main.out" 1770667397 6995 ebcf9c5ad442e9e78537ce009c985a20 "pdflatex"
+  "build/main.run.xml" 1770667397 2402 05765085d18e81025e591027ecbce8c4 "pdflatex"
+  "build/main.toc" 1770667397 4246 51bd713c7702f5dae376ddd7605aac79 "pdflatex"
   "d:/My University/CSC4996 Research/Research Proposal/CSC4996_Proposal/main.tex" 1770535568 3616 1cfa84b734822cd9a018401f7eccf75a ""
   "frontmatter/abbreviations.tex" 1770531877 642 6a8b48d4ee13cd213cedcb75181199c8 ""
   "frontmatter/listofequations.tex" 1770531288 554 82787832a3c96422549dca680336cb2d ""
@@ -138,7 +140,7 @@
   "main.tex" 1770535568 3616 1cfa84b734822cd9a018401f7eccf75a ""
   "sections/1_introduction.tex" 1770615305 6375 d69d846f4a436a217574e46830623a75 ""
   "sections/2_background.tex" 1770664993 10317 181534f47380ecc3117661e9bf4c0fcd ""
-  "sections/3_methodology.tex" 1770535029 1375 29cd798a6a5c2ebe64c9415c17654b2a ""
+  "sections/3_methodology.tex" 1770667394 4761 097c9b94a83567127b95da1a1c80ec1b ""
   "sections/4_results.tex" 1770535159 1283 59d283d8e5cd4710f09dff36b8c6bf56 ""
   "sections/5_project_schedule.tex" 1770535316 1373 e07d6e7a27e7deddc9440de48baab108 ""
   "sections/appendices.tex" 1770535487 520 834a64fd355640c815980684c699d280 ""
