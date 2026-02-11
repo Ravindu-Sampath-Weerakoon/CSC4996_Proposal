@@ -262,6 +262,12 @@ INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex\generic\pgf\libraries\pgf
 INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex\generic\pgf\modules\pgfmodulematrix.code.tex
 INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrarytopaths.code.tex
 INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrarytopaths.code.tex
+INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex\latex\booktabs\booktabs.sty
+INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex\latex\booktabs\booktabs.sty
+INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex\latex\tools\tabularx.sty
+INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex\latex\tools\tabularx.sty
+INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex\latex\tools\array.sty
+INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex\latex\tools\array.sty
 INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibraryshapes.code.tex
 INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibraryshapes.code.tex
 INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibraryshapes.geometric.code.tex
@@ -447,8 +453,8 @@ INPUT .\sections\3_methodology.tex
 INPUT .\sections\3_methodology.tex
 INPUT .\sections\3_methodology.tex
 INPUT sections\3_methodology.tex
-INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathex.enc
 INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\rm-lmri10.tfm
+INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathex.enc
 INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex\latex\lm\ot1lmtt.fd
 INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex\latex\lm\ot1lmtt.fd
 INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex\latex\lm\ot1lmtt.fd
@@ -464,11 +470,13 @@ INPUT .\sections\5_project_schedule.tex
 INPUT .\sections\5_project_schedule.tex
 INPUT .\sections\5_project_schedule.tex
 INPUT sections\5_project_schedule.tex
+INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\rm-lmcsc10.tfm
 INPUT .\sections\appendices.tex
 INPUT .\sections\appendices.tex
 INPUT .\sections\appendices.tex
 INPUT .\sections\appendices.tex
 INPUT sections\appendices.tex
+INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-rmsc.enc
 INPUT d:\My University\CSC4996 Research\Research Proposal\CSC4996_Proposal\build\main.aux
 INPUT d:\My University\CSC4996 Research\Research Proposal\CSC4996_Proposal\build\main.out
 INPUT d:\My University\CSC4996 Research\Research Proposal\CSC4996_Proposal\build\main.out
@@ -478,6 +486,8 @@ INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmbx10.
 INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmbx10.pfb
 INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmbx12.pfb
 INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmbx12.pfb
+INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmcsc10.pfb
+INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmcsc10.pfb
 INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmex10.pfb
 INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmex10.pfb
 INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmmi10.pfb

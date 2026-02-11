@@ -7,10 +7,15 @@
 \paragraph{ Rationale for Chosen Methods: }
 
 \begin{itemize}
-    \item \textbf{Multimodal Fusion:} Single-modality systems (keystroke only) are prone to mimicry attacks. Fusion with mouse dynamics increases the entropy of the user profile, making forgery exponentially harder.
-    \item \textbf{Deep SVDD \& LSTMs:} Unlike static classifiers (e.g., SVM), Long Short-Term Memory (LSTM) networks are selected for their ability to model the temporal dependencies in sequential data. Deep Support Vector Data Description (Deep SVDD) is chosen as the anomaly detector because it is a "one-class" classifier, meaning it can train on only the legitimate user's data without requiring impostor data during the training phase.
+    \item \textbf{Multimodal Fusion:} Single-modality systems (keystroke only) are prone to mimicry attacks. Fusion with mouse dynamics increases the entropy of the user profile, making forgery exponentially harder \cite{mondal2017continuous}.
     
-    \item \textbf{Johnson-Lindenstrauss (JL) Lemma: } To counter the computational overhead of Homomorphic Encryption, the JL Lemma is applied to project high-dimensional biometric feature vectors into a lower-dimensional space. This allows for faster encrypted computations with mathematically guaranteed distance preservation.
+    
+
+    \item \textbf{Deep \ac{SVDD} \& \acp{LSTM}:} Unlike static classifiers (e.g., \ac{SVM}), \ac{LSTM} networks are selected for their ability to model the temporal dependencies in sequential data \cite{kiyani2020continuous}. \ac{Deep SVDD} is chosen as the anomaly detector because it is a "one-class" classifier, meaning it can train on only the legitimate user's data without requiring impostor data during the training phase \cite{ruff2018deepsvdd, kim2024kdprint}.
+    
+    
+
+    \item \textbf{\ac{JL} Lemma: } To counter the computational overhead of \ac{HE} \cite{cheon2017homomorphic}, the \ac{JL} Lemma \cite{johnson1984extensions} is applied to project high-dimensional biometric feature vectors into a lower-dimensional space. This allows for faster encrypted computations with mathematically guaranteed distance preservation \cite{rahman2021scalable}.
 
 \end{itemize}
 % This section outlines how you will conduct your research.
@@ -18,22 +23,47 @@
 
 \subsection{Overview of the Proposed Methodology/Research Design}
 
-
 \begin{enumerate}
     \item  \textbf{Feature Extraction \& Temporal Fusion:} The system ingests raw event logs and converts them into synchronized time-series feature vectors.
     
     \begin{itemize}
-        \item \textbf {Keystroke Features:}  Extraction of Flight Time (latency between KeyUP${n}$ $\rightarrow$ KeyDOWN${n+1}$) and *Dwell Time* (duration of KeyDOWN${n}$ $\rightarrow$ KeyUP${n}$).
-        \item \textbf{Mouse Features:} Calculation of higher-order motor metrics including Velocity Profiles, Angular Velocity, and Curvature Distance Ratio (efficiency of movement).
-        \item \textbf{Multimodal Fusion:}The two independent streams are aligned using sliding time windows (e.g., $t=10s$) to create unified "behavioral frames" representing the user's complete interaction state.
+        \item \textbf{Keystroke Features:} Extraction of Flight Time (latency between KeyUP$_{n}$ $\rightarrow$ KeyDOWN$_{n+1}$) and \textit{Dwell Time} (duration of KeyDOWN$_{n}$ $\rightarrow$ KeyUP$_{n}$) \cite{gaines1980authentication, joyce1990identity}.
         
-    
+        
+        
+        \item \textbf{Mouse Features:} Calculation of higher-order motor metrics including Velocity Profiles, Angular Velocity, and Curvature Distance Ratio (efficiency of movement) \cite{ahmed2007new, zheng2011efficient}.
+        
+        
+        
+        \item \textbf{Multimodal Fusion:} The two independent streams are aligned using sliding time windows (e.g., $t=10s$) to create unified "behavioral frames" representing the user's complete interaction state \cite{mondal2017continuous, kiyani2020continuous}.
     \end{itemize}
 
-    \item \textbf{Dimensionality Reduction (JL Layer):} To mitigate the "curse of dimensionality" caused by fusing two biometric streams, the high-dimensional fused vector ($d$) is projected onto a lower-dimensional subspace ($k$, where $k \ll d$) using the Johnson-Lindenstrauss (JL) Lemma. This is achieved by multiplying the feature vector by a sparse random matrix ($R$) to produce a compressed, privacy-hardened embedding.
-    \item \textbf{Privacy-Preserving Transformation:} The compressed embeddings are encrypted using a \textbf{Leveled Homomorphic Encryption (LHE)} scheme (e.g., CKKS). Unlike additive-only schemes (such as Paillier), CKKS supports the approximate arithmetic and multiplication depth required to compute \textit{squared Euclidean distances} ($||x - c||^2$) directly on the ciphertext. This ensures that the mathematical operations needed for authentication are performed entirely in the encrypted domain without decrypting the user's behavioral template.
+    \begin{table}[H]
+    \centering
+    \caption{Technical Specification of Extracted Behavioral Features}
+    \label{tab:feature_engineering}
+    \begin{tabularx}{\textwidth}{@{}l l X X@{}}
+        \toprule
+        \textbf{Category} & \textbf{Modality} & \textbf{Specific Metrics} & \textbf{Rationale} \\ \midrule
+        \textbf{Temporal} & Keystroke & Dwell Time, Flight Time \cite{gaines1980authentication, joyce1990identity, kiyani2020continuous} & Captures unique typing rhythm and biomechanical speed \cite{pirzado2021keystroke, shepherd1995continuous}. \\ \addlinespace
+        \textbf{Kinematic} & Mouse & Velocity Profiles, Angular Velocity \cite{ahmed2007new, zheng2011efficient} & Distinguishes fine-grained motor-skill characteristics \cite{ahmed2007new}. \\ \addlinespace
+        \textbf{Trajectory} & Mouse & Curvature Distance Ratio, Movement Efficiency \cite{mondal2017continuous, zheng2011efficient} & Measures hand stability and trajectory optimization \cite{mondal2017continuous}. \\ \addlinespace
+        \textbf{Sequential} & Multimodal & Sliding Window Vectors (e.g., $t=10s$) \cite{kiyani2020continuous} & Synchronizes independent streams for continuous monitoring \cite{mondal2017continuous}. \\ \bottomrule
+    \end{tabularx}
+\end{table}
+    
 
-\item \textbf{Anomaly Detection (Deep SVDD):} The encrypted feature vectors are fed into a Deep Support Vector Data Description (Deep SVDD) model. This model learns a compact hypersphere boundary encapsulating the legitimate user's ``normal'' behavior. During the verification phase, the system calculates the distance between the encrypted input and the hypersphere center; any input falling outside this learned radius is flagged as an anomaly (potential impostor) while the data remains mathematically indistinguishable from random noise.
+\item \textbf{Dimensionality Reduction (JL Layer):} To mitigate the "curse of dimensionality" caused by fusing two biometric streams, the high-dimensional fused vector ($d$) is projected onto a lower-dimensional subspace ($k$, where $k \ll d$) using the \ac{JL} Lemma \cite{johnson1984extensions}. This is achieved by multiplying the feature vector by a sparse random matrix ($R$) to produce a compressed, privacy-hardened embedding.
+    
+    
+    
+    \item \textbf{Privacy-Preserving Transformation:} The compressed embeddings are encrypted using a \textbf{\ac{LHE}} scheme (e.g., \ac{CKKS}) \cite{cheon2017homomorphic}. Unlike additive-only schemes, \ac{CKKS} supports the approximate arithmetic and multiplication depth required to compute \textit{squared Euclidean distances} ($||x - c||^2$) directly on the ciphertext. This ensures that the mathematical operations needed for authentication are performed entirely in the encrypted domain without decrypting the user's behavioral template \cite{rahman2021scalable}.
+    
+    
+
+\item \textbf{Anomaly Detection (Deep SVDD):} The encrypted feature vectors are fed into a \ac{Deep SVDD} model \cite{ruff2018deepsvdd}. This model learns a compact hypersphere boundary encapsulating the legitimate user's ``normal'' behavior. During the verification phase, the system calculates the distance between the encrypted input and the hypersphere center; any input falling outside this learned radius is flagged as an anomaly (potential impostor) while the data remains mathematically indistinguishable from random noise under \ac{IND-CPA} security \cite{kim2024kdprint, ruff2018deepsvdd}.
+
+
 \end{enumerate}
 
 \begin{figure}[H]
@@ -92,7 +122,15 @@
 
 
 \subsubsection{Architectural Design Mode I: Cryptographic Privacy (High-Security)}
-\textit{Illustrated in Figure 1.} This mode is designed for high-risk transaction scenarios, such as banking login or authorizing payments. It utilizes \textbf{Leveled Homomorphic Encryption (CKKS)} to perform anomaly detection inference entirely within the encrypted domain.
+\textit{Illustrated in Figure 1.} This mode is designed for high-risk transaction scenarios, such as banking login or authorizing payments. It utilizes \textbf{\ac{LHE} (\ac{CKKS})} \cite{cheon2017homomorphic} to perform anomaly detection inference entirely within the encrypted domain.
+
+
+
+\begin{itemize}
+    \item \textbf{Privacy Mechanism:} The behavioral template is encrypted using standard cryptographic protocols, ensuring mathematically provable security (\ac{IND-CPA}) \cite{cheon2017homomorphic}.
+    \item \textbf{Trade-off:} While this offers the highest level of data protection, it incurs a higher computational cost, making it suitable for periodic, critical authentication rather than continuous, sub-second monitoring \cite{rahman2021scalable}.
+\end{itemize}
+
 
 \begin{figure}[H]
     \centering
@@ -161,8 +199,8 @@
 \end{figure}
 
 \begin{itemize}
-    \item \textbf{Privacy Mechanism:} The behavioral template is encrypted using standard cryptographic protocols, ensuring mathematically provable security (IND-CPA).
-    \item \textbf{Trade-off:} While this offers the highest level of data protection, it incurs a higher computational cost, making it suitable for periodic, critical authentication rather than continuous, sub-second monitoring.
+\item \textbf{Privacy Mechanism:} The behavioral template is encrypted using standard cryptographic protocols, ensuring mathematically provable security (\ac{IND-CPA}) \cite{cheon2017homomorphic}.
+\item \textbf{Trade-off:} While this offers the highest level of data protection, it incurs a higher computational cost, making it suitable for periodic, critical authentication rather than continuous, sub-second monitoring \cite{rahman2021scalable}.
 \end{itemize}
 
 
@@ -244,10 +282,20 @@
 \end{itemize}
 
 
-
-
-
-
+\begin{table}[htbp]
+    \centering
+    \caption{Feature Comparison of Architectural Modes}
+    \label{tab:arch_comparison}
+    \begin{tabularx}{\textwidth}{@{}lXX@{}}
+        \toprule
+        \textbf{Feature} & \textbf{Mode I: Cryptographic Privacy} & \textbf{Mode II: Projected Privacy} \\ \midrule
+        Primary Goal & High-security (e.g., banking logins)  & Continuous passive monitoring \cite{suais2019bbmas} \\ \addlinespace
+        Privacy Mechanism & \ac{LHE} (\ac{CKKS}) \cite{cheon2017homomorphic} & \ac{JL} Projection \cite{johnson1984extensions} \\ \addlinespace
+        Security Guarantee & Mathematically provable (\ac{IND-CPA}) \cite{cheon2017homomorphic} & Computational privacy/Non-invertible \cite{ruff2018deepsvdd} \\ \addlinespace
+        Latency Target & Higher (Suitable for periodic use) \cite{kiyani2020continuous} & Ultra-low ($< 200$ms)  \\ \addlinespace
+        Computational Cost & High \cite{kiyani2020continuous} & Very Low  \\ \bottomrule
+    \end{tabularx}
+\end{table}
 
 
 
@@ -263,17 +311,17 @@ To ensure the proposed privacy-preserving framework is robust, scalable, and gen
 The core training and fusion phases utilize two datasets that offer high-granularity sensor data.
 
 \begin{itemize}
-    \item \textbf{SU-AIS BB-MAS (Behavioral Biometrics Multi-device and multi-Activity from Same users):} 
-    This dataset serves as the primary source for training the Deep SVDD model due to its user volume and cross-device consistency.
+    \item \textbf{\ac{SU-AIS} \ac{BB-MAS} \cite{suais2019bbmas}:} 
+    This dataset serves as the primary source for training the \ac{SVDD} model due to its user volume and cross-device consistency.
     \begin{itemize}
-        \item \textbf{Source:} Syracuse University \& Assured Information Security.
+        \item \textbf{Source:} \ac{SU-AIS}.
         \item \textbf{Population:} $N = 117$ unique subjects.
         \item \textbf{Volume:} Approximately 11,760 keystrokes per user (Desktop subset).
         \item \textbf{Relevance:} It allows for the analysis of behavioral stability across different physical interfaces.
     \end{itemize}
 
-    \item \textbf{Edge Hill KMT (CyberSignature Dataset):}
-    This dataset is critical for the \textit{Multimodal Fusion} layer, as it captures simultaneous mouse and keyboard interactions.
+    \item \textbf{Edge Hill KMT \cite{edgehill2012dataset}:}
+    This dataset is critical for the multimodal fusion layer, as it captures simultaneous mouse and keyboard interactions.
     \begin{itemize}
         \item \textbf{Source:} Edge Hill University, UK.
         \item \textbf{Scenario:} Financial form filling (names, addresses, credit card details), representing a high-security context.
@@ -286,18 +334,18 @@ The core training and fusion phases utilize two datasets that offer high-granula
 To validate the model against state-of-the-art standards and ensure scalability, two benchmark datasets are employed.
 
 \begin{itemize}
-    \item \textbf{Aalto University ``136M Keystrokes'' Dataset:}
-    Used for \textit{Transfer Learning} to pre-train the LSTM feature extractors on general typing patterns.
+    \item \textbf{Aalto University ``136M Keystrokes'' Dataset \cite{dhakal2018136m}:}
+    Used for transfer learning to pre-train the \ac{LSTM} feature extractors on general typing patterns.
     \begin{itemize}
         \item \textbf{Scale:} The largest available public keystroke dataset ($>136$ million keystrokes).
-        \item \textbf{Population:} over 168,000 participants.
+        \item \textbf{Population:} Over 168,000 participants.
         \item \textbf{Type:} Free-text typing collected via an online web test.
     \end{itemize}
 
-    \item \textbf{CMU Keystroke Dynamics Benchmark:}
-    Used as a baseline control group to compare Error Rates (EER) against existing literature.
+    \item \textbf{\ac{CMU} Keystroke Dynamics Benchmark \cite{cmu2009benchmark}:}
+    Used as a baseline control group to compare \acp{EER} against existing literature.
     \begin{itemize}
-        \item \textbf{Source:} Carnegie Mellon University Biometrics Research.
+        \item \textbf{Source:} \ac{CMU} Biometrics Research.
         \item \textbf{Population:} 51 subjects.
         \item \textbf{Type:} Fixed-text password entry (e.g., string ``.tie5Roanl'').
     \end{itemize}
@@ -305,7 +353,7 @@ To validate the model against state-of-the-art standards and ensure scalability,
 
 \subsubsection{Supplementary Data}
 \begin{itemize}
-    \item \textbf{Feature Engineered Mouse Data (Figshare ID: 29386898):}
+    \item \textbf{Feature Engineered Mouse Data \cite{reddy2025mouse}:}
     A pre-processed dataset containing engineered features such as trajectory straightness, jitter, and movement efficiency. This is utilized to fine-tune the mouse dynamics anomaly detection module without requiring raw signal processing.
 \end{itemize}
 
@@ -314,15 +362,15 @@ To validate the model against state-of-the-art standards and ensure scalability,
 \centering
 \caption{Summary of Experimental Datasets}
 \label{tab:datasets}
-\begin{tabular}{|l|l|c|l|}
+\begin{tabularx}{\textwidth}{|l|l|c|X|}
 \hline
 \textbf{Dataset} & \textbf{Modality} & \textbf{Users} & \textbf{Primary Role} \\ \hline
-Edge Hill KMT & Key + Mouse & 88 & Multimodal Fusion Training \\ \hline
-SU-AIS BB-MAS & Key + Sensors & 117 & Deep Learning (LSTM) Training \\ \hline
-Aalto 136M & Keystroke & 168k+ & Scalability \& Transfer Learning \\ \hline
-CMU Benchmark & Keystroke & 51 & Baseline Validation \\ \hline
-Figshare Mouse & Mouse & N/A & Feature Engineering \\ \hline
-\end{tabular}
+Edge Hill KMT \cite{edgehill2012dataset} & Key + Mouse & 88 & Multimodal Fusion Training \\ \hline
+\ac{SU-AIS} \ac{BB-MAS} \cite{suais2019bbmas} & Key + Sensors & 117 & \ac{DL} (\ac{LSTM}) Training \\ \hline
+Aalto 136M \cite{dhakal2018136m} & Keystroke & 168k+ & Scalability \& Transfer Learning \\ \hline
+\ac{CMU} Benchmark \cite{cmu2009benchmark} & Keystroke & 51 & Baseline Validation \\ \hline
+Figshare Mouse \cite{reddy2025mouse} & Mouse & N/A & Feature Engineering \\ \hline
+\end{tabularx}
 \end{table}
 % Describe your data sources.
 % Are you using a public dataset (e.g., HMOG, UCI)? 
@@ -330,13 +378,13 @@ Figshare Mouse & Mouse & N/A & Feature Engineering \\ \hline
 
 \subsection{Ethical Considerations}
 
-This research utilizes \textbf{secondary data} obtained from open-access academic repositories and public benchmarks (SU-AIS BB-MAS, Edge Hill KMT, and Aalto University). As such, this study does not involve direct interaction with human participants, and no new personal data collection is performed.
+This research utilizes \textbf{secondary data} obtained from open-access academic repositories and public benchmarks (\ac{SU-AIS} \ac{BB-MAS} \cite{suais2019bbmas}, Edge Hill KMT \cite{edgehill2012dataset}, and Aalto University \cite{dhakal2018136m}). As such, this study does not involve direct interaction with human participants, and no new personal data collection is performed.
 
 \paragraph{Data Privacy and Anonymity:}
-The datasets used in this study have been previously de-identified by the original data custodians. All records are referenced by unique alphanumeric identifiers (e.g., \texttt{User\_001}), ensuring that no \textbf{Personally Identifiable Information (PII)}---such as names, addresses, or actual passwords---is processed or accessible. 
+The datasets used in this study have been previously de-identified by the original data custodians. All records are referenced by unique alphanumeric identifiers (e.g., \texttt{User\_001}), ensuring that no \textbf{\ac{PII}}---such as names, addresses, or actual passwords---is processed or accessible. 
 \begin{itemize}
-    \item In the \textbf{Edge Hill KMT dataset}, the original collection protocol ensured that users entered \textit{fictitious} financial information; thus, no real sensitive financial data is exposed.
-    \item In the \textbf{SU-AIS BB-MAS dataset}, demographic attributes (age, gender) are provided in an anonymized format that prevents the re-identification of specific individuals.
+    \item In the \textbf{Edge Hill KMT dataset \cite{edgehill2012dataset}}, the original collection protocol ensured that users entered \textit{fictitious} financial information; thus, no real sensitive financial data is exposed.
+    \item In the \textbf{\ac{SU-AIS} \ac{BB-MAS} dataset \cite{suais2019bbmas}}, demographic attributes (age, gender) are provided in an anonymized format that prevents the re-identification of specific individuals.
 \end{itemize}
 
 \paragraph{Compliance and Licensing:}
@@ -353,10 +401,8 @@ The performance of the proposed privacy-preserving authentication framework will
 \subsubsection{Experimental Design}
 The validation process will follow a \textbf{$k$-fold Cross-Validation} ($k=10$) protocol to ensure statistical reliability. The dataset will be partitioned into:
 
-
 \begin{figure}[H]
     \centering
-    % Reduced width to 80% of text width
     \resizebox{0.8\textwidth}{!}{%
     \begin{tikzpicture}[scale=0.75, font=\small]
 
@@ -380,7 +426,7 @@ The validation process will follow a \textbf{$k$-fold Cross-Validation} ($k=10$)
         \node at (\i-0.5, 0.5) {\textbf{\i}};
     }
 
-    % --- BRACE LABELS (Moved closer) ---
+    % --- BRACE LABELS ---
     \draw[decorate, decoration={brace, amplitude=4pt, mirror}, thick] (0.1, -0.2) -- (5.9, -0.2) 
         node[midway, below=4pt, align=center] {\textbf{Training} \\ (60\%)};
     
@@ -390,11 +436,11 @@ The validation process will follow a \textbf{$k$-fold Cross-Validation} ($k=10$)
     \draw[decorate, decoration={brace, amplitude=4pt, mirror}, thick] (8.1, -0.2) -- (9.9, -0.2) 
         node[midway, below=4pt, align=center] {\textbf{Test} \\ (20\%)};
 
-    % --- ROTATION ARROW (Made flatter) ---
+    % --- ROTATION ARROW ---
     \draw[->, thick, dashed, orange] (9.5, 1.2) to[out=150, in=30] (0.5, 1.2);
     \node[above, text=orange!80!black, scale=0.9] at (5, 1.6) {\textit{k-Fold Rotation}};
 
-    % --- LEGEND (Compact & Centered) ---
+    % --- LEGEND ---
     \begin{scope}[yshift=-3.5cm, xshift=0.5cm]
         \draw[fill=trainBlue] (0,0) rectangle (0.4,0.4) node[right=0.2cm, align=left, scale=0.9] {Model\\Learning};
         \draw[fill=valGreen] (3.0,0) rectangle (3.4,0.4) node[right=0.2cm, align=left, scale=0.9] {Hyperparameter\\Tuning};
@@ -408,8 +454,8 @@ The validation process will follow a \textbf{$k$-fold Cross-Validation} ($k=10$)
 \end{figure}
 
 \begin{itemize}
-    \item \textbf{Training Set (60\%):} Used to train the Deep SVDD model to learn the user's normal behavioral boundary.
-    \item \textbf{Validation Set (20\%):} Used for hyperparameter tuning (e.g., LSTM layer size, JL projection dimension $k$).
+    \item \textbf{Training Set (60\%):} Used to train the Deep \ac{SVDD} model \cite{ruff2018deepsvdd} to learn the user's normal behavioral boundary.
+    \item \textbf{Validation Set (20\%):} Used for hyperparameter tuning (e.g., \ac{LSTM} layer size, \ac{JL} projection dimension $k$).
     \item \textbf{Testing Set (20\%):} Used to evaluate the final performance on unseen data.
 \end{itemize}
 
@@ -419,47 +465,49 @@ To simulate real-world attacks, \textbf{Zero-Effort Impostor} testing will be co
 The primary measure of authentication success is the system's ability to correctly distinguish the legitimate user from impostors.
 
 \begin{itemize}
-    \item \textbf{False Acceptance Rate (FAR):} The probability that an unauthorized user (impostor) is incorrectly accepted by the system.
+    \item \textbf{\ac{FAR}:} The probability that an unauthorized user (impostor) is incorrectly accepted by the system.
     \begin{equation}
-        FAR = \frac{FP}{FP + TN} \times 100
+        \eqname{False Acceptance Rate (FAR) Calculation}
+        FAR = \frac{FP}{FP + TN} \times 100\%
         \label{eq:far}
-        \eqname{False Acceptance Rate (FAR)}
     \end{equation}
-    \textit{Where $FP$ is False Positives and $TN$ is True Negatives.}
+    \textit{Where \ac{FP} is False Positives and \ac{TN} is True Negatives.}
 
-    \item \textbf{False Rejection Rate (FRR):} The probability that the legitimate user is incorrectly rejected by the system.
+    \item \textbf{\ac{FRR}:} The probability that the legitimate user is incorrectly rejected by the system.
     \begin{equation}
-        FRR = \frac{FN}{FN + TP} \times 100
+        \eqname{False Rejection Rate (FRR) Calculation}
+        FRR = \frac{FN}{FN + TP} \times 100\%
         \label{eq:frr}
-        \eqname{False Rejection Rate (FRR)}
     \end{equation}
-    \textit{Where $FN$ is False Negatives and $TP$ is True Positives.}
+    \textit{Where \ac{FN} is False Negatives and \ac{TP} is True Positives.}
 
-    \item \textbf{Equal Error Rate (EER):} The operating point where $FAR = FRR$. A lower EER indicates a more accurate system.
+    \item \textbf{\ac{EER}:} The operating point where $FAR = FRR$. A lower \ac{EER} indicates a more accurate system.
     \begin{equation}
+        \eqname{Equal Error Rate (EER) Equilibrium Point}
         EER = \{ FAR \mid FAR = FRR \}
         \label{eq:eer}
-        \eqname{Equal Error Rate (EER) Condition}
     \end{equation}
 \end{itemize}
 
+
+
 \subsubsection{System Efficiency \& Scalability Metrics}
-To validate the effectiveness of the \textbf{Johnson-Lindenstrauss (JL) Lemma} and \textbf{Homomorphic Encryption}, the following computational metrics will be recorded:
+To validate the effectiveness of the \textbf{\ac{JL} Lemma \cite{johnson1984extensions}} and \textbf{\ac{HE}}, the following computational metrics will be recorded:
 
 \begin{itemize}
     \item \textbf{Inference Latency ($L_{inf}$):} The time taken to process a single authentication request.
     \begin{equation}
+        \eqname{Total Pipeline Inference Latency}
         L_{inf} = T_{proj} + T_{enc} + T_{score}
         \label{eq:latency}
-        \eqname{System Inference Latency Model}
     \end{equation}
-    \textit{Target:} $L_{inf} < 200ms$ (Real-time threshold).
+    \textit{Target:} $L_{inf} < 200$ms (Real-time threshold).
 
     \item \textbf{Encryption Overhead Ratio ($E_{ratio}$):} The ratio of processing time in the encrypted domain versus the plaintext domain.
     \begin{equation}
+        \eqname{Homomorphic Encryption Computational Overhead Ratio}
         E_{ratio} = \frac{T_{encrypted}}{T_{plaintext}}
         \label{eq:overhead}
-        \eqname{Encryption Overhead Ratio}
     \end{equation}
 \end{itemize}
 
@@ -468,27 +516,27 @@ Given the cybersecurity focus of this research, quantifying the strength of the 
 
 \begin{itemize}
     \item \textbf{Indistinguishability (Adversarial Advantage):} 
-    To verify semantic security (IND-CPA), we measure the probability that an adversary $\mathcal{A}$ can distinguish between two encrypted biometric templates.
+    To verify semantic security (\ac{IND-CPA} \cite{cheon2017homomorphic}), we measure the probability that an adversary $\mathcal{A}$ can distinguish between two encrypted biometric templates.
     \begin{equation}
+        \eqname{Adversarial Advantage for IND-CPA Security Proof}
         Adv_{\mathcal{A}} = \left| \Pr[\mathcal{A}(E(m_0)) = 1] - \Pr[\mathcal{A}(E(m_1)) = 1] \right|
         \label{eq:adv_advantage}
-        \eqname{Adversarial Advantage (Indistinguishability)}
     \end{equation}
 
     \item \textbf{Reconstruction Resistance (Feature Recovery Attack):}
-    To simulate a database breach, an inverse-mapping Deep Neural Network (Decoder $\mathcal{D}$) will be trained to attempt to reconstruct the original raw features $X$ from the stored templates $T$. Privacy is quantified by the maximization of the Reconstruction Error (MSE):
+    To simulate a database breach, an inverse-mapping \ac{DL} network (Decoder $\mathcal{D}$) will be trained to attempt to reconstruct the original raw features $X$ from the stored templates $T$. Privacy is quantified by the maximization of the Reconstruction Error (\ac{MSE}):
     \begin{equation}
+        \eqname{Mean Squared Error for Template Reconstruction Resistance}
         MSE_{recon} = \frac{1}{N} \sum_{i=1}^{N} (X_i - \mathcal{D}(T_i))^2
         \label{eq:mse_recon}
-        \eqname{Reconstruction Error (MSE) for Privacy}
     \end{equation}
 
     \item \textbf{Information Leakage (Mutual Information):}
     We quantify the dependency between the raw biometric vector $X$ and the projected/encrypted vector $Z$ using Shannon's Mutual Information:
     \begin{equation}
+        \eqname{Shannon Mutual Information Leakage Between Raw and Encrypted Features}
         I(X; Z) = \sum_{x \in X} \sum_{z \in Z} p(x,z) \log \left( \frac{p(x,z)}{p(x)p(z)} \right)
         \label{eq:mutual_info}
-        \eqname{Mutual Information (Information Leakage)}
     \end{equation}
 \end{itemize}
 

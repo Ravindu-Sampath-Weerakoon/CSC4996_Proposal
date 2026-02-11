@@ -66,8 +66,6 @@
             node[midway, below right, sloped, scale=0.8, text=blue] {Actual Path};
 
         % Curvature/Efficiency Area
-        % Shading the area between straight and curve is complex in TikZ without intersections lib, 
-        % so we label the deviation instead.
         \draw[<->, red] (2.5, 1.25) -- (2.3, 0.2) node[midway, right, scale=0.7] {Deviation};
         
         \node[align=center, text=red!80!black, scale=0.8] at (2.5, -0.8) {\textit{Movement Efficiency} $\propto \frac{\text{Optimal}}{\text{Actual}}$};
@@ -81,6 +79,32 @@
     \caption{Visual Representation of Biometric Features. \textbf{(a)} Keystroke Dynamics: Dwell Time represents the key press duration, while Flight Time measures the latency between distinct keystrokes. \textbf{(b)} Mouse Dynamics: Comparison between the optimal straight-line path and the actual user trajectory, used to calculate movement efficiency and curvature.}
     \label{fig:biometric_features}
 \end{figure}
+
+
+
+\subsubsection{Keystroke Dynamics}
+\paragraph{} This is the measurement of biomechanical typing patterns. The fundamental features include Dwell Time (duration a key is pressed) and Flight Time (latency between releasing one key and pressing the next) \cite{gaines1980authentication, joyce1990identity}. These features form a unique "digital signature" for each user \cite{shepherd1995continuous}.
+
+
+\subsubsection{Mouse Dynamics}
+\paragraph{} This involves analyzing the unique behavioral patterns of a user's mouse interactions \cite{ahmed2007new}. Unlike simple click-tracking, this research focuses on complex motor-skill features:
+\begin{itemize}
+    \item \textbf{Movement Efficiency:} The ratio of the straight-line distance to the actual path taken \cite{mondal2017continuous}.
+    \item \textbf{Velocity \& Acceleration Profiles:} The rate of speed change as the cursor approaches a target \cite{zheng2011efficient}.
+    \item \textbf{Click-to-Click Latency:} The timing between releasing a button and moving to the next location.
+    \item \textbf{Drag-and-Drop characteristics:} The pressure and speed consistency during sustained click events.
+\end{itemize}
+
+\subsubsection{Recurrent Neural Networks (RNNs) \& LSTMs}
+\paragraph{} Since keystroke data is inherently sequential, standard feed-forward networks often fail to capture temporal dependencies. \acp{RNN}, and specifically \ac{LSTM} networks, are theoretically suited for this task as they maintain a "memory" of previous inputs, allowing them to model complex typing rhythms \cite{kiyani2020continuous, zareen2018user}.
+
+\subsubsection{Johnson-Lindenstrauss (JL) Lemma} 
+\paragraph{} To address the "curse of dimensionality" and system latency, this research utilizes the \ac{JL} Lemma \cite{johnson1984extensions}. This mathematical theorem states that points in a high-dimensional space can be projected into a lower-dimensional space using Orthogonal Random Projections while approximately preserving Euclidean distances. This allows for lightweight processing without significant loss of accuracy.
+
+
+
+\subsubsection{Homomorphic Encryption (HE)} 
+\paragraph{} To ensure privacy, the system employs \ac{HE} \cite{cheon2017homomorphic}, a cryptographic form that allows computations to be performed on encrypted data without first decrypting it. This ensures that the user's raw biometric template is never exposed in plaintext during the authentication process.
 
 \subsubsection{Keystroke Dynamics}
 \paragraph{} This is the measurement of biomechanical typing patterns. The fundamental features include Dwell Time (duration a key is pressed) and Flight Time (latency between releasing one key and pressing the next). These features form a unique "digital signature" for each user.
@@ -97,13 +121,13 @@
 
 
 
-
 \subsubsection{Recurrent Neural Networks (RNNs) \& LSTMs}
-\paragraph{} Since keystroke data is inherently sequential (a time-series of events), standard feed-forward networks often fail to capture temporal dependencies. RNNs, and specifically Long Short-Term Memory (LSTM) networks, are theoretically suited for this task as they maintain a "memory" of previous inputs, allowing them to model complex, non-linear typing rhythms over time.
+\paragraph{} Since keystroke data is inherently sequential (a time-series of events), standard feed-forward networks often fail to capture temporal dependencies. \acp{RNN}, and specifically \ac{LSTM} networks, are theoretically suited for this task as they maintain a "memory" of previous inputs, allowing them to model complex, non-linear typing rhythms over time \cite{kiyani2020continuous, zareen2018user}.
+
+
 
 \subsubsection{Johnson-Lindenstrauss (JL) Lemma} 
-\paragraph{} To address the "curse of dimensionality" and system latency, this research utilizes the JL Lemma. This mathematical theorem states that points in a high-dimensional space can be projected into a lower-dimensional space using Orthogonal Random Projections while approximately preserving the Euclidean distances between them. This allows for lightweight processing without significant loss of accuracy.
-
+\paragraph{} To address the "curse of dimensionality" and system latency, this research utilizes the \ac{JL} Lemma \cite{johnson1984extensions}. This mathematical theorem states that points in a high-dimensional space can be projected into a lower-dimensional space using Orthogonal Random Projections while approximately preserving the Euclidean distances between them. This allows for lightweight processing without significant loss of accuracy.
 
 \begin{figure}[htbp]
     \centering
@@ -134,7 +158,7 @@
         % Distance line
         \draw[blue, dotted, thick] (h1) -- (h2);
         
-        % Label (Moved Down slightly)
+        % Label
         \node[align=center] at (1.5, -0.8) {\textbf{High-Dimensional Space}\\ (Raw Data $R^d$)};
     \end{scope}
 
@@ -142,7 +166,7 @@
     \draw[->, thick, dashed, orange] (2.8, 1.5) -- (5.8, 1.5) node[midway, above, text=black, scale=0.8] {Projection $R \times x$};
 
     % --- RIGHT: PROJECTED SUBSPACE (2D PLANE) ---
-    \begin{scope}[xshift=6.5cm, yshift=0.5cm] % Increased xshift for more gap
+    \begin{scope}[xshift=6.5cm, yshift=0.5cm]
         % Draw 2D Plane
         \fill[green!10] (0,0) -- (3,0) -- (4,2) -- (1,2) -- cycle;
         \draw[thick, green!50!black] (0,0) -- (3,0) -- (4,2) -- (1,2) -- cycle;
@@ -159,7 +183,7 @@
         % Distance line
         \draw[red, dotted, thick] (p1) -- (p2);
         
-        % Label (Aligned with left label)
+        % Label
         \node[align=center] at (2.0, -1.3) {\textbf{Projected Subspace}\\ (Compressed $R^k$)};
     \end{scope}
 
@@ -168,24 +192,21 @@
     \draw[gray!50, dashed, thin] (h2) to[out=20, in=160] (p2);
     \draw[gray!50, dashed, thin] (h3) to[out=20, in=160] (p3);
     
-    % --- GUARANTEE BOX (Moved further down to avoid overlap) ---
+    % --- GUARANTEE BOX ---
     \node[align=center, scale=0.9, fill=white, draw=gray, thin, rounded corners] at (5.5, -2.5) {
-        \textbf{JL Lemma Guarantee:} \\
-        \eqname{JL Lemma Guarantee}
+        \textbf{\ac{JL} Lemma Guarantee:} \\
         $||f(x_1) - f(x_2)|| \approx ||x_1 - x_2||$
-
-
     };
 
     \end{tikzpicture}
     }
-    \caption{Conceptual Visualization of the Johnson-Lindenstrauss (JL) Lemma. Points from a high-dimensional feature space (Left) are projected onto a lower-dimensional subspace (Right). The blue and red dotted lines illustrate that the relative Euclidean distances between points are approximately preserved despite the massive reduction in dimensions.}
+    \caption{Conceptual Visualization of the \ac{JL} Lemma \cite{johnson1984extensions}. Points from a high-dimensional feature space (Left) are projected onto a lower-dimensional subspace (Right). The blue and red dotted lines illustrate that the relative Euclidean distances between points are approximately preserved despite the massive reduction in dimensions.}
     \label{fig:jl_projection_concept}
 \end{figure}
 
 
 \subsubsection{Homomorphic Encryption (HE)} 
-\paragraph{}  To ensure privacy, the system employs Homomorphic Encryption, a cryptographic form that allows computations to be performed on encrypted data without first decrypting it. This ensures that the user's raw biometric template is never exposed in plaintext during the authentication process.
+\paragraph{} To ensure privacy, the system employs \ac{HE} \cite{cheon2017homomorphic, cheon2017homomorphic}, a cryptographic form that allows computations to be performed on encrypted data without first decrypting it. This ensures that the user's raw biometric template is never exposed in plaintext during the authentication process \cite{rahman2021scalable}.
 
 % Discuss the fundamental theories and technologies relevant to your work.
 % For example, explain the basics of RNNs, Behavioral Biometrics, or Authentication protocols.
@@ -207,27 +228,27 @@ To establish a theoretical framework for this research, a comprehensive review o
         \hline
         \textbf{Reference \& Study} & \textbf{Key Contribution to This Project} & \textbf{Identified Gap / Limitation} \\
         \hline
-        Gaines et al. (1980) \& Joyce et al. (1990) & 
+        Gaines et al. (1980) \cite{gaines1980authentication} \& Joyce et al. (1990) \cite{joyce1990identity} & 
         \textbf{Foundational Theory:} Established that typing rhythms (dwell/flight time) are unique and stable enough for identity verification. & 
         Relied on static, fixed-text passwords, which are insufficient for continuous authentication. \\
         \hline
-        Mondal \& Bours (2017) & 
-        \textbf{Multimodal Fusion:} Proved that combining Keystroke and Mouse dynamics significantly reduces Equal Error Rate (EER) compared to single modalities. & 
+        Mondal \& Bours (2017) \cite{mondal2017continuous} & 
+        \textbf{Multimodal Fusion:} Proved that combining Keystroke and Mouse dynamics significantly reduces \ac{EER} compared to single modalities. & 
         Fusion was achieved by simply concatenating features, creating a high-dimensional vector that slows down real-time processing. \\
         \hline
-        Kim et al. (2018) & 
+        Kim et al. (2018) \cite{kim2018user} & 
         \textbf{Feature Engineering:} Introduced ``user-adaptive'' features, showing that personalized feature selection improves accuracy. & 
         Focused entirely on accuracy; lacked any ``template protection'' or encryption to secure the stored data. \\
         \hline
-        \textbf{Kim et al. (2025)} & 
-        \textbf{Deep SVDD Validation:} Demonstrated that Deep SVDD outperforms traditional models (6.7\% EER) by encoding time-series data into images. & 
-        Restricted to \textit{mobile PINs} (touch interactions) and lacked cryptographic encryption (HE) or multimodal fusion (Mouse). \\
+        \textbf{Kim et al. (2024)} \cite{kim2024kdprint} & 
+        \textbf{\ac{Deep SVDD} Validation:} Demonstrated that \ac{Deep SVDD} outperforms traditional models (6.7\% \ac{EER}) by encoding time-series data into images. & 
+        Restricted to \textit{mobile \acp{PIN}} (touch interactions) and lacked cryptographic encryption (\ac{HE}) or multimodal fusion (Mouse). \\
         \hline
-        Kiyani et al. (2020) & 
-        \textbf{Continuous Authentication:} Validated the use of Recurrent Neural Networks (RNNs) for verifying users continuously, not just at login. & 
+        Kiyani et al. (2020) \cite{kiyani2020continuous} & 
+        \textbf{Continuous Authentication:} Validated the use of \acp{RNN} for verifying users continuously, not just at login. & 
         Did not address the high latency introduced when trying to add encryption to these continuous streams. \\
         \hline
-        Islam et al. (2021) & 
+        Rahman et al. (2021) \cite{rahman2021scalable} & 
         \textbf{Scalability Metrics:} Provided a framework for measuring how error rates grow as the user database size increases. & 
         Addressed scalability of accuracy but not the scalability of privacy (how to store millions of secure templates). \\
         \hline
@@ -235,24 +256,27 @@ To establish a theoretical framework for this research, a comprehensive review o
 \end{table}
 
 \subsubsection{Foundational Studies (Static Authentication)}
-\paragraph{} Early research laid the groundwork for typing pattern analysis. Gaines et al. (1980) demonstrated that typing rhythms are unique to individuals, identifying that even simple digraph latencies could distinguish users with high confidence. Building on this, Joyce and Gupta (1990) formalized the use of "latency signatures" for identity verification, showing that comparing a test signature against a mean reference signature could achieve low impostor pass rates. Monrose et al. (1999) extended this concept to "password hardening," combining typing rhythms with passwords to increase entropy against offline attacks.
+\paragraph{} Early research laid the groundwork for typing pattern analysis. Gaines et al. (1980) \cite{gaines1980authentication} demonstrated that typing rhythms are unique to individuals, identifying that even simple digraph latencies could distinguish users with high confidence. Building on this, Joyce and Gupta (1990) \cite{joyce1990identity} formalized the use of "latency signatures" for identity verification, showing that comparing a test signature against a mean reference signature could achieve low impostor pass rates. Monrose et al. (1999) \cite{monrose1999hardening} extended this concept to "password hardening," combining typing rhythms with passwords to increase entropy against offline attacks.
 
 \subsubsection{Feature Engineering and Adaptive Systems}
-\paragraph{} As research matured, the focus shifted to handling the variability in human behavior. Kim et al. (2018) highlighted the limitations of fixed-text authentication and proposed "user-adaptive feature extraction." Their work demonstrated that by dynamically selecting features based on a user's specific typing speed ranks (rather than a fixed keyboard layout), the Equal Error Rate (EER) could be significantly reduced. This underscored the need for personalized models in behavioral authentication.
+\paragraph{} As research matured, the focus shifted to handling the variability in human behavior. Kim et al. (2018) \cite{kim2018user} highlighted the limitations of fixed-text authentication and proposed "user-adaptive feature extraction." Their work demonstrated that by dynamically selecting features based on a user's specific typing speed ranks, the \ac{EER} could be significantly reduced. This underscored the need for personalized models in behavioral authentication.
 
 \subsubsection{Mouse Dynamics and Multimodal Fusion}
-\paragraph{} Research into mouse dynamics has evolved from simple statistics to complex trajectory analysis. Ahmed and Traore (2007) pioneered the use of movement speed and direction histograms, achieving reasonable accuracy but noting high false-positive rates in unconstrained environments. Later, Zheng et al. (2011) improved this by analyzing "point-by-point" angle-based metrics, proving that fine-grained motor skills are harder to forge than simple click statistics.
-\paragraph{} Recent studies have shifted toward Multimodal Authentication, combining keystroke and mouse data to overcome the weaknesses of single-modality systems. Mondal and Bours (2017) demonstrated that fusing these two biometrics significantly reduces the Equal Error Rate (EER) because an imposter is unlikely to mimic both a user's typing rhythm and their mouse hand-eye coordination simultaneously. However, existing multimodal frameworks often simply concatenate feature vectors, leading to massive dimensionality that slows down real-time processing—a problem this research aims to solve using the JL Lemma.
+\paragraph{} Research into mouse dynamics has evolved from simple statistics to complex trajectory analysis. Ahmed and Traore (2007) \cite{ahmed2007new} pioneered the use of movement speed and direction histograms. Later, Zheng et al. (2011) \cite{zheng2011efficient} improved this by analyzing "point-by-point" angle-based metrics, proving that fine-grained motor skills are harder to forge.
+
+
+
+\paragraph{} Recent studies have shifted toward Multimodal Authentication, combining keystroke and mouse data. Mondal and Bours (2017) \cite{mondal2017continuous} demonstrated that fusing these two biometrics significantly reduces the \ac{EER}. However, existing multimodal frameworks often simply concatenate feature vectors, leading to massive dimensionality that slows down real-time processing—a problem this research aims to solve using the \ac{JL} Lemma \cite{johnson1984extensions}.
 
 \subsubsection{Deep Learning and Continuous Authentication}
-\paragraph{} Recent approaches have adopted Deep Learning (DL) to improve accuracy. Zareen et al. (2018) utilized Bayesian Regularized Neural Networks, achieving an EER of 0.9\%, which outperformed many standard statistical methods. Kiyani et al. (2020) proposed a "Robust Recurrent Confidence Model" (R-RCM) using ensemble learning for continuous monitoring. 
+\paragraph{} Recent approaches have adopted \ac{DL} to improve accuracy. Zareen et al. (2018) \cite{zareen2018user} utilized Bayesian Regularized Neural Networks, achieving an \ac{EER} of 0.9\%. Kiyani et al. (2020) \cite{kiyani2020continuous} proposed an \ac{R-RCM} using ensemble learning for continuous monitoring. 
+
+\paragraph{} Most recently, \textbf{Kim et al. (2024)} \cite{kim2024kdprint} proposed "KDPrint," a method that transforms keystroke dynamics into images and utilizes \textbf{\ac{Deep SVDD}} \cite{ruff2018deepsvdd} for anomaly detection. Their work achieved a notable \ac{EER} of 6.7\% on mobile devices, validating \ac{Deep SVDD} as a superior classifier for one-class authentication tasks. However, their approach focused exclusively on mobile \acp{PIN} and lacked cryptographic privacy. 
 
 
-
-\paragraph{} Most recently, \textbf{Kim et al. (2025)} proposed "KDPrint," a method that transforms keystroke dynamics into images and utilizes \textbf{Deep Support Vector Data Description (Deep SVDD)} for anomaly detection. Their work achieved a notable EER of 6.7\% on mobile devices, validating Deep SVDD as a superior classifier for one-class authentication tasks. However, their approach focused exclusively on mobile PINs (touch interaction) and utilized image encoding for feature representation rather than cryptographic privacy. This leaves a significant gap for applying Deep SVDD to \textit{encrypted, multimodal} desktop environments, which this research aims to fulfill.
 
 \subsubsection{Scalability and System Performance} 
-\paragraph{} While accuracy has improved, scalability remains a challenge. Islam et al. (2021) introduced the notion of "Scalable Behavioral Authentication," analyzing how verification error rates increase as the user database grows. They proposed a "doppelganger-based" personalized verification algorithm to mitigate error growth, highlighting that system performance must be evaluated not just on accuracy, but on its ability to handle large-scale deployments.
+\paragraph{} While accuracy has improved, scalability remains a challenge. Rahman et al. (2021) \cite{rahman2021scalable} analyzed how verification error rates increase as the user database grows, highlighting that system performance must be evaluated not just on accuracy, but on its ability to handle large-scale deployments while maintaining privacy.
 
 
 % critically analyze existing work. 
@@ -261,14 +285,16 @@ To establish a theoretical framework for this research, a comprehensive review o
 
 \subsection{Research Gap}
 
-\paragraph{} Despite the extensive literature on improving the accuracy of behavioral biometrics (Kiyani et al., 2020; Zareen et al., 2018) and recent advancements in Deep Learning anomaly detection (Kim et al., 2025), a critical trilemma remains unsolved: balancing \textbf{Accuracy}, \textbf{Efficiency}, and \textbf{Privacy}.
+\paragraph{} Despite the extensive literature on improving the accuracy of behavioral biometrics \cite{kiyani2020continuous, zareen2018user} and recent advancements in \ac{DL} anomaly detection \cite{kim2024kdprint}, a critical trilemma remains unsolved: balancing \textbf{Accuracy}, \textbf{Efficiency}, and \textbf{Privacy}.
+
+
 
 \begin{enumerate}
-    \item \textbf{Computation vs. Latency in Multimodal Systems:} Integrating Mouse Dynamics with Keystroke Dynamics doubles the feature space complexity. While recent studies like Kim et al. (2025) successfully utilized Deep SVDD for mobile PINs, they focused on single-modality touch data. Processing a high-dimensional, multimodal stream (typing + mouse trajectories) creates a computational bottleneck that current frameworks fail to address efficiently without dimensionality reduction.
+    \item \textbf{Computation vs. Latency in Multimodal Systems:} Integrating Mouse Dynamics with Keystroke Dynamics doubles the feature space complexity. While recent studies like Kim et al. (2024) \cite{kim2024kdprint} successfully utilized \ac{Deep SVDD} for mobile \acp{PIN}, they focused on single-modality touch data. Processing a high-dimensional, multimodal stream (typing + mouse trajectories) creates a computational bottleneck that current frameworks fail to address efficiently without dimensionality reduction.
     
-    \item \textbf{Privacy Vulnerability (Lack of Encryption):} Most existing frameworks focus on verifying raw feature vectors or transformed representations. For instance, while Kim et al. (2025) introduced ``image encoding'' to obscure raw keystrokes, this is a feature transformation technique, not a cryptographic privacy guarantee. It lacks the mathematical irreversibility of \textbf{Homomorphic Encryption (HE)}. If the central database is compromised, these behavioral templates (images or vectors) are susceptible to reverse-engineering or replay attacks, leading to a permanent loss of digital identity.
+    \item \textbf{Privacy Vulnerability (Lack of Encryption):} Most existing frameworks focus on verifying raw feature vectors or transformed representations. For instance, while Kim et al. (2024) \cite{kim2024kdprint} introduced ``image encoding'' to obscure raw keystrokes, this is a feature transformation technique, not a cryptographic privacy guarantee. It lacks the mathematical irreversibility of \textbf{\ac{HE}} \cite{cheon2017homomorphic}. If the central database is compromised, these behavioral templates are susceptible to reverse-engineering or replay attacks \cite{pirzado2021keystroke}.
     
-    \item \textbf{Lack of Integrated Privacy-Preserving Architectures:} While cryptographic solutions exist, standard encryption prevents the system from performing the distance calculations needed for authentication (like Euclidean distance). There is currently no implementation that combines the anomaly detection power of \textbf{Deep SVDD} (validated by Kim et al., 2025) with \textbf{Homomorphic Encryption} for secure, privacy-preserving inference.
+    \item \textbf{Lack of Integrated Privacy-Preserving Architectures:} While cryptographic solutions exist, standard encryption prevents the system from performing the distance calculations needed for authentication (like Euclidean distance). There is currently no implementation that combines the anomaly detection power of \textbf{\ac{Deep SVDD}} (validated by \cite{ruff2018deepsvdd, kim2024kdprint}) with \ac{HE} for secure, privacy-preserving inference.
 \end{enumerate}
 
 \subsubsection{Summary of Novel Contributions}
@@ -279,27 +305,46 @@ This study makes the following original contributions to the field of behavioral
 
 \item \textbf{Dual-Mode Privacy Architecture}
 
-This research proposes a novel dual-mode behavioral authentication framework that separates high-security encrypted inference (CKKS-based) from lightweight projected privacy mode (Johnson--Lindenstrauss-based), enabling adaptive deployment based on transaction risk level. The architecture allows the system to dynamically balance security guarantees and computational efficiency.
+This research proposes a novel dual-mode behavioral authentication framework that separates high-security encrypted inference (\ac{CKKS}-based) from lightweight projected privacy mode (\ac{JL}-based), enabling adaptive deployment based on transaction risk level. The architecture allows the system to dynamically balance security guarantees and computational efficiency.
+
+
+
+\begin{table}[H]
+    \centering
+    \caption{Comparative Analysis: \ac{JL} Lemma (Projected Privacy) vs. \ac{FHE} (Cryptographic Privacy)}
+    \label{tab:jl_vs_fhe}
+    \begin{tabularx}{\textwidth}{@{}lXX@{}}
+        \toprule
+        \textbf{Property} & \textbf{\ac{JL} Lemma (Mode II)} & \textbf{\ac{FHE}/\ac{CKKS} (Mode I)} \\ \midrule
+        \textbf{Core Concept} & Dimensionality reduction while preserving Euclidean distances \cite{johnson1984extensions}. & Computation on encrypted data without decryption \cite{cheon2017homomorphic}. \\ \addlinespace
+        \textbf{Data State} & Projected into a lower-dimensional ($k \ll d$) subspace \cite{johnson1984extensions}. & Encrypted as ciphertexts (\ac{IND-CPA} secure) \cite{cheon2017homomorphic}. \\ \addlinespace
+        \textbf{Latency} & Ultra-low ($< 200$ms), suitable for continuous monitoring \cite{rahman2021scalable}. & High overhead, suitable for periodic high-risk tasks \cite{rahman2021scalable}. \\ \addlinespace
+        \textbf{Irreversibility} & Mathematically indeterminate/non-invertible compression. & Cryptographically secure based on hard problems \cite{cheon2017homomorphic}. \\ \addlinespace
+        \textbf{Accuracy} & Slight \ac{EER} trade-off due to distance approximation \cite{kim2024kdprint}. & High accuracy, arithmetic is preserved in ciphertext \cite{cheon2017homomorphic}. \\ \bottomrule
+    \end{tabularx}
+\end{table}
 
 \item \textbf{Dimensionality-Constrained Encrypted Inference}
 
-Unlike prior work that applies Deep SVDD to raw or image-encoded features, this study evaluates Deep SVDD operating on Johnson--Lindenstrauss compressed embeddings. It explicitly analyzes how dimensionality reduction affects Equal Error Rate (EER), inference latency, and encryption overhead, thereby formalizing the impact of projection dimension $k$ on encrypted biometric verification.
+Unlike prior work that applies \ac{Deep SVDD} to raw or image-encoded features \cite{kim2024kdprint}, this study evaluates \ac{Deep SVDD} operating on \ac{JL} compressed embeddings. It explicitly analyzes how dimensionality reduction affects \ac{EER}, inference latency, and encryption overhead, thereby formalizing the impact of projection dimension $k$ on encrypted biometric verification \cite{johnson1984extensions, cheon2017homomorphic}.
 
 \item \textbf{Formal Privacy--Latency--Accuracy Trade-off Quantification}
 
 This work introduces an integrated evaluation framework that jointly measures:
 
 \begin{itemize}
-    \item Biometric performance (EER, FAR, FRR)
-    \item Computational efficiency (Inference Latency, Encryption Overhead Ratio)
+    \item Biometric performance (\ac{EER}, \ac{FAR}, \ac{FRR})
+    \item Computational efficiency (Inference Latency, Encryption Overhead Ratio) \cite{rahman2021scalable}
     \item Information-theoretic privacy (Mutual Information, Reconstruction Error)
 \end{itemize}
+
+
 
 To the best of our knowledge, no prior behavioral biometric study simultaneously quantifies these three dimensions under homomorphically encrypted inference.
 
 \item \textbf{Encrypted One-Class Authentication Validation}
 
-This study provides the first empirical validation of Deep SVDD distance-based anomaly detection executed over CKKS-encrypted, Johnson--Lindenstrauss-projected multimodal biometric templates (keystroke + mouse dynamics), demonstrating the feasibility of privacy-preserving one-class authentication in resource-constrained environments.
+This study provides the first empirical validation of \ac{Deep SVDD} \cite{ruff2018deepsvdd} distance-based anomaly detection executed over \ac{CKKS}-encrypted, \ac{JL}-projected multimodal biometric templates (keystroke + mouse dynamics), demonstrating the feasibility of privacy-preserving one-class authentication in resource-constrained environments \cite{pirzado2021keystroke, cheon2017homomorphic}.
 
 \end{enumerate}
 
@@ -307,8 +352,7 @@ This study provides the first empirical validation of Deep SVDD distance-based a
 
 \subsubsection{Gap Definition} 
 
-\paragraph{}There is currently no unified framework that utilizes \textbf{Orthogonal Random Projections (JL Lemma)} to compress the combined feature space of both Keystroke and Mouse Dynamics for lightweight processing, while simultaneously preserving privacy using \textbf{Homomorphic Encryption}. Unlike Kim et al. (2025), which applies Deep SVDD to unencrypted mobile data, this study aims to bridge the gap by creating a fast, \textit{cryptographically secure}, multimodal authentication system for desktop environments.
-
+\paragraph{}There is currently no unified framework that utilizes \textbf{Orthogonal Random Projections (\ac{JL} Lemma)} \cite{johnson1984extensions} to compress the combined feature space of both Keystroke and Mouse Dynamics for lightweight processing, while simultaneously preserving privacy using \textbf{\ac{HE}} \cite{cheon2017homomorphic}. Unlike Kim et al. (2024) \cite{kim2024kdprint}, which applies \ac{Deep SVDD} to unencrypted mobile data, this study aims to bridge the gap by creating a fast, \textit{cryptographically secure}, multimodal authentication system for desktop environments.
 % Based on your literature review, clearly state what is missing.
 % This justifies why your specific research is necessary.
 % Example: "While previous studies focused on accuracy, few addressed the latency constraints on mobile devices..."
@@ -319,19 +363,19 @@ This study provides the first empirical validation of Deep SVDD distance-based a
 \subsubsection{Assumptions}
     
     \begin{itemize}
-        \item It is assumed that the user’s typing behavior is relatively stable over short periods but may exhibit gradual "concept drift" which the model must accommodate.
-        \item It is assumed that the users are utilizing standard physical keyboards; virtual/touchscreen keyboards are outside the scope of this specific study (unless specified otherwise).
-        \item It is assumed that the mouse data collection frequency (e.g., 50Hz) is sufficient to capture micro-movements without overwhelming the system bus.
-        \item The "trust" of the endpoint device (personal laptop) is assumed for the initial data capture phase before encryption.
+        \item It is assumed that the user’s typing behavior is relatively stable over short periods but may exhibit gradual "concept drift" which the model must accommodate \cite{kiyani2020continuous}.
+        \item It is assumed that the users are utilizing standard physical keyboards; virtual/touchscreen keyboards are outside the scope of this specific study.
+        \item It is assumed that the mouse data collection frequency (e.g., 50Hz) is sufficient to capture micro-movements without overwhelming the system bus \cite{ahmed2007new}.
+        \item The "trust" of the endpoint device (personal laptop) is assumed for the initial data capture phase before \ac{HE} transformation.
     \end{itemize}
+
 \subsubsection{Constraints}
    
     \begin{itemize}
-        \item \textbf{Hardware Limitations:} The proposed model must be lightweight enough to run on standard consumer hardware (e.g., a laptop with a mid-range GPU like an RTX 3050) without causing noticeable input lag.
-        \item \textbf{Data Availability:} The research is constrained by the need to collect a custom dataset or use public datasets that may not perfectly reflect the specific "free-text" behavior required for continuous authentication.
-        \item \textbf{Encryption Overhead:} Homomorphic Encryption introduces significant computational overhead. The system is constrained to optimize this trade-off to ensure the authentication decision happens within a usable timeframe (e.g., under 200ms per window).
+        \item \textbf{Hardware Limitations:} The proposed model must be lightweight enough to run on standard consumer hardware (e.g., a laptop with a mid-range \ac{GPU} like an \ac{RTX} 3050) without causing noticeable input lag.
+        \item \textbf{Data Availability:} The research is constrained by the use of public datasets (e.g., \ac{SU-AIS} \ac{BB-MAS} \cite{suais2019bbmas}) that may not perfectly reflect the specific "free-text" behavior required for continuous authentication.
+        \item \textbf{Encryption Overhead:} \ac{HE} \cite{cheon2017homomorphic} introduces significant computational overhead. The system is constrained to optimize this trade-off to ensure the authentication decision happens within a usable timeframe (e.g., under 200ms per window) \cite{rahman2021scalable}.
     \end{itemize}
-   
 
 
 \newpage
