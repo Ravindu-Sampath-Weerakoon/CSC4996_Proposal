@@ -18,7 +18,6 @@
 
 \subsection{Overview of the Proposed Methodology/Research Design}
 
-\paragraph{} The proposed system architecture is designed as a post-acquisition processing pipeline. It assumes the availability of raw timestamped log files containing keystroke and mouse events. The methodology follows a sequential four-phase workflow:
 
 \begin{enumerate}
     \item  \textbf{Feature Extraction \& Temporal Fusion:} The system ingests raw event logs and converts them into synchronized time-series feature vectors.
@@ -32,9 +31,170 @@
     \end{itemize}
 
     \item \textbf{Dimensionality Reduction (JL Layer):} To mitigate the "curse of dimensionality" caused by fusing two biometric streams, the high-dimensional fused vector ($d$) is projected onto a lower-dimensional subspace ($k$, where $k \ll d$) using the Johnson-Lindenstrauss (JL) Lemma. This is achieved by multiplying the feature vector by a sparse random matrix ($R$) to produce a compressed, privacy-hardened embedding.
-    \item \textbf{Privacy-Preserving Transformation:} The compressed embeddings are encrypted using a Partially Homomorphic Encryption (PHE) scheme (e.g., Paillier). This ensures that all subsequent distance calculations required for authentication are performed in the encrypted domain, preventing the exposure of the user's behavioral template.
-    \item  \textbf{Anomaly Detection (Deep SVDD):} The encrypted vectors are fed into a Deep Support Vector Data Description (Deep SVDD) model. This model learns a compact hypersphere boundary encapsulating the legitimate user's "normal" behavior. During the verification phase, any input vector falling outside this learned boundary is flagged as an anomaly (potential impostor) without ever decrypting the data.
+    \item \textbf{Privacy-Preserving Transformation:} The compressed embeddings are encrypted using a \textbf{Leveled Homomorphic Encryption (LHE)} scheme (e.g., CKKS). Unlike additive-only schemes (such as Paillier), CKKS supports the approximate arithmetic and multiplication depth required to compute \textit{squared Euclidean distances} ($||x - c||^2$) directly on the ciphertext. This ensures that the mathematical operations needed for authentication are performed entirely in the encrypted domain without decrypting the user's behavioral template.
+
+\item \textbf{Anomaly Detection (Deep SVDD):} The encrypted feature vectors are fed into a Deep Support Vector Data Description (Deep SVDD) model. This model learns a compact hypersphere boundary encapsulating the legitimate user's ``normal'' behavior. During the verification phase, the system calculates the distance between the encrypted input and the hypersphere center; any input falling outside this learned radius is flagged as an anomaly (potential impostor) while the data remains mathematically indistinguishable from random noise.
 \end{enumerate}
+
+\subsubsection{Architectural Design Mode I: Cryptographic Privacy (High-Security)}
+\textit{Illustrated in Figure 1.} This mode is designed for high-risk transaction scenarios, such as banking login or authorizing payments. It utilizes \textbf{Leveled Homomorphic Encryption (CKKS)} to perform anomaly detection inference entirely within the encrypted domain.
+
+\begin{figure}[H]
+    \centering
+    % Resize the diagram to fit the text width automatically
+    \resizebox{\textwidth}{!}{%
+    \begin{tikzpicture}[
+        auto,
+        node distance = 1.0cm and 1.0cm, % Reduced spacing between nodes
+        % Define styles for the blocks
+        input/.style = {rectangle, draw, fill=blue!10, text centered, rounded corners, minimum height=0.8cm, minimum width=2.2cm, font=\small},
+        process/.style = {rectangle, draw, fill=orange!10, text centered, minimum height=2cm, minimum width=2.8cm, align=center, font=\small},
+        secure/.style = {rectangle, draw, fill=red!5, text centered, rounded corners, minimum height=2.2cm, minimum width=3.5cm, dashed, align=center, font=\small},
+        decision/.style = {diamond, draw, fill=green!10, text centered, aspect=2, minimum width=2cm, minimum height=1cm, font=\small},
+        output/.style = {ellipse, draw, fill=gray!20, text centered, minimum height=0.8cm, font=\small},
+        line/.style = {draw, -{Latex[length=3mm]}, thick}
+    ]
+
+    % --- Nodes ---
+    
+    % Inputs (Stacked vertically)
+    \node [input] (key) {Keystroke Logs};
+    \node [input, below=0.5cm of key] (mouse) {Mouse Logs};
+
+    % Step 1: Feature Extraction (Placed to the right of the center of inputs)
+    \node [process, right=1.2cm of key, yshift=-0.5cm] (features) {\textbf{Feature Extraction} \\ \& Fusion \\ \footnotesize (Velocity, Flight Time)};
+    
+    % Step 2: JL Projection
+    \node [process, right=1.2cm of features] (jl) {\textbf{JL Projection} \\ \footnotesize ($d \rightarrow k$ dims) \\ \footnotesize $R \times x$};
+
+    % Step 3: Encryption & Model (Grouped for Privacy)
+    \node [secure, right=1.2cm of jl] (model) {\textbf{Encrypted Inference} \\ \footnotesize Homomorphic Enc. (CKKS) \\ + \\ \footnotesize Deep SVDD ($||x-c||^2$)};
+
+    % Step 4: Decision (Below the secure model)
+    \node [decision, below=1.0cm of model] (decide) {Anomaly?};
+    
+    % Outputs
+    \node [output, left=1cm of decide] (genuine) {\textbf{Genuine}};
+    \node [output, right=1cm of decide] (imposter) {\textbf{Imposter}};
+
+    % --- Paths ---
+    
+    % Input to Features
+    \draw [line] (key) -| (features.160);
+    \draw [line] (mouse) -| (features.200);
+
+    % Features to JL
+    \draw [line] (features) -- node[above, scale=0.7, align=center] {High-Dim ($d$)} (jl);
+
+    % JL to Model
+    \draw [line] (jl) -- node[above, scale=0.7, align=center] {Compressed ($k$)} (model);
+
+    % Model to Decision
+    \draw [line] (model) -- node[right, scale=0.7] {Score} (decide);
+
+    % Decision Outcomes
+    \draw [line] (decide) -- node[above, scale=0.7] {No} (genuine);
+    \draw [line] (decide) -- node[above, scale=0.7] {Yes} (imposter);
+
+    % --- Secure Box Label ---
+    \node [above=0.1cm of model, text=red, font=\footnotesize\itshape] {Secure Execution Environment};
+
+    \end{tikzpicture}
+    } % End of resizebox
+    \caption{System Architecture of the Proposed Lightweight Privacy-Preserving Framework.}
+    \label{fig:sys_arch}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Privacy Mechanism:} The behavioral template is encrypted using standard cryptographic protocols, ensuring mathematically provable security (IND-CPA).
+    \item \textbf{Trade-off:} While this offers the highest level of data protection, it incurs a higher computational cost, making it suitable for periodic, critical authentication rather than continuous, sub-second monitoring.
+\end{itemize}
+
+
+
+
+
+\subsubsection{Architectural Design Mode II: Projected Privacy (High-Performance)}
+\textit{Illustrated in Figure 2.} This mode is designed for continuous, passive background monitoring. It removes the heavy encryption overhead and relies on the \textbf{Johnson-Lindenstrauss (JL) Projection} as a form of non-invertible compression.
+
+\begin{figure}[H]
+    \centering
+    % Resize the diagram to fit the text width automatically
+    \resizebox{\textwidth}{!}{%
+    \begin{tikzpicture}[
+        auto,
+        node distance = 1.0cm and 1.5cm,
+        % Define styles for the blocks
+        input/.style = {rectangle, draw, fill=blue!10, text centered, rounded corners, minimum height=0.8cm, minimum width=2.5cm, font=\small},
+        process/.style = {rectangle, draw, fill=orange!10, text centered, minimum height=2cm, minimum width=3.5cm, align=center, font=\small},
+        secure/.style = {rectangle, draw, fill=green!10, text centered, rounded corners, minimum height=2cm, minimum width=3.5cm, dashed, align=center, font=\small},
+        decision/.style = {diamond, draw, fill=gray!20, text centered, aspect=2, minimum width=2.5cm, minimum height=1cm, font=\small},
+        output/.style = {ellipse, draw, fill=gray!10, text centered, minimum height=0.8cm, font=\small},
+        line/.style = {draw, -{Latex[length=3mm]}, thick}
+    ]
+
+    % --- Nodes ---
+    
+    % Inputs
+    \node [input] (key) {Keystroke Logs};
+    \node [input, below=0.8cm of key] (mouse) {Mouse Logs};
+
+    % Step 1: Feature Extraction
+    \node [process, right=1.5cm of key, yshift=-0.5cm] (features) {\textbf{Feature Extraction} \\ \& Fusion \\ \footnotesize (Velocity, Flight Time)};
+    
+    % Step 2: JL Projection (Acting as Encryption)
+    \node [secure, right=1.5cm of features] (jl) {\textbf{JL Projection} \\ \textit{(Privacy Layer)} \\ \footnotesize $d \rightarrow k$ dimensions \\ \footnotesize $R \times x$};
+
+    % Step 3: Deep SVDD (Now running on projected data directly)
+    \node [process, right=1.5cm of jl] (model) {\textbf{Deep SVDD} \\ \footnotesize Anomaly Detection \\ \footnotesize $||x_{proj} - c||^2$};
+
+    % Step 4: Decision
+    \node [decision, below=1.0cm of model] (decide) {Anomaly?};
+    
+    % Outputs
+    \node [output, left=1cm of decide] (genuine) {\textbf{Genuine}};
+    \node [output, right=1cm of decide] (imposter) {\textbf{Imposter}};
+
+    % --- Paths ---
+    
+    % Input to Features
+    \draw [line] (key) -| (features.160);
+    \draw [line] (mouse) -| (features.200);
+
+    % Features to JL
+    \draw [line] (features) -- node[above, scale=0.7, align=center] {Raw Vector ($d$)} (jl);
+
+    % JL to Model
+    \draw [line] (jl) -- node[above, scale=0.7, align=center] {Projected ($k$)} (model);
+
+    % Model to Decision
+    \draw [line] (model) -- node[right, scale=0.7] {Score} (decide);
+
+    % Decision Outcomes
+    \draw [line] (decide) -- node[above, scale=0.7] {No} (genuine);
+    \draw [line] (decide) -- node[above, scale=0.7] {Yes} (imposter);
+
+    % --- Label for Privacy ---
+    \node [above=0.1cm of jl, text=red!80!black, font=\footnotesize\itshape] {Irreversible Compression};
+
+    \end{tikzpicture}
+    }
+    \caption{Proposed Lightweight Architecture: Using JL Projections as a Privacy-Preserving Transformation.}
+    \label{fig:lightweight_arch}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Privacy Mechanism:} The JL projection acts as a ``computational privacy'' layer. By projecting data from a high-dimensional space ($d$) to a significantly lower-dimensional space ($k$, where $k \ll d$), the original features become mathematically indeterminate and resistant to reconstruction attacks.
+    \item \textbf{Trade-off:} This mode achieves ultra-low latency ($<200$ms), enabling the system to authenticate the user continuously without draining battery life or causing input lag, while still maintaining a robust defense against feature recovery.
+\end{itemize}
+
+
+
+
+
+
+
+
 
 % Provide a high-level summary of your approach.
 % You might want to include a system architecture diagram here later.

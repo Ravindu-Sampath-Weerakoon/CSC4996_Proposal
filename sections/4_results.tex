@@ -1,32 +1,48 @@
-% --- sections/4_results.tex ---
-
-% --- Section 4.0: Anticipated Results ---
-% [ANTICIPATED RESULTS/FINAL PRODUCTS] ensures it appears uppercase in the Table of Contents
-\section[ANTICIPATED RESULTS/FINAL PRODUCTS]{Anticipated Results/Final Products}
-
-% This section describes what you expect to achieve by the end of the project.
-% It connects back to your objectives.
+\section{ANTICIPATED RESULTS/FINAL PRODUCTS}
 
 \subsection{Expected Outcomes}
+Based on the proposed methodology involving Orthogonal Random Projections and Deep SVDD, the study anticipates the following specific experimental results:
 
-% Describe the tangible and intangible results.
-% Example:
 \begin{itemize}
-    \item A fully functional Android application capable of continuous authentication.
-    \item A comparative analysis report on different RNN architectures (LSTM vs. GRU).
-    \item A research paper submitted to an IEEE conference.
+    \item \textbf{Privacy-Utility Trade-off Optimization:} The research expects to demonstrate that projecting high-dimensional multimodal features into a lower-dimensional subspace (via the Johnson-Lindenstrauss Lemma) will result in a \textbf{negligible degradation of authentication accuracy}. Specifically, we anticipate the system will maintain an Equal Error Rate (EER) comparable to non-private baselines (targeting an EER deviation of $<\pm1.5\%$) while significantly reducing the computational complexity required for Homomorphic Encryption.
+
+    \item \textbf{Real-Time Inference Latency:} By compressing the feature vector size ($k \ll d$) before encryption, the system is expected to achieve an inference latency of \textbf{$<200ms$} per authentication window. This result would validate the hypothesis that ``lightweight'' privacy-preserving authentication is feasible on mid-range consumer hardware (e.g., laptops with standard GPUs) without inducing noticeable input lag.
+
+    \item \textbf{Robustness Against Feature Recovery:} In terms of privacy metrics, the model is expected to maximize the \textbf{Reconstruction Error (MSE)}. The study anticipates that an adversarial neural network (Inverse Decoder) will fail to reconstruct the original raw keystroke or mouse trajectories from the stored projected templates, effectively rendering the biometric data mathematically irreversible.
+
+    \item \textbf{Multimodal Superiority:} The results are expected to confirm that fusing Mouse Dynamics with Keystroke Dynamics yields a statistically significant reduction in False Acceptance Rate (FAR) compared to unimodal (keystroke-only) baselines, particularly in ``Zero-Effort Impostor'' scenarios.
+\end{itemize}
+
+\subsection{Scientific Contribution and Contribution to Knowledge}
+This research intends to fill the critical gap between \textbf{recognition accuracy} and \textbf{data privacy} identified in the literature review. The specific contributions to the body of knowledge include:
+
+\begin{itemize}
+    \item \textbf{Novel Application of JL Lemma in Behavioral Biometrics:} While the Johnson-Lindenstrauss (JL) Lemma is used in other domains, this study contributes a novel application of \textbf{Orthogonal Random Projections specifically for fusing and compressing multimodal behavioral streams} (Keystroke + Mouse). This provides a theoretical framework for handling the ``Curse of Dimensionality'' in continuous authentication without discarding valuable behavioral entropy.
+
+    \item \textbf{Validation of Deep SVDD in Encrypted Domains:} Existing studies have validated Deep SVDD for unencrypted mobile PINs. This research will contribute the first empirical validation of \textbf{Deep Support Vector Data Description (Deep SVDD) applied to encrypted, dimensionality-reduced vectors}, proving that one-class anomaly detection boundaries can be learned effectively even in a projected, privacy-preserving subspace.
+
+    \item \textbf{A Unified Lightweight Framework:} The study contributes a unified architectural blueprint that integrates \textbf{Signal Processing (Feature Engineering)}, \textbf{Cryptography (Homomorphic Encryption)}, and \textbf{Deep Learning (Deep SVDD)}. This contrasts with existing siloed approaches that focus either solely on accuracy (ignoring privacy) or solely on encryption (ignoring latency).
+\end{itemize}
+
+\subsection{Potential Impact and Significance}
+The findings of this research have significant implications for both the academic community and the cybersecurity industry:
+
+\begin{itemize}
+    \item \textbf{Elimination of ``Honey Pot'' Databases:} By proving that authentication can occur without storing raw behavioral features, this research offers a pathway to eliminate centralized databases of sensitive biometric data. If the database is compromised, the attacker retrieves only projected, encrypted templates that cannot be reverse-engineered to mimic the user, significantly reducing the risk of permanent identity theft.
+
+    \item \textbf{Enabling Continuous Authentication on Edge Devices:} Successfully lowering the latency to under 200ms implies that continuous, passive authentication can be deployed on resource-constrained edge devices (smartphones, IoT) rather than relying on cloud-based processing. This enhances user privacy by keeping data processing local to the device.
+
+    \item \textbf{Standardization of Privacy Metrics:} By rigorously evaluating \textbf{Mutual Information} and \textbf{Adversarial Advantage}, this project establishes a benchmark for how future behavioral biometric systems should be audited for privacy, moving the industry standard beyond simple ``accuracy'' (EER) toward ``privacy-preserved accuracy.''
 \end{itemize}
 
 \subsection{Project Deliverables}
+To demonstrate the validity of the proposed framework, the project will deliver:
 
-% List the concrete items you will submit.
 \begin{enumerate}
-    \item **Software Prototype:** Source code and executable APK.
-    \item **Final Thesis:** Comprehensive documentation of the research process.
-    \item **User Manual:** Guide for installing and testing the application.
+    \item \textbf{Software Prototype:} A Python-based implementation of the pipeline (Feature Extraction $\rightarrow$ JL Projection $\rightarrow$ Encryption $\rightarrow$ Deep SVDD) capable of processing real-time input streams.
+    \item \textbf{Multimodal Dataset Repository:} A curated and pre-processed subset of the merged datasets (SU-AIS BB-MAS and Edge Hill KMT) formatted for reproducibility.
+    \item \textbf{Final Thesis:} A comprehensive document detailing the mathematical proofs, architectural design, and experimental validation of the framework.
+    \item \textbf{Research Paper:} A manuscript targeting an IEEE/ACM conference summarizing the trade-off analysis between privacy and latency.
 \end{enumerate}
 
-\subsection{Project Timeline}
-
-% Briefly mention your schedule or refer to a Gantt chart if you have one.
-% "The project will follow a 6-month timeline, starting with literature review..."
+\newpage

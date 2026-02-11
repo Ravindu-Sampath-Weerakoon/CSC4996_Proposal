@@ -122,21 +122,22 @@ To establish a theoretical framework for this research, a comprehensive review o
 \subsection{Assumptions and Constraints}
 
 % List the limitations and scope of your project.
-\begin{itemize}
-    \item \textbf{Assumptions:} 
+\subsubsection{Assumptions}
+    
     \begin{itemize}
         \item It is assumed that the user’s typing behavior is relatively stable over short periods but may exhibit gradual "concept drift" which the model must accommodate.
         \item It is assumed that the users are utilizing standard physical keyboards; virtual/touchscreen keyboards are outside the scope of this specific study (unless specified otherwise).
         \item It is assumed that the mouse data collection frequency (e.g., 50Hz) is sufficient to capture micro-movements without overwhelming the system bus.
         \item The "trust" of the endpoint device (personal laptop) is assumed for the initial data capture phase before encryption.
     \end{itemize}
-    \item \textbf{Constraints:}
+\subsubsection{Constraints}
+   
     \begin{itemize}
         \item \textbf{Hardware Limitations:} The proposed model must be lightweight enough to run on standard consumer hardware (e.g., a laptop with a mid-range GPU like an RTX 3050) without causing noticeable input lag.
         \item \textbf{Data Availability:} The research is constrained by the need to collect a custom dataset or use public datasets that may not perfectly reflect the specific "free-text" behavior required for continuous authentication.
         \item \textbf{Encryption Overhead:} Homomorphic Encryption introduces significant computational overhead. The system is constrained to optimize this trade-off to ensure the authentication decision happens within a usable timeframe (e.g., under 200ms per window).
     \end{itemize}
    
-\end{itemize}
+
 
 \newpage

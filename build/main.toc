@@ -40,28 +40,30 @@
 \contentsline {paragraph}{}{8}{paragraph*.15}%
 \contentsline {paragraph}{Gap Definition:}{9}{paragraph*.16}%
 \contentsline {subsection}{\numberline {2.4}Assumptions and Constraints}{9}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}Assumptions}{9}{subsubsection.2.4.1}%
+\contentsline {subsubsection}{\numberline {2.4.2}Constraints}{10}{subsubsection.2.4.2}%
 \contentsline {section}{\numberline {3.0}METHODOLOGY AND PROJECT DESIGN}{11}{section.3}%
 \contentsline {paragraph}{ Rationale for Chosen Methods: }{11}{paragraph*.17}%
 \contentsline {subsection}{\numberline {3.1}Overview of the Proposed Methodology/Research Design}{11}{subsection.3.1}%
-\contentsline {paragraph}{}{11}{paragraph*.18}%
-\contentsline {subsection}{\numberline {3.2}Data Collection}{12}{subsection.3.2}%
-\contentsline {subsubsection}{\numberline {3.2.1}Primary Datasets (Multimodal \& Cross-Device)}{12}{subsubsection.3.2.1}%
-\contentsline {subsubsection}{\numberline {3.2.2}Benchmark Datasets (Scalability \& Standardization)}{13}{subsubsection.3.2.2}%
-\contentsline {subsubsection}{\numberline {3.2.3}Supplementary Data}{13}{subsubsection.3.2.3}%
-\contentsline {subsection}{\numberline {3.3}Ethical Considerations}{14}{subsection.3.3}%
-\contentsline {paragraph}{Data Privacy and Anonymity:}{14}{paragraph*.19}%
-\contentsline {paragraph}{Compliance and Licensing:}{14}{paragraph*.20}%
-\contentsline {subsection}{\numberline {3.4}Evaluation and Validation}{14}{subsection.3.4}%
-\contentsline {subsubsection}{\numberline {3.4.1}Experimental Design}{15}{subsubsection.3.4.1}%
-\contentsline {subsubsection}{\numberline {3.4.2}Biometric Performance Metrics}{15}{subsubsection.3.4.2}%
-\contentsline {subsubsection}{\numberline {3.4.3}System Efficiency \& Scalability Metrics}{15}{subsubsection.3.4.3}%
-\contentsline {subsubsection}{\numberline {3.4.4}Privacy and Security Evaluation}{16}{subsubsection.3.4.4}%
-\contentsline {section}{\numberline {4.0}ANTICIPATED RESULTS/FINAL PRODUCTS}{17}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Expected Outcomes}{17}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Project Deliverables}{17}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Project Timeline}{17}{subsection.4.3}%
-\contentsline {section}{\numberline {5.0}PROJECT SCHEDULE}{17}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Timeline and Gantt Chart}{17}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Milestones and Deliverables}{17}{subsection.5.2}%
-\contentsline {section}{REFERENCES}{18}{subsection.5.2}%
-\contentsline {section}{APPENDICES}{19}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {3.1.1}Architectural Design Mode I: Cryptographic Privacy (High-Security)}{12}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}Architectural Design Mode II: Projected Privacy (High-Performance)}{13}{subsubsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.2}Data Collection}{13}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Primary Datasets (Multimodal \& Cross-Device)}{14}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Benchmark Datasets (Scalability \& Standardization)}{14}{subsubsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.3}Supplementary Data}{15}{subsubsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.3}Ethical Considerations}{15}{subsection.3.3}%
+\contentsline {paragraph}{Data Privacy and Anonymity:}{15}{paragraph*.18}%
+\contentsline {paragraph}{Compliance and Licensing:}{16}{paragraph*.19}%
+\contentsline {subsection}{\numberline {3.4}Evaluation and Validation}{16}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Experimental Design}{16}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}Biometric Performance Metrics}{16}{subsubsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.3}System Efficiency \& Scalability Metrics}{17}{subsubsection.3.4.3}%
+\contentsline {subsubsection}{\numberline {3.4.4}Privacy and Security Evaluation}{17}{subsubsection.3.4.4}%
+\contentsline {section}{\numberline {4.0}ANTICIPATED RESULTS/FINAL PRODUCTS}{18}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Expected Outcomes}{18}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Scientific Contribution and Contribution to Knowledge}{19}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Potential Impact and Significance}{19}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Project Deliverables}{20}{subsection.4.4}%
+\contentsline {section}{\numberline {5.0}PROJECT SCHEDULE}{21}{section.5}%
+\contentsline {section}{REFERENCES}{22}{section.5}%
+\contentsline {section}{APPENDICES}{23}{section.5}%
