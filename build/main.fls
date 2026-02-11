@@ -156,6 +156,8 @@ INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex\latex\bigfoot\suffix.sty
 INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex\latex\xstring\xstring.sty
 INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex\latex\xstring\xstring.sty
 INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex\generic\xstring\xstring.tex
+INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex\latex\float\float.sty
+INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex\latex\float\float.sty
 INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex\latex\lm\ot1lmr.fd
 INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex\latex\lm\ot1lmr.fd
 INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex\latex\lm\ot1lmr.fd
@@ -177,8 +179,6 @@ INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex\context\base\mkii\supp-pd
 INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex\context\base\mkii\supp-pdf.mkii
 INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex\latex\epstopdf-pkg\epstopdf-base.sty
 INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex\latex\epstopdf-pkg\epstopdf-base.sty
-INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex\latex\grfext\grfext.sty
-INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex\latex\grfext\grfext.sty
 INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex\latex\00miktex\epstopdf-sys.cfg
 INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex\latex\00miktex\epstopdf-sys.cfg
 INPUT C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex\latex\00miktex\epstopdf-sys.cfg

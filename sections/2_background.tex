@@ -37,6 +37,47 @@
 
 \subsection{Literature Review}
 
+\subsubsection{Overview of Reviewed Literature}
+
+To establish a theoretical framework for this research, a comprehensive review of existing literature was conducted, focusing on Keystroke Dynamics, Mouse Dynamics, and Privacy-Preserving Machine Learning. The following table summarizes the key research papers referenced, highlighting their specific contributions to this project (``Key Takeaway'') and the limitations (``Research Gap'') that this proposal aims to address.
+
+% [H] forces the table to stay exactly here
+\begin{table}[H] 
+    \centering
+    \caption{Summary of Key Related Studies}
+    \label{tab:lit_review_summary}
+    \renewcommand{\arraystretch}{1.5} 
+    \begin{tabular}{|p{0.2\textwidth}|p{0.37\textwidth}|p{0.37\textwidth}|}
+        \hline
+        \textbf{Reference \& Study} & \textbf{Key Contribution to This Project} & \textbf{Identified Gap / Limitation} \\
+        \hline
+        Gaines et al. (1980) \& Joyce et al. (1990) & 
+        \textbf{Foundational Theory:} Established that typing rhythms (dwell/flight time) are unique and stable enough for identity verification. & 
+        Relied on static, fixed-text passwords, which are insufficient for continuous authentication. \\
+        \hline
+        Mondal \& Bours (2017) & 
+        \textbf{Multimodal Fusion:} Proved that combining Keystroke and Mouse dynamics significantly reduces Equal Error Rate (EER) compared to single modalities. & 
+        Fusion was achieved by simply concatenating features, creating a high-dimensional vector that slows down real-time processing. \\
+        \hline
+        Kim et al. (2018) & 
+        \textbf{Feature Engineering:} Introduced ``user-adaptive'' features, showing that personalized feature selection improves accuracy. & 
+        Focused entirely on accuracy; lacked any ``template protection'' or encryption to secure the stored data. \\
+        \hline
+        \textbf{Kim et al. (2025)} & 
+        \textbf{Deep SVDD Validation:} Demonstrated that Deep SVDD outperforms traditional models (6.7\% EER) by encoding time-series data into images. & 
+        Restricted to \textit{mobile PINs} (touch interactions) and lacked cryptographic encryption (HE) or multimodal fusion (Mouse). \\
+        \hline
+        Kiyani et al. (2020) & 
+        \textbf{Continuous Authentication:} Validated the use of Recurrent Neural Networks (RNNs) for verifying users continuously, not just at login. & 
+        Did not address the high latency introduced when trying to add encryption to these continuous streams. \\
+        \hline
+        Islam et al. (2021) & 
+        \textbf{Scalability Metrics:} Provided a framework for measuring how error rates grow as the user database size increases. & 
+        Addressed scalability of accuracy but not the scalability of privacy (how to store millions of secure templates). \\
+        \hline
+    \end{tabular}
+\end{table}
+
 \subsubsection{Foundational Studies (Static Authentication)}
 \paragraph{} Early research laid the groundwork for typing pattern analysis. Gaines et al. (1980) demonstrated that typing rhythms are unique to individuals, identifying that even simple digraph latencies could distinguish users with high confidence. Building on this, Joyce and Gupta (1990) formalized the use of "latency signatures" for identity verification, showing that comparing a test signature against a mean reference signature could achieve low impostor pass rates. Monrose et al. (1999) extended this concept to "password hardening," combining typing rhythms with passwords to increase entropy against offline attacks.
 
@@ -47,12 +88,14 @@
 \paragraph{} Research into mouse dynamics has evolved from simple statistics to complex trajectory analysis. Ahmed and Traore (2007) pioneered the use of movement speed and direction histograms, achieving reasonable accuracy but noting high false-positive rates in unconstrained environments. Later, Zheng et al. (2011) improved this by analyzing "point-by-point" angle-based metrics, proving that fine-grained motor skills are harder to forge than simple click statistics.
 \paragraph{} Recent studies have shifted toward Multimodal Authentication, combining keystroke and mouse data to overcome the weaknesses of single-modality systems. Mondal and Bours (2017) demonstrated that fusing these two biometrics significantly reduces the Equal Error Rate (EER) because an imposter is unlikely to mimic both a user's typing rhythm and their mouse hand-eye coordination simultaneously. However, existing multimodal frameworks often simply concatenate feature vectors, leading to massive dimensionality that slows down real-time processing—a problem this research aims to solve using the JL Lemma.
 
-
 \subsubsection{Deep Learning and Continuous Authentication}
-\paragraph{} Recent approaches have adopted Machine Learning (ML) and Deep Learning (DL) to improve accuracy. Zareen et al. (2018) utilized Bayesian Regularized Feed-Forward Neural Networks, achieving an EER of 0.9\%, which outperformed many standard statistical methods. Kiyani et al. (2020) proposed a "Robust Recurrent Confidence Model" (R-RCM) using ensemble learning. Their system verified identity on a per-action basis (Continuous Authentication), validating the effectiveness of sequential models for real-time monitoring.  
+\paragraph{} Recent approaches have adopted Deep Learning (DL) to improve accuracy. Zareen et al. (2018) utilized Bayesian Regularized Neural Networks, achieving an EER of 0.9\%, which outperformed many standard statistical methods. Kiyani et al. (2020) proposed a "Robust Recurrent Confidence Model" (R-RCM) using ensemble learning for continuous monitoring. 
+
+\paragraph{} Most recently, \textbf{Kim et al. (2025)} proposed "KDPrint," a method that transforms keystroke dynamics into images and utilizes \textbf{Deep Support Vector Data Description (Deep SVDD)} for anomaly detection. Their work achieved a notable EER of 6.7\% on mobile devices, validating Deep SVDD as a superior classifier for one-class authentication tasks. However, their approach focused exclusively on mobile PINs (touch interaction) and utilized image encoding for feature representation rather than cryptographic privacy. This leaves a significant gap for applying Deep SVDD to \textit{encrypted, multimodal} desktop environments, which this research aims to fulfill.
 
 \subsubsection{Scalability and System Performance} 
 \paragraph{} While accuracy has improved, scalability remains a challenge. Islam et al. (2021) introduced the notion of "Scalable Behavioral Authentication," analyzing how verification error rates increase as the user database grows. They proposed a "doppelganger-based" personalized verification algorithm to mitigate error growth, highlighting that system performance must be evaluated not just on accuracy, but on its ability to handle large-scale deployments.
+
 
 % critically analyze existing work. 
 % Do not just list papers; group them by themes (e.g., "Previous Approaches to Latency", "Privacy Methods").
@@ -60,16 +103,17 @@
 
 \subsection{Research Gap}
 
-\paragraph{} Despite the extensive literature on improving the accuracy of keystroke dynamics (Kiyani et al., 2020; Zareen et al., 2018), a critical trilemma remains unsolved: balancing Accuracy, Efficiency, and Privacy.
+\paragraph{} Despite the extensive literature on improving the accuracy of behavioral biometrics (Kiyani et al., 2020; Zareen et al., 2018) and recent advancements in Deep Learning anomaly detection (Kim et al., 2025), a critical trilemma remains unsolved: balancing \textbf{Accuracy}, \textbf{Efficiency}, and \textbf{Privacy}.
 
-% numbered list of gaps
 \begin{enumerate}
-    \item \textbf{Computation vs. Latency in Multimodal Systems:} Integrating Mouse Dynamics with Keystroke Dynamics doubles the feature space complexity. Processing this high-dimensional, multimodal stream (typing + mouse trajectories) using deep models (RNNs) creates a bottleneck that current systems fail to address efficiently.
-    \item \textbf{Privacy Vulnerability:} Most existing frameworks (Kim et al., 2018; Joyce, 1990) focus on verifying raw feature vectors. They lack robust "template protection" mechanisms. If the central database is compromised, the user's raw behavioral biometrics are lost forever.
-    \item \textbf{Lack of Integrated Privacy-Preserving Architectures:} While encryption exists, standard encryption prevents the system from performing the distance calculations needed for authentication (like Euclidean distance or KL-divergence mentioned in Islam et al.).
+    \item \textbf{Computation vs. Latency in Multimodal Systems:} Integrating Mouse Dynamics with Keystroke Dynamics doubles the feature space complexity. While recent studies like Kim et al. (2025) successfully utilized Deep SVDD for mobile PINs, they focused on single-modality touch data. Processing a high-dimensional, multimodal stream (typing + mouse trajectories) creates a computational bottleneck that current frameworks fail to address efficiently without dimensionality reduction.
+    
+    \item \textbf{Privacy Vulnerability (Lack of Encryption):} Most existing frameworks focus on verifying raw feature vectors or transformed representations. For instance, while Kim et al. (2025) introduced ``image encoding'' to obscure raw keystrokes, this is a feature transformation technique, not a cryptographic privacy guarantee. It lacks the mathematical irreversibility of \textbf{Homomorphic Encryption (HE)}. If the central database is compromised, these behavioral templates (images or vectors) are susceptible to reverse-engineering or replay attacks, leading to a permanent loss of digital identity.
+    
+    \item \textbf{Lack of Integrated Privacy-Preserving Architectures:} While cryptographic solutions exist, standard encryption prevents the system from performing the distance calculations needed for authentication (like Euclidean distance). There is currently no implementation that combines the anomaly detection power of \textbf{Deep SVDD} (validated by Kim et al., 2025) with \textbf{Homomorphic Encryption} for secure, privacy-preserving inference.
 \end{enumerate}
 
-\paragraph{Gap Definition:} There is currently no unified framework that utilizes Orthogonal Random Projections (JL Lemma) to compress the combined feature space of both Keystroke and Mouse Dynamics for lightweight processing, while simultaneously preserving privacy using Homomorphic Encryption. This study aims to bridge this gap by creating a fast, privacy-preserving, multimodal authentication system.
+\paragraph{Gap Definition:} There is currently no unified framework that utilizes \textbf{Orthogonal Random Projections (JL Lemma)} to compress the combined feature space of both Keystroke and Mouse Dynamics for lightweight processing, while simultaneously preserving privacy using \textbf{Homomorphic Encryption}. Unlike Kim et al. (2025), which applies Deep SVDD to unencrypted mobile data, this study aims to bridge the gap by creating a fast, \textit{cryptographically secure}, multimodal authentication system for desktop environments.
 
 % Based on your literature review, clearly state what is missing.
 % This justifies why your specific research is necessary.

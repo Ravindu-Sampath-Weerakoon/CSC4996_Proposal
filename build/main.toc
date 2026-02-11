@@ -23,43 +23,45 @@
 \contentsline {subsubsection}{\numberline {2.1.5}Homomorphic Encryption (HE)}{5}{subsubsection.2.1.5}%
 \contentsline {paragraph}{}{5}{paragraph*.7}%
 \contentsline {subsection}{\numberline {2.2}Literature Review}{5}{subsection.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.1}Foundational Studies (Static Authentication)}{5}{subsubsection.2.2.1}%
-\contentsline {paragraph}{}{5}{paragraph*.8}%
-\contentsline {subsubsection}{\numberline {2.2.2}Feature Engineering and Adaptive Systems}{5}{subsubsection.2.2.2}%
-\contentsline {paragraph}{}{5}{paragraph*.9}%
-\contentsline {subsubsection}{\numberline {2.2.3}Mouse Dynamics and Multimodal Fusion}{5}{subsubsection.2.2.3}%
-\contentsline {paragraph}{}{5}{paragraph*.10}%
-\contentsline {paragraph}{}{6}{paragraph*.11}%
-\contentsline {subsubsection}{\numberline {2.2.4}Deep Learning and Continuous Authentication}{6}{subsubsection.2.2.4}%
-\contentsline {paragraph}{}{6}{paragraph*.12}%
-\contentsline {subsubsection}{\numberline {2.2.5}Scalability and System Performance}{6}{subsubsection.2.2.5}%
-\contentsline {paragraph}{}{6}{paragraph*.13}%
-\contentsline {subsection}{\numberline {2.3}Research Gap}{6}{subsection.2.3}%
-\contentsline {paragraph}{}{6}{paragraph*.14}%
-\contentsline {paragraph}{Gap Definition:}{7}{paragraph*.15}%
-\contentsline {subsection}{\numberline {2.4}Assumptions and Constraints}{7}{subsection.2.4}%
-\contentsline {section}{\numberline {3.0}METHODOLOGY AND PROJECT DESIGN}{9}{section.3}%
-\contentsline {paragraph}{ Rationale for Chosen Methods: }{9}{paragraph*.16}%
-\contentsline {subsection}{\numberline {3.1}Overview of the Proposed Methodology/Research Design}{9}{subsection.3.1}%
-\contentsline {paragraph}{}{9}{paragraph*.17}%
-\contentsline {subsection}{\numberline {3.2}Data Collection}{10}{subsection.3.2}%
-\contentsline {subsubsection}{\numberline {3.2.1}Primary Datasets (Multimodal \& Cross-Device)}{10}{subsubsection.3.2.1}%
-\contentsline {subsubsection}{\numberline {3.2.2}Benchmark Datasets (Scalability \& Standardization)}{11}{subsubsection.3.2.2}%
-\contentsline {subsubsection}{\numberline {3.2.3}Supplementary Data}{11}{subsubsection.3.2.3}%
-\contentsline {subsection}{\numberline {3.3}Ethical Considerations}{12}{subsection.3.3}%
-\contentsline {paragraph}{Data Privacy and Anonymity:}{12}{paragraph*.18}%
-\contentsline {paragraph}{Compliance and Licensing:}{12}{paragraph*.19}%
-\contentsline {subsection}{\numberline {3.4}Evaluation and Validation}{12}{subsection.3.4}%
-\contentsline {subsubsection}{\numberline {3.4.1}Experimental Design}{13}{subsubsection.3.4.1}%
-\contentsline {subsubsection}{\numberline {3.4.2}Biometric Performance Metrics}{13}{subsubsection.3.4.2}%
-\contentsline {subsubsection}{\numberline {3.4.3}System Efficiency \& Scalability Metrics}{13}{subsubsection.3.4.3}%
-\contentsline {subsubsection}{\numberline {3.4.4}Privacy and Security Evaluation}{14}{subsubsection.3.4.4}%
-\contentsline {section}{\numberline {4.0}ANTICIPATED RESULTS/FINAL PRODUCTS}{15}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Expected Outcomes}{15}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Project Deliverables}{15}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Project Timeline}{15}{subsection.4.3}%
-\contentsline {section}{\numberline {5.0}PROJECT SCHEDULE}{15}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Timeline and Gantt Chart}{15}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Milestones and Deliverables}{15}{subsection.5.2}%
-\contentsline {section}{REFERENCES}{16}{subsection.5.2}%
-\contentsline {section}{APPENDICES}{17}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Overview of Reviewed Literature}{5}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Foundational Studies (Static Authentication)}{7}{subsubsection.2.2.2}%
+\contentsline {paragraph}{}{7}{paragraph*.8}%
+\contentsline {subsubsection}{\numberline {2.2.3}Feature Engineering and Adaptive Systems}{7}{subsubsection.2.2.3}%
+\contentsline {paragraph}{}{7}{paragraph*.9}%
+\contentsline {subsubsection}{\numberline {2.2.4}Mouse Dynamics and Multimodal Fusion}{7}{subsubsection.2.2.4}%
+\contentsline {paragraph}{}{7}{paragraph*.10}%
+\contentsline {paragraph}{}{7}{paragraph*.11}%
+\contentsline {subsubsection}{\numberline {2.2.5}Deep Learning and Continuous Authentication}{8}{subsubsection.2.2.5}%
+\contentsline {paragraph}{}{8}{paragraph*.12}%
+\contentsline {paragraph}{}{8}{paragraph*.13}%
+\contentsline {subsubsection}{\numberline {2.2.6}Scalability and System Performance}{8}{subsubsection.2.2.6}%
+\contentsline {paragraph}{}{8}{paragraph*.14}%
+\contentsline {subsection}{\numberline {2.3}Research Gap}{8}{subsection.2.3}%
+\contentsline {paragraph}{}{8}{paragraph*.15}%
+\contentsline {paragraph}{Gap Definition:}{9}{paragraph*.16}%
+\contentsline {subsection}{\numberline {2.4}Assumptions and Constraints}{9}{subsection.2.4}%
+\contentsline {section}{\numberline {3.0}METHODOLOGY AND PROJECT DESIGN}{11}{section.3}%
+\contentsline {paragraph}{ Rationale for Chosen Methods: }{11}{paragraph*.17}%
+\contentsline {subsection}{\numberline {3.1}Overview of the Proposed Methodology/Research Design}{11}{subsection.3.1}%
+\contentsline {paragraph}{}{11}{paragraph*.18}%
+\contentsline {subsection}{\numberline {3.2}Data Collection}{12}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Primary Datasets (Multimodal \& Cross-Device)}{12}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Benchmark Datasets (Scalability \& Standardization)}{13}{subsubsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.3}Supplementary Data}{13}{subsubsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.3}Ethical Considerations}{14}{subsection.3.3}%
+\contentsline {paragraph}{Data Privacy and Anonymity:}{14}{paragraph*.19}%
+\contentsline {paragraph}{Compliance and Licensing:}{14}{paragraph*.20}%
+\contentsline {subsection}{\numberline {3.4}Evaluation and Validation}{14}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Experimental Design}{15}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}Biometric Performance Metrics}{15}{subsubsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.3}System Efficiency \& Scalability Metrics}{15}{subsubsection.3.4.3}%
+\contentsline {subsubsection}{\numberline {3.4.4}Privacy and Security Evaluation}{16}{subsubsection.3.4.4}%
+\contentsline {section}{\numberline {4.0}ANTICIPATED RESULTS/FINAL PRODUCTS}{17}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Expected Outcomes}{17}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Project Deliverables}{17}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Project Timeline}{17}{subsection.4.3}%
+\contentsline {section}{\numberline {5.0}PROJECT SCHEDULE}{17}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Timeline and Gantt Chart}{17}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Milestones and Deliverables}{17}{subsection.5.2}%
+\contentsline {section}{REFERENCES}{18}{subsection.5.2}%
+\contentsline {section}{APPENDICES}{19}{subsection.5.2}%
