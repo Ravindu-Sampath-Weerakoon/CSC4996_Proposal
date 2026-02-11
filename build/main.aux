@@ -10,12 +10,36 @@
 \@writefile{toc}{\contentsline {section}{LIST OF TABLES}{vi}{Doc-Start}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{LIST OF EQUATIONS}{vii}{Doc-Start}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{LIST OF ABBREVIATIONS}{viii}{Doc-Start}\protected@file@percent }
-\newacro{RNN}[\AC@hyperlink{RNN}{RNN}]{Recurrent Neural Network}
-\newacro{LSTM}[\AC@hyperlink{LSTM}{LSTM}]{Long Short-Term Memory}
+\newacro{ACM}[\AC@hyperlink{ACM}{ACM}]{Association for Computing Machinery}
+\newacro{BB-MAS}[\AC@hyperlink{BB-MAS}{BB-MAS}]{Behavioral Biometrics Multi-device and multi-Activity from Same users}
+\newacro{CKKS}[\AC@hyperlink{CKKS}{CKKS}]{Cheon-Kim-Kim-Song (Homomorphic Encryption Scheme)}
+\newacro{CMU}[\AC@hyperlink{CMU}{CMU}]{Carnegie Mellon University}
+\newacro{DL}[\AC@hyperlink{DL}{DL}]{Deep Learning}
 \newacro{EER}[\AC@hyperlink{EER}{EER}]{Equal Error Rate}
 \newacro{FAR}[\AC@hyperlink{FAR}{FAR}]{False Acceptance Rate}
+\newacro{FHE}[\AC@hyperlink{FHE}{FHE}]{Fully Homomorphic Encryption}
+\newacro{FN}[\AC@hyperlink{FN}{FN}]{False Negative}
+\newacro{FP}[\AC@hyperlink{FP}{FP}]{False Positive}
 \newacro{FRR}[\AC@hyperlink{FRR}{FRR}]{False Rejection Rate}
+\newacro{GPU}[\AC@hyperlink{GPU}{GPU}]{Graphics Processing Unit}
+\newacro{HE}[\AC@hyperlink{HE}{HE}]{Homomorphic Encryption}
 \newacro{IEEE}[\AC@hyperlink{IEEE}{IEEE}]{Institute of Electrical and Electronics Engineers}
+\newacro{IND-CPA}[\AC@hyperlink{IND-CPA}{IND-CPA}]{Indistinguishability under Chosen Plaintext Attack}
+\newacro{IoT}[\AC@hyperlink{IoT}{IoT}]{Internet of Things}
+\newacro{JL}[\AC@hyperlink{JL}{JL}]{Johnson-Lindenstrauss}
+\newacro{LHE}[\AC@hyperlink{LHE}{LHE}]{Leveled Homomorphic Encryption}
+\newacro{LSTM}[\AC@hyperlink{LSTM}{LSTM}]{Long Short-Term Memory}
+\newacro{MSE}[\AC@hyperlink{MSE}{MSE}]{Mean Squared Error}
+\newacro{PII}[\AC@hyperlink{PII}{PII}]{Personally Identifiable Information}
+\newacro{PIN}[\AC@hyperlink{PIN}{PIN}]{Personal Identification Number}
+\newacro{R-RCM}[\AC@hyperlink{R-RCM}{R-RCM}]{Robust Recurrent Confidence Model}
+\newacro{RNN}[\AC@hyperlink{RNN}{RNN}]{Recurrent Neural Network}
+\newacro{SU-AIS}[\AC@hyperlink{SU-AIS}{SU-AIS}]{Syracuse University and Assured Information Security}
+\newacro{SVDD}[\AC@hyperlink{SVDD}{SVDD}]{Support Vector Data Description}
+\newacro{SVM}[\AC@hyperlink{SVM}{SVM}]{Support Vector Machine}
+\newacro{TN}[\AC@hyperlink{TN}{TN}]{True Negative}
+\newacro{TP}[\AC@hyperlink{TP}{TP}]{True Positive}
+\newacro{PINs}[\AC@hyperlink{PINs}{PINs}]{Personal Identification Numbers}
 \abx@aux@cite{0}{pirzado2021keystroke}
 \abx@aux@segm{0}{0}{pirzado2021keystroke}
 \abx@aux@cite{0}{pirzado2021keystroke}
@@ -42,6 +66,9 @@
 \abx@aux@segm{0}{0}{rahman2021scalable}
 \@writefile{toc}{\contentsline {section}{\numberline {1.0}INTRODUCTION}{1}{section.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Overview of the Research Domain}{1}{paragraph*.1}\protected@file@percent }
+\AC@undonewlabel{acro:PINs}
+\newlabel{acro:PINs}{{1.0}{1}{Overview of the Research Domain}{section*.2}{}}
+\acronymused{PINs}
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Problem Statement}{1}{subsection.1.1}\protected@file@percent }
 \abx@aux@cite{0}{johnson1984extensions}
 \abx@aux@segm{0}{0}{johnson1984extensions}
@@ -54,90 +81,101 @@
 \abx@aux@cite{0}{ruff2018deepsvdd}
 \abx@aux@segm{0}{0}{ruff2018deepsvdd}
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Research Aim and Objectives}{2}{subsection.1.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{}{2}{paragraph*.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{}{2}{paragraph*.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.3}Research Questions}{2}{subsection.1.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {2.0}BACKGROUND}{4}{section.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Technical and Theoretical Background}{4}{subsection.2.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Visual Representation of Biometric Features. \textbf  {(a)} Keystroke Dynamics: Dwell Time represents the key press duration, while Flight Time measures the latency between distinct keystrokes. \textbf  {(b)} Mouse Dynamics: Comparison between the optimal straight-line path and the actual user trajectory, used to calculate movement efficiency and curvature.}}{4}{figure.1}\protected@file@percent }
+\newlabel{fig:biometric_features}{{1}{4}{Visual Representation of Biometric Features. \textbf {(a)} Keystroke Dynamics: Dwell Time represents the key press duration, while Flight Time measures the latency between distinct keystrokes. \textbf {(b)} Mouse Dynamics: Comparison between the optimal straight-line path and the actual user trajectory, used to calculate movement efficiency and curvature}{figure.1}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.1}Keystroke Dynamics}{4}{subsubsection.2.1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{}{4}{paragraph*.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.2}Mouse Dynamics}{4}{subsubsection.2.1.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{}{4}{paragraph*.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.3}Recurrent Neural Networks (RNNs) \& LSTMs}{4}{subsubsection.2.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.2}Mouse Dynamics}{4}{subsubsection.2.1.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{}{4}{paragraph*.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.4}Johnson-Lindenstrauss (JL) Lemma}{4}{subsubsection.2.1.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{}{4}{paragraph*.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.5}Homomorphic Encryption (HE)}{5}{subsubsection.2.1.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.3}Recurrent Neural Networks (RNNs) \& LSTMs}{5}{subsubsection.2.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{}{5}{paragraph*.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.4}Johnson-Lindenstrauss (JL) Lemma}{5}{subsubsection.2.1.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{}{5}{paragraph*.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Literature Review}{5}{subsection.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.1}Overview of Reviewed Literature}{5}{subsubsection.2.2.1}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Summary of Key Related Studies}}{6}{table.1}\protected@file@percent }
-\newlabel{tab:lit_review_summary}{{1}{6}{Summary of Key Related Studies}{table.1}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.2}Foundational Studies (Static Authentication)}{7}{subsubsection.2.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{}{7}{paragraph*.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.3}Feature Engineering and Adaptive Systems}{7}{subsubsection.2.2.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{}{7}{paragraph*.9}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.4}Mouse Dynamics and Multimodal Fusion}{7}{subsubsection.2.2.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{}{7}{paragraph*.10}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{}{7}{paragraph*.11}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.5}Deep Learning and Continuous Authentication}{8}{subsubsection.2.2.5}\protected@file@percent }
+\@writefile{equ}{\contentsline {equations}{\numberline {0}JL Lemma Guarantee}{5}{paragraph*.7}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Conceptual Visualization of the Johnson-Lindenstrauss (JL) Lemma. Points from a high-dimensional feature space (Left) are projected onto a lower-dimensional subspace (Right). The blue and red dotted lines illustrate that the relative Euclidean distances between points are approximately preserved despite the massive reduction in dimensions.}}{5}{figure.2}\protected@file@percent }
+\newlabel{fig:jl_projection_concept}{{2}{5}{Conceptual Visualization of the Johnson-Lindenstrauss (JL) Lemma. Points from a high-dimensional feature space (Left) are projected onto a lower-dimensional subspace (Right). The blue and red dotted lines illustrate that the relative Euclidean distances between points are approximately preserved despite the massive reduction in dimensions}{figure.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.5}Homomorphic Encryption (HE)}{6}{subsubsection.2.1.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{}{6}{paragraph*.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Literature Review}{6}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.1}Overview of Reviewed Literature}{6}{subsubsection.2.2.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Summary of Key Related Studies}}{7}{table.1}\protected@file@percent }
+\newlabel{tab:lit_review_summary}{{1}{7}{Summary of Key Related Studies}{table.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.2}Foundational Studies (Static Authentication)}{8}{subsubsection.2.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{}{8}{paragraph*.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.3}Feature Engineering and Adaptive Systems}{8}{subsubsection.2.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{}{8}{paragraph*.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.4}Mouse Dynamics and Multimodal Fusion}{8}{subsubsection.2.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{}{8}{paragraph*.11}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{}{8}{paragraph*.12}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{}{8}{paragraph*.13}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.6}Scalability and System Performance}{8}{subsubsection.2.2.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{}{8}{paragraph*.14}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Research Gap}{8}{subsection.2.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{}{8}{paragraph*.15}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Gap Definition:}{9}{paragraph*.16}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Assumptions and Constraints}{9}{subsection.2.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.1}Assumptions}{9}{subsubsection.2.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.2}Constraints}{10}{subsubsection.2.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3.0}METHODOLOGY AND PROJECT DESIGN}{11}{section.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{ Rationale for Chosen Methods: }{11}{paragraph*.17}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Overview of the Proposed Methodology/Research Design}{11}{subsection.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}Architectural Design Mode I: Cryptographic Privacy (High-Security)}{12}{subsubsection.3.1.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces System Architecture of the Proposed Lightweight Privacy-Preserving Framework.}}{12}{figure.1}\protected@file@percent }
-\newlabel{fig:sys_arch}{{1}{12}{System Architecture of the Proposed Lightweight Privacy-Preserving Framework}{figure.1}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2}Architectural Design Mode II: Projected Privacy (High-Performance)}{13}{subsubsection.3.1.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Proposed Lightweight Architecture: Using JL Projections as a Privacy-Preserving Transformation.}}{13}{figure.2}\protected@file@percent }
-\newlabel{fig:lightweight_arch}{{2}{13}{Proposed Lightweight Architecture: Using JL Projections as a Privacy-Preserving Transformation}{figure.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Data Collection}{13}{subsection.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Primary Datasets (Multimodal \& Cross-Device)}{14}{subsubsection.3.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Benchmark Datasets (Scalability \& Standardization)}{14}{subsubsection.3.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.3}Supplementary Data}{15}{subsubsection.3.2.3}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Summary of Experimental Datasets}}{15}{table.2}\protected@file@percent }
-\newlabel{tab:datasets}{{2}{15}{Summary of Experimental Datasets}{table.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Ethical Considerations}{15}{subsection.3.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Data Privacy and Anonymity:}{15}{paragraph*.18}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Compliance and Licensing:}{16}{paragraph*.19}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Evaluation and Validation}{16}{subsection.3.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.1}Experimental Design}{16}{subsubsection.3.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.2}Biometric Performance Metrics}{16}{subsubsection.3.4.2}\protected@file@percent }
-\@writefile{equ}{\contentsline {equations}{\numberline {1}False Acceptance Rate (FAR)}{16}{equation.1}\protected@file@percent }
-\newlabel{eq:far}{{1}{16}{Biometric Performance Metrics}{equation.1}{}}
-\@writefile{equ}{\contentsline {equations}{\numberline {2}False Rejection Rate (FRR)}{17}{equation.2}\protected@file@percent }
-\newlabel{eq:frr}{{2}{17}{Biometric Performance Metrics}{equation.2}{}}
-\@writefile{equ}{\contentsline {equations}{\numberline {3}Equal Error Rate (EER) Condition}{17}{equation.3}\protected@file@percent }
-\newlabel{eq:eer}{{3}{17}{Biometric Performance Metrics}{equation.3}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.3}System Efficiency \& Scalability Metrics}{17}{subsubsection.3.4.3}\protected@file@percent }
-\@writefile{equ}{\contentsline {equations}{\numberline {4}System Inference Latency Model}{17}{equation.4}\protected@file@percent }
-\newlabel{eq:latency}{{4}{17}{System Efficiency \& Scalability Metrics}{equation.4}{}}
-\@writefile{equ}{\contentsline {equations}{\numberline {5}Encryption Overhead Ratio}{17}{equation.5}\protected@file@percent }
-\newlabel{eq:overhead}{{5}{17}{System Efficiency \& Scalability Metrics}{equation.5}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.4}Privacy and Security Evaluation}{17}{subsubsection.3.4.4}\protected@file@percent }
-\@writefile{equ}{\contentsline {equations}{\numberline {6}Adversarial Advantage (Indistinguishability)}{17}{equation.6}\protected@file@percent }
-\newlabel{eq:adv_advantage}{{6}{17}{Privacy and Security Evaluation}{equation.6}{}}
-\@writefile{equ}{\contentsline {equations}{\numberline {7}Reconstruction Error (MSE) for Privacy}{18}{equation.7}\protected@file@percent }
-\newlabel{eq:mse_recon}{{7}{18}{Privacy and Security Evaluation}{equation.7}{}}
-\@writefile{equ}{\contentsline {equations}{\numberline {8}Mutual Information (Information Leakage)}{18}{equation.8}\protected@file@percent }
-\newlabel{eq:mutual_info}{{8}{18}{Privacy and Security Evaluation}{equation.8}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.0}ANTICIPATED RESULTS/FINAL PRODUCTS}{18}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Expected Outcomes}{18}{subsection.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Scientific Contribution and Contribution to Knowledge}{19}{subsection.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Potential Impact and Significance}{19}{subsection.4.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Project Deliverables}{20}{subsection.4.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.0}PROJECT SCHEDULE}{21}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{REFERENCES}{22}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{APPENDICES}{23}{section.5}\protected@file@percent }
-\abx@aux@read@bbl@mdfivesum{4418BBCC0A2D5688A8FBFC83735B2995}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.5}Deep Learning and Continuous Authentication}{9}{subsubsection.2.2.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{}{9}{paragraph*.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{}{9}{paragraph*.14}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.6}Scalability and System Performance}{9}{subsubsection.2.2.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{}{9}{paragraph*.15}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Research Gap}{9}{subsection.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{}{9}{paragraph*.16}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.1}Summary of Novel Contributions}{10}{subsubsection.2.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.2}Gap Definition}{11}{subsubsection.2.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{}{11}{paragraph*.17}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Assumptions and Constraints}{11}{subsection.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.1}Assumptions}{11}{subsubsection.2.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.2}Constraints}{12}{subsubsection.2.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.0}METHODOLOGY AND PROJECT DESIGN}{13}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{ Rationale for Chosen Methods: }{13}{paragraph*.18}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Overview of the Proposed Methodology/Research Design}{13}{subsection.3.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Visualizing the Deep SVDD Decision Boundary. The model learns a compact hypersphere of radius $R$ around center $c$ that encapsulates the majority of legitimate user data (blue dots). Any input falling outside this boundary is flagged as an anomaly (red triangles), representing a potential impostor.}}{14}{figure.3}\protected@file@percent }
+\newlabel{fig:deep_svdd_concept}{{3}{14}{Visualizing the Deep SVDD Decision Boundary. The model learns a compact hypersphere of radius $R$ around center $c$ that encapsulates the majority of legitimate user data (blue dots). Any input falling outside this boundary is flagged as an anomaly (red triangles), representing a potential impostor}{figure.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}Architectural Design Mode I: Cryptographic Privacy (High-Security)}{15}{subsubsection.3.1.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces System Architecture of the Proposed Lightweight Privacy-Preserving Framework.}}{15}{figure.4}\protected@file@percent }
+\newlabel{fig:sys_arch}{{4}{15}{System Architecture of the Proposed Lightweight Privacy-Preserving Framework}{figure.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2}Architectural Design Mode II: Projected Privacy (High-Performance)}{15}{subsubsection.3.1.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Proposed Lightweight Architecture: Using JL Projections as a Privacy-Preserving Transformation.}}{15}{figure.5}\protected@file@percent }
+\newlabel{fig:lightweight_arch}{{5}{15}{Proposed Lightweight Architecture: Using JL Projections as a Privacy-Preserving Transformation}{figure.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Data Collection}{16}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Primary Datasets (Multimodal \& Cross-Device)}{16}{subsubsection.3.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Benchmark Datasets (Scalability \& Standardization)}{17}{subsubsection.3.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.3}Supplementary Data}{17}{subsubsection.3.2.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Summary of Experimental Datasets}}{17}{table.2}\protected@file@percent }
+\newlabel{tab:datasets}{{2}{17}{Summary of Experimental Datasets}{table.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Ethical Considerations}{18}{subsection.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Data Privacy and Anonymity:}{18}{paragraph*.19}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Compliance and Licensing:}{18}{paragraph*.20}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Evaluation and Validation}{18}{subsection.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.1}Experimental Design}{18}{subsubsection.3.4.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Experimental Data Partitioning Strategy. The dataset is divided into 10 folds with a 60/20/20 split for Training, Validation, and Testing. Assignments rotate cyclically.}}{19}{figure.6}\protected@file@percent }
+\newlabel{fig:k_fold_split}{{6}{19}{Experimental Data Partitioning Strategy. The dataset is divided into 10 folds with a 60/20/20 split for Training, Validation, and Testing. Assignments rotate cyclically}{figure.6}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.2}Biometric Performance Metrics}{19}{subsubsection.3.4.2}\protected@file@percent }
+\@writefile{equ}{\contentsline {equations}{\numberline {1}False Acceptance Rate (FAR)}{19}{equation.1}\protected@file@percent }
+\newlabel{eq:far}{{1}{19}{Biometric Performance Metrics}{equation.1}{}}
+\@writefile{equ}{\contentsline {equations}{\numberline {2}False Rejection Rate (FRR)}{20}{equation.2}\protected@file@percent }
+\newlabel{eq:frr}{{2}{20}{Biometric Performance Metrics}{equation.2}{}}
+\@writefile{equ}{\contentsline {equations}{\numberline {3}Equal Error Rate (EER) Condition}{20}{equation.3}\protected@file@percent }
+\newlabel{eq:eer}{{3}{20}{Biometric Performance Metrics}{equation.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.3}System Efficiency \& Scalability Metrics}{20}{subsubsection.3.4.3}\protected@file@percent }
+\@writefile{equ}{\contentsline {equations}{\numberline {4}System Inference Latency Model}{20}{equation.4}\protected@file@percent }
+\newlabel{eq:latency}{{4}{20}{System Efficiency \& Scalability Metrics}{equation.4}{}}
+\@writefile{equ}{\contentsline {equations}{\numberline {5}Encryption Overhead Ratio}{20}{equation.5}\protected@file@percent }
+\newlabel{eq:overhead}{{5}{20}{System Efficiency \& Scalability Metrics}{equation.5}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.4}Privacy and Security Evaluation}{20}{subsubsection.3.4.4}\protected@file@percent }
+\@writefile{equ}{\contentsline {equations}{\numberline {6}Adversarial Advantage (Indistinguishability)}{20}{equation.6}\protected@file@percent }
+\newlabel{eq:adv_advantage}{{6}{20}{Privacy and Security Evaluation}{equation.6}{}}
+\@writefile{equ}{\contentsline {equations}{\numberline {7}Reconstruction Error (MSE) for Privacy}{21}{equation.7}\protected@file@percent }
+\newlabel{eq:mse_recon}{{7}{21}{Privacy and Security Evaluation}{equation.7}{}}
+\@writefile{equ}{\contentsline {equations}{\numberline {8}Mutual Information (Information Leakage)}{21}{equation.8}\protected@file@percent }
+\newlabel{eq:mutual_info}{{8}{21}{Privacy and Security Evaluation}{equation.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.0}ANTICIPATED RESULTS/FINAL PRODUCTS}{21}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Expected Outcomes}{21}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Scientific Contribution and Contribution to Knowledge}{22}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Potential Impact and Significance}{22}{subsection.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Project Deliverables}{23}{subsection.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.0}PROJECT SCHEDULE}{24}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{REFERENCES}{25}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{APPENDICES}{26}{section.5}\protected@file@percent }
+\abx@aux@read@bbl@mdfivesum{0AE9AAAC1158AFE4ACCCB918AA14EED8}
 \abx@aux@defaultrefcontext{0}{pirzado2021keystroke}{none/global//global/global/global}
 \abx@aux@defaultrefcontext{0}{kiyani2020continuous}{none/global//global/global/global}
 \abx@aux@defaultrefcontext{0}{rahman2021scalable}{none/global//global/global/global}
@@ -146,4 +184,4 @@
 \abx@aux@defaultrefcontext{0}{monrose1999hardening}{none/global//global/global/global}
 \abx@aux@defaultrefcontext{0}{johnson1984extensions}{none/global//global/global/global}
 \abx@aux@defaultrefcontext{0}{ruff2018deepsvdd}{none/global//global/global/global}
-\gdef \@abspage@last{31}
+\gdef \@abspage@last{34}

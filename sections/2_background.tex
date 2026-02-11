@@ -8,6 +8,80 @@
 % It should introduce the broader field and why this area is significant.
 
 \subsection{Technical and Theoretical Background}
+
+\begin{figure}[H]
+    \centering
+    \resizebox{\textwidth}{!}{%
+    \begin{tikzpicture}[
+        node distance=1cm,
+        >=Latex,
+        font=\small
+    ]
+
+    % --- PANEL A: KEYSTROKE DYNAMICS ---
+    \begin{scope}[local bounding box=PanelA]
+        % Title
+        \node[anchor=center] at (3.5, 2.5) {\textbf{(a) Keystroke Dynamics Timeline}};
+
+        % Time Axis
+        \draw[->, thick] (0,0) -- (7.5,0) node[right] {Time ($t$)};
+
+        % Key T Events
+        \draw[fill=blue!20, draw=blue!80] (0.5,0) rectangle (2.0, 0.6) node[midway] {Key 'T'};
+        \node[below] at (0.5,0) {$t_{down}$};
+        \node[below] at (2.0,0) {$t_{up}$};
+
+        % Key H Events
+        \draw[fill=blue!20, draw=blue!80] (4.5,0) rectangle (6.0, 0.6) node[midway] {Key 'H'};
+        \node[below] at (4.5,0) {$t_{down}$};
+        \node[below] at (6.0,0) {$t_{up}$};
+
+        % Dwell Time Annotation (Curly Brace)
+        \draw[decorate, decoration={brace, amplitude=5pt, mirror}, thick, red] 
+            (0.5,-0.5) -- (2.0,-0.5) node[midway, below=5pt, red] {\textbf{Dwell Time}};
+
+        % Flight Time Annotation (Arrow)
+        \draw[<->, thick, blue] (2.0, 0.3) -- (4.5, 0.3) node[midway, above, blue] {\textbf{Flight Time}};
+        \draw[dashed, blue] (2.0, 0) -- (2.0, 0.3);
+        \draw[dashed, blue] (4.5, 0) -- (4.5, 0.3);
+    \end{scope}
+
+    % --- PANEL B: MOUSE DYNAMICS ---
+    \begin{scope}[xshift=8.5cm, local bounding box=PanelB]
+        % Title
+        \node[anchor=center] at (2.5, 2.5) {\textbf{(b) Mouse Trajectory Efficiency}};
+
+        % Grid / Context
+        \draw[step=0.5cm, gray!20, very thin] (0,0) grid (5,2);
+        
+        % Points
+        \node[circle, fill=green!60!black, inner sep=2pt, label=left:Start] (A) at (0.5, 0.5) {};
+        \node[circle, fill=red!60!black, inner sep=2pt, label=right:Target] (B) at (4.5, 2.0) {};
+
+        % Optimal Path (Straight)
+        \draw[dashed, thick, black] (A) -- (B) node[midway, above left, sloped, scale=0.8] {Optimal Path};
+
+        % Actual Path (Curved)
+        \draw[thick, blue] (A) .. controls (1.5, -0.5) and (3.5, 0.5) .. (B) 
+            node[midway, below right, sloped, scale=0.8, text=blue] {Actual Path};
+
+        % Curvature/Efficiency Area
+        % Shading the area between straight and curve is complex in TikZ without intersections lib, 
+        % so we label the deviation instead.
+        \draw[<->, red] (2.5, 1.25) -- (2.3, 0.2) node[midway, right, scale=0.7] {Deviation};
+        
+        \node[align=center, text=red!80!black, scale=0.8] at (2.5, -0.8) {\textit{Movement Efficiency} $\propto \frac{\text{Optimal}}{\text{Actual}}$};
+    \end{scope}
+
+    % --- Separator Line ---
+    \draw[gray, thick, dashed] (7.75, -1) -- (7.75, 3);
+
+    \end{tikzpicture}
+    }
+    \caption{Visual Representation of Biometric Features. \textbf{(a)} Keystroke Dynamics: Dwell Time represents the key press duration, while Flight Time measures the latency between distinct keystrokes. \textbf{(b)} Mouse Dynamics: Comparison between the optimal straight-line path and the actual user trajectory, used to calculate movement efficiency and curvature.}
+    \label{fig:biometric_features}
+\end{figure}
+
 \subsubsection{Keystroke Dynamics}
 \paragraph{} This is the measurement of biomechanical typing patterns. The fundamental features include Dwell Time (duration a key is pressed) and Flight Time (latency between releasing one key and pressing the next). These features form a unique "digital signature" for each user.
 
@@ -22,11 +96,93 @@
 \end{itemize}
 
 
+
+
 \subsubsection{Recurrent Neural Networks (RNNs) \& LSTMs}
 \paragraph{} Since keystroke data is inherently sequential (a time-series of events), standard feed-forward networks often fail to capture temporal dependencies. RNNs, and specifically Long Short-Term Memory (LSTM) networks, are theoretically suited for this task as they maintain a "memory" of previous inputs, allowing them to model complex, non-linear typing rhythms over time.
 
 \subsubsection{Johnson-Lindenstrauss (JL) Lemma} 
 \paragraph{} To address the "curse of dimensionality" and system latency, this research utilizes the JL Lemma. This mathematical theorem states that points in a high-dimensional space can be projected into a lower-dimensional space using Orthogonal Random Projections while approximately preserving the Euclidean distances between them. This allows for lightweight processing without significant loss of accuracy.
+
+
+\begin{figure}[htbp]
+    \centering
+    \resizebox{\textwidth}{!}{%
+    \begin{tikzpicture}[scale=1.0, >=Latex]
+
+    % --- LEFT: HIGH-DIMENSIONAL SPACE (3D CUBE) ---
+    \begin{scope}[xshift=0cm]
+        % Draw back face
+        \draw[gray, dashed] (1,1) -- (3,1) -- (3,3) -- (1,3) -- cycle;
+        % Draw edges connecting front and back
+        \draw[gray, dashed] (0,0) -- (1,1);
+        \draw[gray, dashed] (2,0) -- (3,1);
+        \draw[gray] (0,2) -- (1,3);
+        \draw[gray] (2,2) -- (3,3);
+        % Draw front face
+        \draw[thick, black] (0,0) -- (2,0) -- (2,2) -- (0,2) -- cycle;
+        
+        % Data Points
+        \coordinate (h1) at (0.5, 0.5);
+        \coordinate (h2) at (1.5, 1.8);
+        \coordinate (h3) at (2.2, 2.5);
+        
+        \fill[blue] (h1) circle (2pt) node[below right, scale=0.7] {$x_1$};
+        \fill[blue] (h2) circle (2pt) node[above left, scale=0.7] {$x_2$};
+        \fill[blue] (h3) circle (2pt) node[right, scale=0.7] {$x_3$};
+        
+        % Distance line
+        \draw[blue, dotted, thick] (h1) -- (h2);
+        
+        % Label (Moved Down slightly)
+        \node[align=center] at (1.5, -0.8) {\textbf{High-Dimensional Space}\\ (Raw Data $R^d$)};
+    \end{scope}
+
+    % --- PROJECTION ARROW ---
+    \draw[->, thick, dashed, orange] (2.8, 1.5) -- (5.8, 1.5) node[midway, above, text=black, scale=0.8] {Projection $R \times x$};
+
+    % --- RIGHT: PROJECTED SUBSPACE (2D PLANE) ---
+    \begin{scope}[xshift=6.5cm, yshift=0.5cm] % Increased xshift for more gap
+        % Draw 2D Plane
+        \fill[green!10] (0,0) -- (3,0) -- (4,2) -- (1,2) -- cycle;
+        \draw[thick, green!50!black] (0,0) -- (3,0) -- (4,2) -- (1,2) -- cycle;
+        
+        % Mapped Points
+        \coordinate (p1) at (1.0, 0.5);
+        \coordinate (p2) at (2.0, 1.3);
+        \coordinate (p3) at (2.8, 1.6);
+        
+        \fill[red] (p1) circle (2pt) node[below right, scale=0.7] {$f(x_1)$};
+        \fill[red] (p2) circle (2pt) node[above left, scale=0.7] {$f(x_2)$};
+        \fill[red] (p3) circle (2pt) node[right, scale=0.7] {$f(x_3)$};
+        
+        % Distance line
+        \draw[red, dotted, thick] (p1) -- (p2);
+        
+        % Label (Aligned with left label)
+        \node[align=center] at (2.0, -1.3) {\textbf{Projected Subspace}\\ (Compressed $R^k$)};
+    \end{scope}
+
+    % --- Connecting Lines ---
+    \draw[gray!50, dashed, thin] (h1) to[out=20, in=160] (p1);
+    \draw[gray!50, dashed, thin] (h2) to[out=20, in=160] (p2);
+    \draw[gray!50, dashed, thin] (h3) to[out=20, in=160] (p3);
+    
+    % --- GUARANTEE BOX (Moved further down to avoid overlap) ---
+    \node[align=center, scale=0.9, fill=white, draw=gray, thin, rounded corners] at (5.5, -2.5) {
+        \textbf{JL Lemma Guarantee:} \\
+        \eqname{JL Lemma Guarantee}
+        $||f(x_1) - f(x_2)|| \approx ||x_1 - x_2||$
+
+
+    };
+
+    \end{tikzpicture}
+    }
+    \caption{Conceptual Visualization of the Johnson-Lindenstrauss (JL) Lemma. Points from a high-dimensional feature space (Left) are projected onto a lower-dimensional subspace (Right). The blue and red dotted lines illustrate that the relative Euclidean distances between points are approximately preserved despite the massive reduction in dimensions.}
+    \label{fig:jl_projection_concept}
+\end{figure}
+
 
 \subsubsection{Homomorphic Encryption (HE)} 
 \paragraph{}  To ensure privacy, the system employs Homomorphic Encryption, a cryptographic form that allows computations to be performed on encrypted data without first decrypting it. This ensures that the user's raw biometric template is never exposed in plaintext during the authentication process.
@@ -91,6 +247,8 @@ To establish a theoretical framework for this research, a comprehensive review o
 \subsubsection{Deep Learning and Continuous Authentication}
 \paragraph{} Recent approaches have adopted Deep Learning (DL) to improve accuracy. Zareen et al. (2018) utilized Bayesian Regularized Neural Networks, achieving an EER of 0.9\%, which outperformed many standard statistical methods. Kiyani et al. (2020) proposed a "Robust Recurrent Confidence Model" (R-RCM) using ensemble learning for continuous monitoring. 
 
+
+
 \paragraph{} Most recently, \textbf{Kim et al. (2025)} proposed "KDPrint," a method that transforms keystroke dynamics into images and utilizes \textbf{Deep Support Vector Data Description (Deep SVDD)} for anomaly detection. Their work achieved a notable EER of 6.7\% on mobile devices, validating Deep SVDD as a superior classifier for one-class authentication tasks. However, their approach focused exclusively on mobile PINs (touch interaction) and utilized image encoding for feature representation rather than cryptographic privacy. This leaves a significant gap for applying Deep SVDD to \textit{encrypted, multimodal} desktop environments, which this research aims to fulfill.
 
 \subsubsection{Scalability and System Performance} 
@@ -113,7 +271,43 @@ To establish a theoretical framework for this research, a comprehensive review o
     \item \textbf{Lack of Integrated Privacy-Preserving Architectures:} While cryptographic solutions exist, standard encryption prevents the system from performing the distance calculations needed for authentication (like Euclidean distance). There is currently no implementation that combines the anomaly detection power of \textbf{Deep SVDD} (validated by Kim et al., 2025) with \textbf{Homomorphic Encryption} for secure, privacy-preserving inference.
 \end{enumerate}
 
-\paragraph{Gap Definition:} There is currently no unified framework that utilizes \textbf{Orthogonal Random Projections (JL Lemma)} to compress the combined feature space of both Keystroke and Mouse Dynamics for lightweight processing, while simultaneously preserving privacy using \textbf{Homomorphic Encryption}. Unlike Kim et al. (2025), which applies Deep SVDD to unencrypted mobile data, this study aims to bridge the gap by creating a fast, \textit{cryptographically secure}, multimodal authentication system for desktop environments.
+\subsubsection{Summary of Novel Contributions}
+
+This study makes the following original contributions to the field of behavioral authentication:
+
+\begin{enumerate}
+
+\item \textbf{Dual-Mode Privacy Architecture}
+
+This research proposes a novel dual-mode behavioral authentication framework that separates high-security encrypted inference (CKKS-based) from lightweight projected privacy mode (Johnson--Lindenstrauss-based), enabling adaptive deployment based on transaction risk level. The architecture allows the system to dynamically balance security guarantees and computational efficiency.
+
+\item \textbf{Dimensionality-Constrained Encrypted Inference}
+
+Unlike prior work that applies Deep SVDD to raw or image-encoded features, this study evaluates Deep SVDD operating on Johnson--Lindenstrauss compressed embeddings. It explicitly analyzes how dimensionality reduction affects Equal Error Rate (EER), inference latency, and encryption overhead, thereby formalizing the impact of projection dimension $k$ on encrypted biometric verification.
+
+\item \textbf{Formal Privacy--Latency--Accuracy Trade-off Quantification}
+
+This work introduces an integrated evaluation framework that jointly measures:
+
+\begin{itemize}
+    \item Biometric performance (EER, FAR, FRR)
+    \item Computational efficiency (Inference Latency, Encryption Overhead Ratio)
+    \item Information-theoretic privacy (Mutual Information, Reconstruction Error)
+\end{itemize}
+
+To the best of our knowledge, no prior behavioral biometric study simultaneously quantifies these three dimensions under homomorphically encrypted inference.
+
+\item \textbf{Encrypted One-Class Authentication Validation}
+
+This study provides the first empirical validation of Deep SVDD distance-based anomaly detection executed over CKKS-encrypted, Johnson--Lindenstrauss-projected multimodal biometric templates (keystroke + mouse dynamics), demonstrating the feasibility of privacy-preserving one-class authentication in resource-constrained environments.
+
+\end{enumerate}
+
+
+
+\subsubsection{Gap Definition} 
+
+\paragraph{}There is currently no unified framework that utilizes \textbf{Orthogonal Random Projections (JL Lemma)} to compress the combined feature space of both Keystroke and Mouse Dynamics for lightweight processing, while simultaneously preserving privacy using \textbf{Homomorphic Encryption}. Unlike Kim et al. (2025), which applies Deep SVDD to unencrypted mobile data, this study aims to bridge the gap by creating a fast, \textit{cryptographically secure}, multimodal authentication system for desktop environments.
 
 % Based on your literature review, clearly state what is missing.
 % This justifies why your specific research is necessary.

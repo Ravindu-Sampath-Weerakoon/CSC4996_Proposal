@@ -1,8 +1,9 @@
-\contentsline {equations}{\numberline {1}False Acceptance Rate (FAR)}{16}{equation.1}%
-\contentsline {equations}{\numberline {2}False Rejection Rate (FRR)}{17}{equation.2}%
-\contentsline {equations}{\numberline {3}Equal Error Rate (EER) Condition}{17}{equation.3}%
-\contentsline {equations}{\numberline {4}System Inference Latency Model}{17}{equation.4}%
-\contentsline {equations}{\numberline {5}Encryption Overhead Ratio}{17}{equation.5}%
-\contentsline {equations}{\numberline {6}Adversarial Advantage (Indistinguishability)}{17}{equation.6}%
-\contentsline {equations}{\numberline {7}Reconstruction Error (MSE) for Privacy}{18}{equation.7}%
-\contentsline {equations}{\numberline {8}Mutual Information (Information Leakage)}{18}{equation.8}%
+\contentsline {equations}{\numberline {0}JL Lemma Guarantee}{5}{paragraph*.7}%
+\contentsline {equations}{\numberline {1}False Acceptance Rate (FAR)}{19}{equation.1}%
+\contentsline {equations}{\numberline {2}False Rejection Rate (FRR)}{20}{equation.2}%
+\contentsline {equations}{\numberline {3}Equal Error Rate (EER) Condition}{20}{equation.3}%
+\contentsline {equations}{\numberline {4}System Inference Latency Model}{20}{equation.4}%
+\contentsline {equations}{\numberline {5}Encryption Overhead Ratio}{20}{equation.5}%
+\contentsline {equations}{\numberline {6}Adversarial Advantage (Indistinguishability)}{20}{equation.6}%
+\contentsline {equations}{\numberline {7}Reconstruction Error (MSE) for Privacy}{21}{equation.7}%
+\contentsline {equations}{\numberline {8}Mutual Information (Information Leakage)}{21}{equation.8}%

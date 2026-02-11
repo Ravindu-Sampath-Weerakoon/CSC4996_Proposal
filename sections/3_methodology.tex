@@ -36,6 +36,61 @@
 \item \textbf{Anomaly Detection (Deep SVDD):} The encrypted feature vectors are fed into a Deep Support Vector Data Description (Deep SVDD) model. This model learns a compact hypersphere boundary encapsulating the legitimate user's ``normal'' behavior. During the verification phase, the system calculates the distance between the encrypted input and the hypersphere center; any input falling outside this learned radius is flagged as an anomaly (potential impostor) while the data remains mathematically indistinguishable from random noise.
 \end{enumerate}
 
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1.2]
+        % --- Define Styles ---
+        \tikzstyle{genuine}=[circle, fill=blue!70, inner sep=1.5pt]
+        \tikzstyle{imposter}=[regular polygon, regular polygon sides=3, fill=red!70, inner sep=1.2pt, rotate=0]
+
+        % --- The Hypersphere (Decision Boundary) ---
+        \draw[thick, blue!80!black, fill=blue!5] (0,0) circle (2.5cm);
+        \node[blue!80!black] at (0, 2.7) {\textbf{Learned Boundary (Hypersphere)}};
+
+        % --- Center Point ---
+        \fill[black] (0,0) circle (2pt) node[below right] {Center $c$};
+
+        % --- Radius Arrow ---
+        \draw[->, thick, black] (0,0) -- (1.76, 1.76) node[midway, above, sloped] {Radius $R$};
+
+        % --- Genuine User Data (Inside) ---
+        % Randomly distributed blue dots near the center
+        \foreach \x/\y in {
+            0.2/0.5, -0.3/0.8, 0.8/-0.2, -0.5/-0.5, 1.2/0.3,
+            -1.0/0.4, 0.1/-1.2, 0.5/1.1, -0.8/-0.8, 1.5/-0.5,
+            -0.2/1.5, 0.9/0.9, -1.2/-0.2, 0.4/-0.4, -0.1/0.1,
+            0.6/-0.9, -0.6/0.6, 1.1/1.1, -1.4/0.5, 0.0/-1.5
+        } {
+            \node[genuine] at (\x, \y) {};
+        }
+        % Label for Genuine
+        \node[blue!80!black, align=center] at (0, -0.5) {\small Genuine User\\ \small (Normal)};
+
+        % --- Imposter Data (Outside) ---
+        % Randomly distributed red triangles outside the circle
+        \foreach \x/\y in {
+            3.0/0.5, -3.2/1.2, 2.8/-2.0, -2.5/-2.5, 0.0/3.2,
+            -3.5/0.0, 3.2/-0.5, 1.5/3.0, -1.0/-3.2, 2.2/2.2,
+            -2.8/1.5, 3.1/-1.5, -2.0/2.8, 1.0/-3.0, -0.5/3.5
+        } {
+            \node[imposter] at (\x, \y) {};
+        }
+        % Label for Imposter
+        \node[red!80!black, align=center] at (3.5, 0) {\small Imposter\\ \small (Anomaly)};
+        \draw[->, red, thin] (3.0, 0.2) -- (2.6, 0.1); % Small pointer
+
+        % --- Explanatory Labels ---
+        \node[align=center, anchor=north] at (0, -2.8) {
+            \textit{Objective:} Minimize $R^2 + \frac{1}{\nu} \sum \xi_i$ \\
+            \footnotesize (Enclose genuine points, reject anomalies)
+        };
+
+    \end{tikzpicture}
+    \caption{Visualizing the Deep SVDD Decision Boundary. The model learns a compact hypersphere of radius $R$ around center $c$ that encapsulates the majority of legitimate user data (blue dots). Any input falling outside this boundary is flagged as an anomaly (red triangles), representing a potential impostor.}
+    \label{fig:deep_svdd_concept}
+\end{figure}
+
+
 \subsubsection{Architectural Design Mode I: Cryptographic Privacy (High-Security)}
 \textit{Illustrated in Figure 1.} This mode is designed for high-risk transaction scenarios, such as banking login or authorizing payments. It utilizes \textbf{Leveled Homomorphic Encryption (CKKS)} to perform anomaly detection inference entirely within the encrypted domain.
 
@@ -297,11 +352,67 @@ The performance of the proposed privacy-preserving authentication framework will
 
 \subsubsection{Experimental Design}
 The validation process will follow a \textbf{$k$-fold Cross-Validation} ($k=10$) protocol to ensure statistical reliability. The dataset will be partitioned into:
+
+
+\begin{figure}[H]
+    \centering
+    % Reduced width to 80% of text width
+    \resizebox{0.8\textwidth}{!}{%
+    \begin{tikzpicture}[scale=0.75, font=\small]
+
+    % --- Define Colors ---
+    \definecolor{trainBlue}{RGB}{200, 220, 255}
+    \definecolor{valGreen}{RGB}{200, 255, 200}
+    \definecolor{testRed}{RGB}{255, 200, 200}
+
+    % --- DRAW BLOCKS (Fold 1) ---
+    \foreach \i in {1,...,10} {
+        \ifnum \i < 7
+            \def\col{trainBlue} 
+        \else
+            \ifnum \i < 9
+                \def\col{valGreen}
+            \else
+                \def\col{testRed}
+            \fi
+        \fi
+        \draw[fill=\col, thick] (\i-1, 0) rectangle (\i, 1);
+        \node at (\i-0.5, 0.5) {\textbf{\i}};
+    }
+
+    % --- BRACE LABELS (Moved closer) ---
+    \draw[decorate, decoration={brace, amplitude=4pt, mirror}, thick] (0.1, -0.2) -- (5.9, -0.2) 
+        node[midway, below=4pt, align=center] {\textbf{Training} \\ (60\%)};
+    
+    \draw[decorate, decoration={brace, amplitude=4pt, mirror}, thick] (6.1, -0.2) -- (7.9, -0.2) 
+        node[midway, below=4pt, align=center] {\textbf{Val} \\ (20\%)};
+
+    \draw[decorate, decoration={brace, amplitude=4pt, mirror}, thick] (8.1, -0.2) -- (9.9, -0.2) 
+        node[midway, below=4pt, align=center] {\textbf{Test} \\ (20\%)};
+
+    % --- ROTATION ARROW (Made flatter) ---
+    \draw[->, thick, dashed, orange] (9.5, 1.2) to[out=150, in=30] (0.5, 1.2);
+    \node[above, text=orange!80!black, scale=0.9] at (5, 1.6) {\textit{k-Fold Rotation}};
+
+    % --- LEGEND (Compact & Centered) ---
+    \begin{scope}[yshift=-3.5cm, xshift=0.5cm]
+        \draw[fill=trainBlue] (0,0) rectangle (0.4,0.4) node[right=0.2cm, align=left, scale=0.9] {Model\\Learning};
+        \draw[fill=valGreen] (3.0,0) rectangle (3.4,0.4) node[right=0.2cm, align=left, scale=0.9] {Hyperparameter\\Tuning};
+        \draw[fill=testRed] (7.0,0) rectangle (7.4,0.4) node[right=0.2cm, align=left, scale=0.9] {Final\\Evaluation};
+    \end{scope}
+
+    \end{tikzpicture}
+    }
+    \caption{Experimental Data Partitioning Strategy. The dataset is divided into 10 folds with a 60/20/20 split for Training, Validation, and Testing. Assignments rotate cyclically.}
+    \label{fig:k_fold_split}
+\end{figure}
+
 \begin{itemize}
     \item \textbf{Training Set (60\%):} Used to train the Deep SVDD model to learn the user's normal behavioral boundary.
     \item \textbf{Validation Set (20\%):} Used for hyperparameter tuning (e.g., LSTM layer size, JL projection dimension $k$).
     \item \textbf{Testing Set (20\%):} Used to evaluate the final performance on unseen data.
 \end{itemize}
+
 To simulate real-world attacks, \textbf{Zero-Effort Impostor} testing will be conducted, where every other user in the dataset acts as an impostor against the target user.
 
 \subsubsection{Biometric Performance Metrics}

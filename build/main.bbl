@@ -46,7 +46,7 @@
       \field{labeltitlesource}{title}
       \field{journaltitle}{Mehran University Research Journal of Engineering and Technology}
       \field{number}{1}
-      \field{title}{Keystroke Dynamics Based Technique to Enhance the Security in Smart Devices}
+      \field{title}{Keystroke dynamics based technique to enhance the security in smart devices}
       \field{volume}{40}
       \field{year}{2021}
       \field{pages}{123\bibrangedash 133}
@@ -54,59 +54,64 @@
     \endentry
     \entry{kiyani2020continuous}{article}{}{}
       \name{author}{5}{}{%
-        {{hash=02c95d60e5e79d023b4b35d6be30b603}{%
+        {{hash=644d9a44bc2d8bb9f9cf16e1989d4a6a}{%
            family={Kiyani},
            familyi={K\bibinitperiod},
-           given={A.\bibnamedelimi T.},
+           given={Asim\bibnamedelima T},
            giveni={A\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
-        {{hash=1a33f04c8929f33ca0b03f48fee5692a}{%
+        {{hash=131dca55f7934070929b0cafe7c288c5}{%
            family={Lasebae},
            familyi={L\bibinitperiod},
-           given={A.},
+           given={Aboubaker},
            giveni={A\bibinitperiod}}}%
-        {{hash=0e1d4cb22bac7f79d21aa6f12bc00bb3}{%
+        {{hash=b75f5bf91b5ea9dfc11e9b48d6063481}{%
            family={Ali},
            familyi={A\bibinitperiod},
-           given={K.},
+           given={Kamran},
            giveni={K\bibinitperiod}}}%
-        {{hash=778d0bdb09e476b822ba571b05627258}{%
+        {{hash=72635aaa0d75cd01a60515d7d46ab021}{%
            family={Rehman},
            familyi={R\bibinitperiod},
-           given={M.\bibnamedelimi U.},
+           given={Masood\bibnamedelima U},
            giveni={M\bibinitperiod\bibinitdelim U\bibinitperiod}}}%
         {{hash=afc5fbd58d947eb688f042948d291046}{%
            family={Haq},
            familyi={H\bibinitperiod},
-           given={B.},
+           given={B},
            giveni={B\bibinitperiod}}}%
       }
       \list{publisher}{1}{%
         {IEEE}%
       }
-      \strng{namehash}{0f22bd778479ac2fbc1d2bc3ec8fc7f4}
-      \strng{fullhash}{cf57f53e25644db2990d996f740802ea}
-      \strng{fullhashraw}{cf57f53e25644db2990d996f740802ea}
-      \strng{bibnamehash}{cf57f53e25644db2990d996f740802ea}
-      \strng{authorbibnamehash}{cf57f53e25644db2990d996f740802ea}
-      \strng{authornamehash}{0f22bd778479ac2fbc1d2bc3ec8fc7f4}
-      \strng{authorfullhash}{cf57f53e25644db2990d996f740802ea}
-      \strng{authorfullhashraw}{cf57f53e25644db2990d996f740802ea}
+      \strng{namehash}{4901ffead7b204b6b1d5bbf08647ff5d}
+      \strng{fullhash}{4a4d39e142e854926e8fe4cc35f88628}
+      \strng{fullhashraw}{4a4d39e142e854926e8fe4cc35f88628}
+      \strng{bibnamehash}{4a4d39e142e854926e8fe4cc35f88628}
+      \strng{authorbibnamehash}{4a4d39e142e854926e8fe4cc35f88628}
+      \strng{authornamehash}{4901ffead7b204b6b1d5bbf08647ff5d}
+      \strng{authorfullhash}{4a4d39e142e854926e8fe4cc35f88628}
+      \strng{authorfullhashraw}{4a4d39e142e854926e8fe4cc35f88628}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{IEEE Access}
-      \field{title}{Continuous User Authentication Featuring Keystroke Dynamics Based on Robust Recurrent Confidence Model and Ensemble Learning Approach}
+      \field{title}{Continuous user authentication featuring keystroke dynamics based on robust recurrent confidence model and ensemble learning approach}
       \field{volume}{8}
       \field{year}{2020}
       \field{pages}{156177\bibrangedash 156189}
       \range{pages}{13}
     \endentry
     \entry{rahman2021scalable}{article}{}{}
-      \name{author}{2}{}{%
+      \name{author}{3}{}{%
         {{hash=7f4d4de3640c56f6bb20fb1e0f2782f1}{%
            family={Rahman},
            familyi={R\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=0c04baab178f5f4c48805828af7fc2b6}{%
+           family={Islam},
+           familyi={I\bibinitperiod},
            given={M.},
            giveni={M\bibinitperiod}}}%
         {{hash=38026ba4ee6b102b47bf3ffb41325c8f}{%
@@ -115,24 +120,21 @@
            prefix={et},
            prefixi={e\bibinitperiod}}}%
       }
-      \list{publisher}{1}{%
-        {MDPI}%
-      }
-      \strng{namehash}{5193fe2c667deafb1973420556bc3283}
-      \strng{fullhash}{5193fe2c667deafb1973420556bc3283}
-      \strng{fullhashraw}{5193fe2c667deafb1973420556bc3283}
-      \strng{bibnamehash}{5193fe2c667deafb1973420556bc3283}
-      \strng{authorbibnamehash}{5193fe2c667deafb1973420556bc3283}
-      \strng{authornamehash}{5193fe2c667deafb1973420556bc3283}
-      \strng{authorfullhash}{5193fe2c667deafb1973420556bc3283}
-      \strng{authorfullhashraw}{5193fe2c667deafb1973420556bc3283}
+      \strng{namehash}{2486f7f0b9a3b2c10024586005f33c5e}
+      \strng{fullhash}{1a955fedc3160c43dcf9ee92f77e8800}
+      \strng{fullhashraw}{1a955fedc3160c43dcf9ee92f77e8800}
+      \strng{bibnamehash}{1a955fedc3160c43dcf9ee92f77e8800}
+      \strng{authorbibnamehash}{1a955fedc3160c43dcf9ee92f77e8800}
+      \strng{authornamehash}{2486f7f0b9a3b2c10024586005f33c5e}
+      \strng{authorfullhash}{1a955fedc3160c43dcf9ee92f77e8800}
+      \strng{authorfullhashraw}{1a955fedc3160c43dcf9ee92f77e8800}
       \field{sortinit}{3}
       \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Sensors}
       \field{number}{14}
-      \field{title}{Scalable Behavioral Authentication for Mobile Devices}
+      \field{title}{Scalable behavioral authentication for mobile devices}
       \field{volume}{21}
       \field{year}{2021}
       \field{pages}{4890}
@@ -169,7 +171,6 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{arXiv preprint arXiv:2405.01080}
-      \field{note}{Accessed via arXiv}
       \field{title}{KDPrint: Passive Authentication Using Keystroke Dynamics-to-Image Encoding via Standardization}
       \field{year}{2024}
     \endentry
@@ -197,7 +198,7 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{European Convention on Security and Detection}
-      \field{title}{Continuous Authentication by Analysis of Keyboard Typing Characteristics}
+      \field{title}{Continuous authentication by analysis of keyboard typing characteristics}
       \field{year}{1995}
       \field{pages}{111\bibrangedash 114}
       \range{pages}{4}
@@ -212,11 +213,8 @@
         {{hash=965642065f2b3bc3ffcbcb6a2dea0f92}{%
            family={Rubin},
            familyi={R\bibinitperiod},
-           given={Aviel\bibnamedelima D.},
+           given={Aviel\bibnamedelima D},
            giveni={A\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
-      }
-      \list{organization}{1}{%
-        {ACM}%
       }
       \strng{namehash}{756b64df7df0ac247459cdb9466e3e18}
       \strng{fullhash}{756b64df7df0ac247459cdb9466e3e18}
@@ -231,7 +229,7 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Proceedings of the 6th ACM Conference on Computer and Communications Security (CCS)}
-      \field{title}{Password Hardening Based on Keystroke Dynamics}
+      \field{title}{Password hardening based on keystroke dynamics}
       \field{year}{1999}
       \field{pages}{73\bibrangedash 82}
       \range{pages}{10}
@@ -250,7 +248,7 @@
            giveni={J\bibinitperiod}}}%
       }
       \list{publisher}{1}{%
-        {Contemporary Mathematics, American Mathematical Society}%
+        {American Mathematical Society}%
       }
       \strng{namehash}{f25336c78118bd992dfa8522eb89904d}
       \strng{fullhash}{f25336c78118bd992dfa8522eb89904d}
@@ -295,7 +293,7 @@
         {{hash=bd8bba2630e23a75ca49955d86a02888}{%
            family={Siddiqui},
            familyi={S\bibinitperiod},
-           given={Shoaib\bibnamedelima A.},
+           given={Shoaib\bibnamedelima A},
            giveni={S\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
         {{hash=d122a2a87d21da4007f460564975e967}{%
            family={Binder},
@@ -313,6 +311,9 @@
            given={Marius},
            giveni={M\bibinitperiod}}}%
       }
+      \list{organization}{1}{%
+        {PMLR}%
+      }
       \strng{namehash}{f49556d617d4a5ffe2baa6d71026cde2}
       \strng{fullhash}{4417d8ac0d3cec728bb95beefe7efb6f}
       \strng{fullhashraw}{4417d8ac0d3cec728bb95beefe7efb6f}
@@ -325,8 +326,8 @@
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{booktitle}{Proceedings of the 35th International Conference on Machine Learning (ICML)}
-      \field{title}{Deep One-Class Classification}
+      \field{booktitle}{International conference on machine learning}
+      \field{title}{Deep one-class classification}
       \field{year}{2018}
       \field{pages}{4393\bibrangedash 4402}
       \range{pages}{10}

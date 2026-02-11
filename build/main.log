@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.28)  12 FEB 2026 00:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.28)  12 FEB 2026 01:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -815,40 +815,51 @@ File: tikzlibrarypositioning.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 File: tikzlibraryfit.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ) (C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarycalc.code.tex
 File: tikzlibrarycalc.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarydecorations.pathreplacing.code.tex (C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarydecorations.code.tex (C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmoduledecorations.code.tex
+\pgfdecoratedcompleteddistance=\dimen287
+\pgfdecoratedremainingdistance=\dimen288
+\pgfdecoratedinputsegmentcompleteddistance=\dimen289
+\pgfdecoratedinputsegmentremainingdistance=\dimen290
+\pgf@decorate@distancetomove=\dimen291
+\pgf@decorate@repeatstate=\count463
+\pgfdecorationsegmentamplitude=\dimen292
+\pgfdecorationsegmentlength=\dimen293
 )
-\c@equations=\count463
+\tikz@lib@dec@box=\box89
+) (C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/decorations\pgflibrarydecorations.pathreplacing.code.tex)) (C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarydecorations.pathmorphing.code.tex (C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/decorations\pgflibrarydecorations.pathmorphing.code.tex))
+\c@equations=\count464
 \cftbeforeequationsskip=\skip110
 \cftequationsindent=\skip111
 \cftequationsnumwidth=\skip112
-\c@equdepth=\count464
+\c@equdepth=\count465
 \cftbeforeequtitleskip=\skip113
 \cftafterequtitleskip=\skip114
-\@quotelevel=\count465
-\@quotereset=\count466
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 75.
+\@quotelevel=\count466
+\@quotereset=\count467
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 80.
  (C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) (d:\My University\CSC4996 Research\Research Proposal\CSC4996_Proposal\build\main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -884,23 +895,23 @@ LaTeX Font Info:    ... okay on input line 75.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring OFF on input line 75.
+Package hyperref Info: Link coloring OFF on input line 80.
 (d:\My University\CSC4996 Research\Research Proposal\CSC4996_Proposal\build\main.out) (d:\My University\CSC4996 Research\Research Proposal\CSC4996_Proposal\build\main.out)
 \@outlinefile=\write5
 \openout5 = `main.out'.
 
  (C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count467
-\scratchdimen=\dimen287
-\scratchbox=\box89
-\nofMPsegments=\count468
-\nofMParguments=\count469
+\scratchcounter=\count468
+\scratchdimen=\dimen294
+\scratchbox=\box90
+\nofMPsegments=\count469
+\nofMParguments=\count470
 \everyMPshowfont=\toks42
-\MPscratchCnt=\count470
-\MPscratchDim=\dimen288
-\MPnumerator=\count471
-\makeMPintoPDFobject=\count472
+\MPscratchCnt=\count471
+\MPscratchDim=\dimen295
+\MPnumerator=\count472
+\makeMPintoPDFobject=\count473
 \everyMPtoPDFconversion=\toks43
 ) (C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -921,8 +932,8 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'main.bbl' found.
  (d:\My University\CSC4996 Research\Research Proposal\CSC4996_Proposal\build\main.bbl)
-Package biblatex Info: Reference section=0 on input line 75.
-Package biblatex Info: Reference segment=0 on input line 75.
+Package biblatex Info: Reference section=0 on input line 80.
+Package biblatex Info: Reference segment=0 on input line 80.
  (titlepage.tex [1
 
 {C:/Users/Ravin/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}]) (frontmatter/preface.tex [2
@@ -960,12 +971,17 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <6> on input line 1.
 
-Overfull \hbox (4.58531pt too wide) in paragraph at lines 1--1
+Overfull \hbox (4.8775pt too wide) in paragraph at lines 2--2
+ [][] [][]\OT1/lmr/m/n/12 Conceptual Vi-su-al-iza-tion of the Johnson-Lindenstrauss (JL) Lemma. 
+ []
+
+
+Overfull \hbox (4.58531pt too wide) in paragraph at lines 4--4
  [][] [][]\OT1/lmr/m/n/12 System Ar-chi-tec-ture of the Pro-posed Lightweight Privacy-Preserving 
  []
 
 
-Overfull \hbox (14.7583pt too wide) in paragraph at lines 2--2
+Overfull \hbox (14.7583pt too wide) in paragraph at lines 5--5
  [][] [][]\OT1/lmr/m/n/12 Proposed Lightweight Ar-chi-tec-ture: Us-ing JL Pro-jec-tions as a Privacy- 
  []
 
@@ -975,7 +991,7 @@ Overfull \hbox (14.7583pt too wide) in paragraph at lines 2--2
 
  [5
 
-]) (frontmatter/listoftables.tex (d:\My University\CSC4996 Research\Research Proposal\CSC4996_Proposal\build\main.lot)
+{C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}]) (frontmatter/listoftables.tex (d:\My University\CSC4996 Research\Research Proposal\CSC4996_Proposal\build\main.lot)
 \tf@lot=\write8
 \openout8 = `main.lot'.
 
@@ -990,6 +1006,9 @@ Overfull \hbox (14.7583pt too wide) in paragraph at lines 2--2
 ]) (frontmatter/abbreviations.tex) [8
 
 ] (sections/1_introduction.tex
+Package acronym Info: Label `acro:PINs' newly defined as it shall be overridden
+although it is yet undefined on input line 5.
+
 Overfull \hbox (11.07959pt too wide) in paragraph at lines 12--13
 \OT1/lmr/m/n/12 resource-constrained mo-bile de-vices. While be-hav-ioral biometrics---such as keystroke
  []
@@ -1004,156 +1023,189 @@ Overfull \hbox (0.7063pt too wide) in paragraph at lines 32--33
 \OT1/lmr/m/n/12 frame-work for con-tin-u-ous be-hav-ioral au-then-ti-ca-tion on mo-bile de-vices. This frame-
  []
 
-[2] [3{C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}]) (sections/2_background.tex [4]
-Underfull \hbox (badness 10000) in paragraph at lines 52--52
+[2] [3]) (sections/2_background.tex
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10.95> on input line 80.
+ [4{C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}
+pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.96 \end{itemize}
+                  ] [5
+pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.189 
+      ]
+Underfull \hbox (badness 10000) in paragraph at lines 208--208
 []\OT1/lmr/bx/n/12 Reference &
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 54--54
+Underfull \hbox (badness 10000) in paragraph at lines 210--210
 []\OT1/lmr/m/n/12 Gaines et al.
  []
 
 
-Underfull \hbox (badness 2096) in paragraph at lines 56--57
+Underfull \hbox (badness 2096) in paragraph at lines 212--213
 []\OT1/lmr/m/n/12 Relied on static, fixed-text
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--59
+Underfull \hbox (badness 10000) in paragraph at lines 215--215
 []\OT1/lmr/bx/n/12 Multimodal Fu-sion:
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--59
+Underfull \hbox (badness 10000) in paragraph at lines 215--215
 \OT1/lmr/m/n/12 Proved that com-bin-ing
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 62--62
+Underfull \hbox (badness 10000) in paragraph at lines 218--218
 []\OT1/lmr/m/n/12 Kim et al.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 66--66
+Underfull \hbox (badness 10000) in paragraph at lines 222--222
 []\OT1/lmr/bx/n/12 Kim et al.
  []
 
 
-Underfull \hbox (badness 2126) in paragraph at lines 67--67
+Underfull \hbox (badness 2126) in paragraph at lines 223--223
 []\OT1/lmr/bx/n/12 Deep SVDD Val-i-da-tion:
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 67--67
+Underfull \hbox (badness 10000) in paragraph at lines 223--223
 \OT1/lmr/m/n/12 Demon-strated that Deep
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 67--67
+Underfull \hbox (badness 10000) in paragraph at lines 223--223
 \OT1/lmr/m/n/12 SVDD out-per-forms tra-di-
  []
 
 
-Underfull \hbox (badness 4467) in paragraph at lines 68--69
+Underfull \hbox (badness 4467) in paragraph at lines 224--225
 []\OT1/lmr/m/n/12 Restricted to \OT1/lmr/m/it/12 mo-bile PINs
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 68--69
+Underfull \hbox (badness 10000) in paragraph at lines 224--225
 \OT1/lmr/m/n/12 (touch in-ter-ac-tions) and
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 68--69
+Underfull \hbox (badness 10000) in paragraph at lines 224--225
 \OT1/lmr/m/n/12 tion (HE) or mul-ti-modal
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 70--70
+Underfull \hbox (badness 10000) in paragraph at lines 226--226
 []\OT1/lmr/m/n/12 Kiyani et al.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 71--71
+Underfull \hbox (badness 10000) in paragraph at lines 227--227
 []\OT1/lmr/bx/n/12 Continuous Au-then-ti-ca-
  []
 
 
-Underfull \hbox (badness 4242) in paragraph at lines 71--71
+Underfull \hbox (badness 4242) in paragraph at lines 227--227
 \OT1/lmr/m/n/12 Re-cur-rent Neu-ral Net-works
  []
 
 
-Underfull \hbox (badness 3078) in paragraph at lines 71--71
+Underfull \hbox (badness 3078) in paragraph at lines 227--227
 \OT1/lmr/m/n/12 (RNNs) for ver-i-fy-ing users
  []
 
 
-Underfull \hbox (badness 1221) in paragraph at lines 72--73
+Underfull \hbox (badness 1221) in paragraph at lines 228--229
 \OT1/lmr/m/n/12 to add en-cryp-tion to these
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 74--74
+Underfull \hbox (badness 10000) in paragraph at lines 230--230
 []\OT1/lmr/m/n/12 Islam et al.
  []
 
 
-Overfull \hbox (10.98465pt too wide) in paragraph at lines 50--79
+Overfull \hbox (10.98465pt too wide) in paragraph at lines 206--235
  [][] 
  []
 
-[5] [6
+[6] [7
 pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.83 
-     ]
-Overfull \hbox (19.89804pt too wide) in paragraph at lines 89--90
+l.239 
+      ]
+Overfull \hbox (19.89804pt too wide) in paragraph at lines 245--246
 [] [][] \OT1/lmr/m/n/12 Re-cent stud-ies have shifted to-ward Mul-ti-modal Au-then-ti-ca-tion, com-bin-ing keystroke
  []
 
-[7] [8] [9] [10]) (sections/3_methodology.tex
+[8] [9]
+Overfull \hbox (1.52875pt too wide) in paragraph at lines 282--283
+\OT1/lmr/m/n/12 lightweight pro-jected pri-vacy mode (Johnson--Lindenstrauss-based), en-abling
+ []
+
+[10]
+Overfull \hbox (27.30476pt too wide) in paragraph at lines 302--303
+\OT1/lmr/m/n/12 based anomaly de-tec-tion ex-e-cuted over CKKS-encrypted, Johnson--Lindenstrauss-
+ []
+
+[11] [12]) (sections/3_methodology.tex
 Overfull \hbox (17.14885pt too wide) in paragraph at lines 26--27
 \OT1/lmr/m/n/12 KeyUP$\OML/lmm/m/it/12 n$ $\OMS/lmsy/m/n/12 !$ \OT1/lmr/m/n/12 KeyDOWN$[]$) and *Dwell Time* (du-ra-tion of KeyDOWN$\OML/lmm/m/it/12 n$
  []
 
-[11{C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}]
-Overfull \hbox (25.18044pt too wide) in paragraph at lines 39--39
+[13]
+Overfull \hbox (25.18044pt too wide) in paragraph at lines 94--94
 |[]\OT1/lmr/bx/n/12 Architectural De-sign Mode I: Cryp-to-graphic Pri-vacy (High-Security)| 
  []
 
-[12
-pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
+[14{C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}
+pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.111 \end{itemize}
-                   ]
-Overfull \hbox (28.13239pt too wide) in paragraph at lines 117--117
+l.96 
+     ]
+Overfull \hbox (28.13239pt too wide) in paragraph at lines 172--172
 |[]\OT1/lmr/bx/n/12 Architectural De-sign Mode II: Pro-jected Pri-vacy (High-Performance)| 
  []
 
-[13
-pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
+[15
+pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.211     \item \textbf
-                       {SU-AIS BB-MAS (Behavioral Biometrics Multi-device an...] [14]
-LaTeX Font Info:    Trying to load font information for OT1+lmtt on input line 281.
- (C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmtt.fd
-File: ot1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) [15
+l.243     \item \textbf
+                       {Trade-off:} This mode achieves ultra-low latency ($<...
+pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.243     \item \textbf
+                       {Trade-off:} This mode achieves ultra-low latency ($<...] [16] [17
 pdfTeX warning (ext4): destination with the same identifier (name{table.2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.285 \end{itemize}
-                   {C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rmtt.enc}] [16]
-Overfull \hbox (7.69441pt too wide) in paragraph at lines 336--337
+l.334 
+      ]
+LaTeX Font Info:    Trying to load font information for OT1+lmtt on input line 336.
+ (C:\Users\Ravin\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmtt.fd
+File: ot1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+) [18{C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rmtt.enc}] [19
+pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.435     \end{equation}
+                        ]
+Overfull \hbox (7.69441pt too wide) in paragraph at lines 447--448
 \OT1/lmr/bx/n/12 Ho-mo-mor-phic En-cryp-tion\OT1/lmr/m/n/12 , the fol-low-ing com-pu-ta-tional met-rics will be recorded: 
  []
 
-[17]) (sections/4_results.tex
+[20]) (sections/4_results.tex
 Overfull \hbox (8.0684pt too wide) in paragraph at lines 1--1
 |[]\OT1/lmr/bx/n/16 ANTICIPATED RE-SULTS/FINAL PROD-UCTS| 
  []
@@ -1163,29 +1215,29 @@ Overfull \hbox (3.78954pt too wide) in paragraph at lines 7--8
 []\OT1/lmr/bx/n/12 Privacy-Utility Trade-off Op-ti-miza-tion: \OT1/lmr/m/n/12 The re-search ex-pects to demon-
  []
 
-[18{C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}]
+[21]
 Overfull \hbox (11.75142pt too wide) in paragraph at lines 20--21
 \OT1/lmr/m/n/12 con-tributes a novel ap-pli-ca-tion of \OT1/lmr/bx/n/12 Or-thog-o-nal Ran-dom Pro-jec-tions specif-
  []
 
-[19]
+[22]
 Overfull \hbox (5.79668pt too wide) in paragraph at lines 44--45
 []\OT1/lmr/bx/n/12 Final The-sis: \OT1/lmr/m/n/12 A com-pre-hen-sive doc-u-ment de-tail-ing the math-e-mat-i-cal proofs,
  []
 
-[20]) (sections/5_project_schedule.tex) [21]
-Overfull \hbox (11.31856pt too wide) in paragraph at lines 118--118
+[23]) (sections/5_project_schedule.tex) [24]
+Overfull \hbox (11.31856pt too wide) in paragraph at lines 123--123
 []\OT1/lmr/m/n/12 Y. Kim, D. Shin, and N. Kwon, ``Kd-print: Pas-sive au-then-ti-ca-tion us-ing keystroke
  []
 
 
-Overfull \hbox (31.94298pt too wide) in paragraph at lines 118--118
+Overfull \hbox (31.94298pt too wide) in paragraph at lines 123--123
 \OT1/lmr/m/n/12 dynamics-to-image en-cod-ing via stan-dard-iza-tion,'' \OT1/lmr/m/it/12 arXiv preprint arXiv:2405.01080\OT1/lmr/m/n/12 ,
  []
 
-(sections/appendices.tex [22
+(sections/appendices.tex [25
 
-]) [23
+]) [26
 
 ] (d:\My University\CSC4996 Research\Research Proposal\CSC4996_Proposal\build\main.aux)
  ***********
@@ -1193,23 +1245,23 @@ LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-29>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 485410EAD9C30A9A17EF8684BEE50AAC;10054.
+(rerunfilecheck)             Checksum: 70561DEB4E6F13A1730DE4517A2A36BE;10422.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 31787 strings out of 467871
- 630833 string characters out of 5418376
- 1474808 words of memory out of 5000000
- 59989 multiletter control sequences out of 15000+600000
- 704480 words of font info for 79 fonts, out of 8000000 for 9000
+ 32642 strings out of 467871
+ 655628 string characters out of 5418376
+ 1495965 words of memory out of 5000000
+ 60810 multiletter control sequences out of 15000+600000
+ 705142 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,10n,104p,971b,1229s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,12n,104p,943b,1229s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi7.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/Ravin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt12.pfb>
-Output written on "d:\My University\CSC4996 Research\Research Proposal\CSC4996_Proposal\build\main.pdf" (31 pages, 428917 bytes).
+Output written on "d:\My University\CSC4996 Research\Research Proposal\CSC4996_Proposal\build\main.pdf" (34 pages, 461991 bytes).
 PDF statistics:
- 591 PDF objects out of 1000 (max. 8388607)
- 131 named destinations out of 1000 (max. 500000)
- 413 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 651 PDF objects out of 1000 (max. 8388607)
+ 146 named destinations out of 1000 (max. 500000)
+ 429 words of extra memory for PDF output out of 10000 (max. 10000000)
 
