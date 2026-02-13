@@ -1,6 +1,102 @@
-% --- sections/5_project_schedule.tex ---
-
-% --- Section 5.0: Project Schedule ---
-% [PROJECT SCHEDULE] ensures it appears uppercase in the Table of Contents
 \section[PROJECT SCHEDULE]{Project Schedule}
+
+\subsection{Phase I: Proposal and Planning (January -- February 2026)}
+
+\textbf{Objectives:}
+\begin{itemize}
+    \item Finalize system architecture and refine research scope.
+    \item Consolidate focused literature review.
+    \item Prepare dataset acquisition and preprocessing design.
+\end{itemize}
+
+\textbf{Milestones:}
+\begin{itemize}
+    \item Assignment of Supervisor -- January 2, 2026
+    \item Submission of Research Proposal -- February 15, 2026
+    \item Proposal Defense Presentation -- February 25, 2026
+\end{itemize}
+
+\textbf{Deliverable:} Approved and refined research proposal.
+
+\subsection{Phase II: Core Framework Development (Mode II) (March -- May 2026)}
+
+This phase focuses exclusively on implementing the lightweight projected 
+privacy framework without cryptographic integration.
+
+\textbf{Objectives:}
+\begin{itemize}
+    \item Implement multimodal feature extraction (Keystroke + Mouse).
+    \item Develop sliding window fusion mechanism.
+    \item Implement Johnson--Lindenstrauss (JL) projection layer.
+    \item Train Deep SVDD model in plaintext.
+    \item Evaluate baseline biometric performance (EER, FAR, FRR).
+\end{itemize}
+
+\textbf{Milestones:}
+\begin{itemize}
+    \item Submission of Introduction and Literature Review -- May 17, 2026
+    \item Mid Review Presentation -- May 27, 2026
+\end{itemize}
+
+\textbf{Deliverable:} Functional Mode II prototype with preliminary results.
+
+\subsection{Phase III: Performance Optimization and Validation (June -- July 2026)}
+
+\textbf{Objectives:}
+\begin{itemize}
+    \item Optimize projection dimension $k$.
+    \item Measure CPU-based inference latency.
+    \item Conduct $k$-fold cross-validation.
+    \item Perform zero-effort impostor testing.
+    \item Compare projected vs non-projected baseline models.
+\end{itemize}
+
+\textbf{Deliverable:} Validated lightweight framework with 
+accuracy--latency trade-off analysis.
+
+\subsection{Phase IV: Cryptographic Integration (Mode I -- Limited Scope) (August 2026)}
+
+To ensure feasibility, the cryptographic module is implemented as a 
+controlled proof-of-concept with reduced scope.
+
+\textbf{Scope Limitation Strategy:}
+\begin{itemize}
+    \item Encrypt only JL-projected embeddings.
+    \item Perform encrypted squared Euclidean distance computation only.
+    \item Deep SVDD training remains in plaintext.
+    \item No full encrypted neural network training.
+\end{itemize}
+
+\textbf{Milestone:}
+\begin{itemize}
+    \item Submission of Methodology Chapter -- August 9, 2026
+\end{itemize}
+
+\textbf{Deliverable:} Proof-of-concept encrypted inference with 
+encryption overhead analysis.
+
+\subsection{Phase V: Security Evaluation and Finalization (September -- October 2026)}
+
+\textbf{Objectives:}
+\begin{itemize}
+    \item Conduct reconstruction attack evaluation (JL mode).
+    \item Measure mutual information leakage.
+    \item Perform final privacy--latency--accuracy comparison.
+    \item Complete thesis writing and system documentation.
+\end{itemize}
+
+\textbf{Milestones:}
+\begin{itemize}
+    \item Submission of Final Project Report -- September 27, 2026
+    \item Final Presentation and Demonstration -- October 19--20, 2026
+\end{itemize}
+
+\textbf{Final Deliverables:}
+\begin{itemize}
+    \item Complete research thesis.
+    \item Functional Mode II system.
+    \item Mode I encrypted inference proof-of-concept.
+\end{itemize}
+
+
 

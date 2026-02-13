@@ -600,8 +600,8 @@
       \strng{authorfullhash}{4e8b68a1af84992328d02c71a1a02c6b}
       \strng{authorfullhashraw}{4e8b68a1af84992328d02c71a1a02c6b}
       \field{extraname}{2}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Computers \& Security}
@@ -629,8 +629,8 @@
       \strng{authornamehash}{503e533c3bbeddd74b9ab12ba71fc713}
       \strng{authorfullhash}{503e533c3bbeddd74b9ab12ba71fc713}
       \strng{authorfullhashraw}{503e533c3bbeddd74b9ab12ba71fc713}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{IEEE Dataport}

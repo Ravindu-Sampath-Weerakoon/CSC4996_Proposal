@@ -122,13 +122,16 @@
 
 
 \subsubsection{Architectural Design Mode I: Cryptographic Privacy (High-Security)}
-\textit{Illustrated in Figure 1.} This mode is designed for high-risk transaction scenarios, such as banking login or authorizing payments. It utilizes \textbf{\ac{LHE} (\ac{CKKS})} \cite{cheon2017homomorphic} to perform anomaly detection inference entirely within the encrypted domain.
+\textit{Illustrated in Figure 1.} This mode is designed for \textbf{sporadic, high-risk transaction scenarios}, such as banking logins or authorizing payments. It utilizes \textbf{\ac{LHE} (\ac{CKKS})} \cite{cheon2017homomorphic} to perform anomaly detection inference entirely within the encrypted domain.
 
 
 
 \begin{itemize}
-    \item \textbf{Privacy Mechanism:} The behavioral template is encrypted using standard cryptographic protocols, ensuring mathematically provable security (\ac{IND-CPA}) \cite{cheon2017homomorphic}.
-    \item \textbf{Trade-off:} While this offers the highest level of data protection, it incurs a higher computational cost, making it suitable for periodic, critical authentication rather than continuous, sub-second monitoring \cite{rahman2021scalable}.
+    \item \textbf{Privacy Mechanism:} The behavioral template is encrypted using standard cryptographic protocols, ensuring mathematically provable security (\ac{IND-CPA}) \cite{cheon2017homomorphic}. The raw biometric data is never exposed to the server.
+
+    \item \textbf{Latency Target (Interactive):} \textbf{$1.0 - 2.0$ seconds.} Since this mode is triggered only during critical decision points (not continuously), a slight processing delay is acceptable to the user in exchange for maximum security \cite{rahman2021scalable}.
+
+    \item \textbf{Trade-off:} While this offers the highest level of data protection, it incurs a significant computational cost, making it suitable for \textbf{periodic, critical authentication} rather than continuous, sub-second monitoring \cite{rahman2021scalable}.
 \end{itemize}
 
 
@@ -210,6 +213,8 @@
 \subsubsection{Architectural Design Mode II: Projected Privacy (High-Performance)}
 \textit{Illustrated in Figure 2.} This mode is designed for continuous, passive background monitoring. It removes the heavy encryption overhead and relies on the \textbf{Johnson-Lindenstrauss (JL) Projection} as a form of non-invertible compression.
 
+\paragraph{} To mitigate the 'curse of dimensionality' while maintaining template privacy, the system utilizes a JL-projection layer. A Python-based implementation of this transformation, combined with the Deep SVDD decision boundary, is provided in Appendix A. This prototype confirms that the hypersphere boundary can effectively encapsulate legitimate user data while rejecting outliers with a high degree of accuracy. \ref{App:A}.
+ 
 \begin{figure}[H]
     \centering
     % Resize the diagram to fit the text width automatically
@@ -307,6 +312,8 @@
 
 To ensure the proposed privacy-preserving framework is robust, scalable, and generalizes well to real-world scenarios, this research utilizes a \textbf{Hybrid Multi-Source Dataset} approach. Data is aggregated from five distinct, high-impact repositories, covering both fixed-text and free-text typing scenarios, as well as multimodal (Keystroke + Mouse) interactions.
 
+\paragraph{} The behavioral features selected for this study—specifically Dwell Time and Flight Time—represent high-quality biomechanical signatures. The validity of using these specific metrics to distinguish users is demonstrated in Appendix B,\ref{App:B}. where a baseline SVM classifier was tested on a sample of real-world behavioral data points
+
 \subsubsection{Primary Datasets (Multimodal \& Cross-Device)}
 The core training and fusion phases utilize two datasets that offer high-granularity sensor data.
 
@@ -321,7 +328,7 @@ The core training and fusion phases utilize two datasets that offer high-granula
     \end{itemize}
 
     \item \textbf{Edge Hill KMT \cite{edgehill2012dataset}:}
-    This dataset is critical for the multimodal fusion layer, as it captures simultaneous mouse and keyboard interactions.
+    This dataset is critical for the multimodal fusion layer, as it captures simultaneous mouse and keyboard interactions. The Touchscreen subset of this dataset will be specifically used to validate the model's performance on mobile-specific touch dynamics.
     \begin{itemize}
         \item \textbf{Source:} Edge Hill University, UK.
         \item \textbf{Scenario:} Financial form filling (names, addresses, credit card details), representing a high-security context.
@@ -397,6 +404,8 @@ All data is used in strict accordance with their respective licensing agreements
 \subsection{Evaluation and Validation}
 
 The performance of the proposed privacy-preserving authentication framework will be rigorously evaluated using a comprehensive suite of biometric and system performance metrics. The evaluation strategy is designed to quantify the trade-offs between authentication accuracy, computational latency, and privacy overhead.
+
+\paragraph{} While traditional classifiers like SVM provide a basic level of verification, they often suffer from higher False Acceptance Rates (FAR) when dealing with overlapping behavioral distributions. As shown in the baseline results in Appendix B,  \ref{App:B}the SVM achieved only 75\% accuracy on real data samples, justifying the transition to the more robust Deep SVDD framework detailed in this proposal.
 
 \subsubsection{Experimental Design}
 The validation process will follow a \textbf{$k$-fold Cross-Validation} ($k=10$) protocol to ensure statistical reliability. The dataset will be partitioned into:
@@ -492,7 +501,7 @@ The primary measure of authentication success is the system's ability to correct
 
 
 \subsubsection{System Efficiency \& Scalability Metrics}
-To validate the effectiveness of the \textbf{\ac{JL} Lemma \cite{johnson1984extensions}} and \textbf{\ac{HE}}, the following computational metrics will be recorded:
+To validate the hybrid nature of the framework, we define distinct latency targets for each architectural mode:
 
 \begin{itemize}
     \item \textbf{Inference Latency ($L_{inf}$):} The time taken to process a single authentication request.
@@ -501,14 +510,20 @@ To validate the effectiveness of the \textbf{\ac{JL} Lemma \cite{johnson1984exte
         L_{inf} = T_{proj} + T_{enc} + T_{score}
         \label{eq:latency}
     \end{equation}
-    \textit{Target:} $L_{inf} < 200$ms (Real-time threshold).
+    
+    \textbf{Target Thresholds:}
+    \begin{itemize}
+        \item \textit{Mode I (High-Security/HE):} $L_{inf} < 1.5$s (Acceptable for sporadic critical transactions).
+        \item \textit{Mode II (Continuous/JL):} $L_{inf} < 200$ms (Required for seamless background monitoring).
+    \end{itemize}
 
-    \item \textbf{Encryption Overhead Ratio ($E_{ratio}$):} The ratio of processing time in the encrypted domain versus the plaintext domain.
+    \item \textbf{Encryption Overhead Ratio ($E_{ratio}$):} This metric specifically quantifies the cost of Mode I compared to Mode II.
     \begin{equation}
-        \eqname{Homomorphic Encryption Computational Overhead Ratio}
-        E_{ratio} = \frac{T_{encrypted}}{T_{plaintext}}
+        \eqname{Homomorphic Encryption Cost Ratio}
+        E_{ratio} = \frac{T_{Mode\_I}}{T_{Mode\_II}}
         \label{eq:overhead}
     \end{equation}
+    \textit{Hypothesis:} We anticipate $E_{ratio} \gg 1$, validating the need for the lightweight Mode II for continuous tasks.
 \end{itemize}
 
 \subsubsection{Privacy and Security Evaluation}

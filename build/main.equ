@@ -2,7 +2,7 @@
 \contentsline {equations}{\numberline {2}False Rejection Rate (FRR) Calculation}{22}{equation.2}%
 \contentsline {equations}{\numberline {3}Equal Error Rate (EER) Equilibrium Point}{22}{equation.3}%
 \contentsline {equations}{\numberline {4}Total Pipeline Inference Latency}{22}{equation.4}%
-\contentsline {equations}{\numberline {5}Homomorphic Encryption Computational Overhead Ratio}{22}{equation.5}%
-\contentsline {equations}{\numberline {6}Adversarial Advantage for IND-CPA Security Proof}{22}{equation.6}%
+\contentsline {equations}{\numberline {5}Homomorphic Encryption Cost Ratio}{22}{equation.5}%
+\contentsline {equations}{\numberline {6}Adversarial Advantage for IND-CPA Security Proof}{23}{equation.6}%
 \contentsline {equations}{\numberline {7}Mean Squared Error for Template Reconstruction Resistance}{23}{equation.7}%
 \contentsline {equations}{\numberline {8}Shannon Mutual Information Leakage Between Raw and Encrypted Features}{23}{equation.8}%

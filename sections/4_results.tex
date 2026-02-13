@@ -6,7 +6,11 @@ Based on the proposed methodology involving Orthogonal Random Projections and De
 \begin{itemize}
     \item \textbf{Privacy-Utility Trade-off Optimization:} The research expects to demonstrate that projecting high-dimensional multimodal features into a lower-dimensional subspace (via the \ac{JL} Lemma \cite{johnson1984extensions}) will result in a \textbf{negligible degradation of authentication accuracy}. Specifically, we anticipate the system will maintain an \ac{EER} comparable to non-private baselines (targeting an \ac{EER} deviation of $<\pm1.5\%$) while significantly reducing the computational complexity required for \ac{HE}.
 
-    \item \textbf{Real-Time Inference Latency:} By compressing the feature vector size ($k \ll d$) before encryption using \ac{CKKS} \cite{cheon2017homomorphic}, the system is expected to achieve an inference latency of \textbf{$<200$ms} per authentication window. This result would validate the hypothesis that ``lightweight'' privacy-preserving authentication is feasible on mid-range consumer hardware (e.g., laptops with standard \acp{GPU}) without inducing noticeable input lag.
+   \item \textbf{Adaptive Inference Latency:} The system is expected to demonstrate a \textbf{dual-tier performance profile} that balances security and speed. 
+    
+    By compressing the feature vector size ($k \ll d$) via the \ac{JL} Lemma, the \textbf{Projected Privacy Mode (Mode II)} is anticipated to achieve an inference latency of \textbf{$<200$ms}, validating its feasibility for continuous background monitoring on \textbf{resource-constrained edge devices}. 
+    
+    Conversely, the \textbf{Cryptographic Mode (Mode I)} is expected to operate within \textbf{interactive latency bounds ($1.0 - 2.0$s)}, validating that high-security, homomorphically encrypted anomaly detection is viable for periodic critical transactions without requiring data to be offloaded to the cloud.
 
     \item \textbf{Robustness Against Feature Recovery:} In terms of privacy metrics, the model is expected to maximize the \textbf{Reconstruction Error (\ac{MSE})}. The study anticipates that an adversarial neural network (Inverse Decoder) will fail to reconstruct the original raw keystroke or mouse trajectories from the stored projected templates, effectively rendering the biometric data mathematically irreversible.
 

@@ -1,18 +1,313 @@
-% --- sections/appendices.tex ---
-\clearpage
+\appendix
+\section{Appendices}
 
-% --- APPENDICES (Unnumbered) ---
-% 1. Body Title: Title Case, No Number
-\section*{Appendices} 
+\subsection{Appendix A: JL Projection + Deep SVDD Prototype} \label{App:A}
+This appendix contains the Python implementation of the core framework using synthetic data to validate the anomaly detection logic and dimensionality reduction.
 
-% 2. TOC Entry: UPPERCASE
-\addcontentsline{toc}{section}{APPENDICES}
+\begin{lstlisting}[language=Python, caption=JL Projection and Deep SVDD Implementation]
+import numpy as np
+import torch
+import torch.nn as nn
+import torch.optim as optim
+from sklearn.random_projection import GaussianRandomProjection
 
-% Optional: Reset subsection numbering if you want "A.1, A.2" style
-\renewcommand{\thesubsection}{A.\arabic{subsection}}
+# ==========================================
+# 1. Settings and Data Generation
+# ==========================================
+np.random.seed(42)
+torch.manual_seed(42)
 
-\subsection*{Appendix A: Survey Form}
-% Put your survey questions or extra charts here.
+original_dim = 100     # Original feature dimension
+projected_dim = 50     # Dimension after JL projection
 
-\subsection*{Appendix B: Code Snippets}
-% Put your key algorithms or code here.
+# --- User Data (Target User) ---
+base_pattern = np.random.rand(1, original_dim)
+user_patterns = base_pattern + np.random.normal(0, 0.05, (10, original_dim))
+
+# --- Imposter Data ---
+imposter_patterns = np.random.rand(10, original_dim)
+
+# Combine all data
+all_raw_data = np.vstack((user_patterns, imposter_patterns))
+print(f"Original Data Shape: {all_raw_data.shape}")
+
+# ==========================================
+# 2. Privacy Preservation using JL Projection
+# ==========================================
+transformer = GaussianRandomProjection(
+    n_components=projected_dim,
+    random_state=42
+)
+
+all_projected_data = transformer.fit_transform(all_raw_data)
+
+print(f"Projected Data Shape: {all_projected_data.shape}")
+print("-" * 50)
+
+# ==========================================
+# 3. Train/Test Split
+# ==========================================
+# User data: first 5 for training, next 5 for testing
+X_train_np = all_projected_data[:5]
+X_test_user_np = all_projected_data[5:10]
+
+# Imposter data: used only for testing
+X_test_imposter_np = all_projected_data[10:]
+
+# Convert to PyTorch tensors
+X_train = torch.tensor(X_train_np, dtype=torch.float32)
+X_test_user = torch.tensor(X_test_user_np, dtype=torch.float32)
+X_test_imposter = torch.tensor(X_test_imposter_np, dtype=torch.float32)
+
+# Full test set
+X_test_all = torch.cat((X_test_user, X_test_imposter), dim=0)
+
+# ==========================================
+# 4. Deep SVDD Model Definition
+# ==========================================
+class DeepSVDD(nn.Module):
+    def __init__(self, input_dim):
+        super(DeepSVDD, self).__init__()
+        self.encoder = nn.Sequential(
+            nn.Linear(input_dim, 32),
+            nn.ReLU(),
+            nn.Linear(32, 16)  # Latent representation
+        )
+
+    def forward(self, x):
+        return self.encoder(x)
+
+# Initialize model and optimizer
+model = DeepSVDD(input_dim=projected_dim)
+optimizer = optim.Adam(model.parameters(), lr=0.001)
+
+# Initialize center (c) as mean of training embeddings
+with torch.no_grad():
+    c = torch.mean(model(X_train), dim=0)
+
+# ==========================================
+# 5. Training Phase (One-Class Learning)
+# ==========================================
+print("Training Model...")
+epochs = 300
+model.train()
+
+for epoch in range(epochs):
+    optimizer.zero_grad()
+    outputs = model(X_train)
+
+    # Loss = mean squared distance to center
+    dist = torch.sum((outputs - c) ** 2, dim=1)
+    loss = torch.mean(dist)
+
+    loss.backward()
+    optimizer.step()
+
+print("Training Complete.")
+
+# ==========================================
+# 6. Radius (R) Determination
+# ==========================================
+model.eval()
+with torch.no_grad():
+    train_outputs = model(X_train)
+    train_dists = torch.sum((train_outputs - c) ** 2, dim=1)
+
+    max_train_dist = torch.max(train_dists).item()
+
+    # Add safety margin
+    margin = 0.05
+    radius = max_train_dist + margin
+
+print("\n[Configuration]")
+print(f"  Max Train Dist : {max_train_dist:.4f}")
+print(f"  Safety Margin  : {margin:.4f}")
+print(f"  Final Radius(R): {radius:.4f}")
+print("-" * 50)
+
+# ==========================================
+# 7. Testing and Evaluation
+# ==========================================
+print(f"{'Sample Type':<20} | {'Distance':<10} | {'Status':<12} | {'Result'}")
+print("-" * 65)
+
+with torch.no_grad():
+
+    # User Test Samples
+    user_outputs = model(X_test_user)
+    user_dists = torch.sum((user_outputs - c) ** 2, dim=1)
+
+    for i, dist in enumerate(user_dists):
+        d_val = dist.item()
+        status = "Authorized" if d_val <= radius else "Blocked"
+        result = "PASS" if d_val <= radius else "False Reject"
+        print(f"User (Genuine) {i+1:<5} | {d_val:.4f}     | {status:<12} | {result}")
+
+    print("-" * 65)
+
+    # Imposter Test Samples
+    imposter_outputs = model(X_test_imposter)
+    imposter_dists = torch.sum((imposter_outputs - c) ** 2, dim=1)
+
+    for i, dist in enumerate(imposter_dists):
+        d_val = dist.item()
+        status = "Authorized" if d_val <= radius else "Blocked"
+        result = "PASS" if d_val > radius else "False Accept"
+        print(f"Imposter {i+1:<11} | {d_val:.4f}     | {status:<12} | {result}")
+
+\end{lstlisting}
+
+\subsubsection{Prototype Execution Output and Observations}
+The following table represents the console output from the execution of the Deep SVDD prototype. The results validate that the system successfully projected a 100-dimensional feature space into 50 dimensions while maintaining the distance integrity required to distinguish between genuine users and impostors
+
+\begin{lstlisting}[language=bash, frame=single]
+Original Data Shape: (20, 100)
+Projected Data Shape: (20, 50)
+--------------------------------------------------
+Training Model...
+Training Complete.
+
+[Configuration]
+  Max Train Dist : 0.0000
+  Safety Margin  : 0.0500
+  Final Radius(R): 0.0500
+--------------------------------------------------
+Sample Type          | Distance   | Status       | Result
+-----------------------------------------------------------------
+User (Genuine) 1     | 0.0112     | Authorized   | PASS
+User (Genuine) 2     | 0.0023     | Authorized   | PASS
+User (Genuine) 3     | 0.0050     | Authorized   | PASS
+User (Genuine) 4     | 0.0022     | Authorized   | PASS
+User (Genuine) 5     | 0.0044     | Authorized   | PASS
+-----------------------------------------------------------------
+Imposter 1           | 0.2351     | Blocked      | PASS
+Imposter 2           | 0.1823     | Blocked      | PASS
+Imposter 3           | 0.2035     | Blocked      | PASS
+Imposter 4           | 0.2297     | Blocked      | PASS
+Imposter 5           | 0.0924     | Blocked      | PASS
+... (Truncated for brevity) ...
+\end{lstlisting}
+
+\textbf{Analysis:} The prototype achieved a 100\% success rate on synthetic samples. The user distances remained well within the learned radius ($R=0.0500$), while all impostor samples were significantly outside the hypersphere, validating the "one-class" classification approach.
+
+
+
+\subsection{Appendix B: SVM Baseline Classifier} \label{App:B}
+This appendix provides a baseline comparison using a traditional Support Vector Machine (SVM) on a small-scale behavioral dataset.
+
+\begin{lstlisting}[language=Python, caption=SVM Baseline Classifier]
+import numpy as np
+from sklearn.svm import SVC
+from sklearn.metrics import accuracy_score, classification_report
+from sklearn.preprocessing import StandardScaler
+
+# ==========================================
+# 1. Data Entry
+# Features: [dwell_avg, flight_avg, traj_avg]
+# ==========================================
+
+# User Data (Label = 1)
+user_data = np.array([
+    [0.093341, 0.364395, 681.6144],
+    [0.085055, 0.355090, 596.1330],
+    [0.091337, 0.428217, 663.5182],
+    [0.091395, 0.306243, 580.3732],
+    [0.087598, 0.401027, 614.3611],
+    [0.091835, 0.358024, 681.0282],
+    [0.087437, 0.317831, 664.8624],
+    [0.097054, 0.330271, 493.6987],
+    [0.091275, 0.401341, 579.4574],
+    [0.095933, 0.361527, 500.6159]
+])
+
+# Imposter Data (Label = 0)
+imposter_data = np.array([
+    [0.090275, 0.521462, 516.0034],
+    [0.100985, 0.833044, 412.5477],
+    [0.073261, 0.687610, 663.6120],
+    [0.130867, 0.897945, 290.1982],
+    [0.179208, 0.670023, 345.4835],
+    [0.100080, 0.849405, 273.3659],
+    [0.126100, 0.247867, 401.4568],
+    [0.076832, 0.466030, 310.1983],
+    [0.067409, 0.853341, 409.9432],
+    [0.089729, 0.431692, 669.1964]
+])
+
+# ==========================================
+# 2. Train/Test Split (6 Training / 4 Testing)
+# ==========================================
+
+# Training Data
+X_train = np.vstack((user_data[:6], imposter_data[:6]))
+y_train = np.array([1] * 6 + [0] * 6)  # 1 = User, 0 = Imposter
+
+# Testing Data
+X_test = np.vstack((user_data[6:], imposter_data[6:]))
+y_test = np.array([1] * 4 + [0] * 4)
+
+print(f"Training Data: {len(X_train)} samples")
+print(f"Testing Data:  {len(X_test)} samples")
+print("-" * 40)
+
+# ==========================================
+# 3. Feature Scaling
+# ==========================================
+# Standardization ensures all features are on a similar scale
+
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+# ==========================================
+# 4. Model Training (Linear SVM)
+# ==========================================
+
+model = SVC(kernel='linear')
+model.fit(X_train_scaled, y_train)
+
+# ==========================================
+# 5. Testing and Evaluation
+# ==========================================
+
+predictions = model.predict(X_test_scaled)
+
+print("Actual Labels:   ", y_test)
+print("Predicted Labels:", predictions)
+print("-" * 40)
+
+correct = 0
+for i in range(len(y_test)):
+    actual = "User" if y_test[i] == 1 else "Imposter"
+    predicted = "User" if predictions[i] == 1 else "Imposter"
+
+    status = "PASS" if y_test[i] == predictions[i] else "FAIL"
+    if y_test[i] == predictions[i]:
+        correct += 1
+
+    print(f"Sample {i+1} (Actual: {actual}) --> Predicted: {predicted} | {status}")
+
+print("-" * 40)
+print(f"Accuracy: {correct}/{len(y_test)} ({(correct/len(y_test))*100}%)")
+
+\end{lstlisting}
+
+\subsubsection{Baseline Performance Output}
+The execution results for the SVM baseline highlight the limitations of traditional binary classifiers when dealing with limited behavioral samples.
+
+\begin{lstlisting}[language=bash, frame=single]
+Training Data: 12 samples
+Testing Data:  8 samples
+----------------------------------------
+Actual Labels:    [1 1 1 1 0 0 0 0]
+Predicted Labels: [1 1 1 1 1 0 0 1]
+----------------------------------------
+Sample 1 (Actual: User) --> Predicted: User | PASS
+...
+Sample 5 (Actual: Imposter) --> Predicted: User | FAIL
+Sample 8 (Actual: Imposter) --> Predicted: User | FAIL
+----------------------------------------
+Accuracy: 6/8 (75.0%)
+\end{lstlisting}
+
+\textbf{Analysis:} The 75\% accuracy rate and the "False Accept" errors in samples 5 and 8 illustrate why a more robust, deep-learning-based anomaly detector (Deep SVDD) is proposed for the final system to improve security against sophisticated impostors.

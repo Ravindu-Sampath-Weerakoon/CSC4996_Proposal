@@ -98,38 +98,17 @@
 \subsubsection{Recurrent Neural Networks (RNNs) \& LSTMs}
 \paragraph{} Since keystroke data is inherently sequential, standard feed-forward networks often fail to capture temporal dependencies. \acp{RNN}, and specifically \ac{LSTM} networks, are theoretically suited for this task as they maintain a "memory" of previous inputs, allowing them to model complex typing rhythms \cite{kiyani2020continuous, zareen2018user}.
 
-\subsubsection{Johnson-Lindenstrauss (JL) Lemma} 
-\paragraph{} To address the "curse of dimensionality" and system latency, this research utilizes the \ac{JL} Lemma \cite{johnson1984extensions}. This mathematical theorem states that points in a high-dimensional space can be projected into a lower-dimensional space using Orthogonal Random Projections while approximately preserving Euclidean distances. This allows for lightweight processing without significant loss of accuracy.
-
-
 
 \subsubsection{Homomorphic Encryption (HE)} 
 \paragraph{} To ensure privacy, the system employs \ac{HE} \cite{cheon2017homomorphic}, a cryptographic form that allows computations to be performed on encrypted data without first decrypting it. This ensures that the user's raw biometric template is never exposed in plaintext during the authentication process.
 
-\subsubsection{Keystroke Dynamics}
-\paragraph{} This is the measurement of biomechanical typing patterns. The fundamental features include Dwell Time (duration a key is pressed) and Flight Time (latency between releasing one key and pressing the next). These features form a unique "digital signature" for each user.
-
-
-\subsubsection{Mouse Dynamics}
-\paragraph{} This involves analyzing the unique behavioral patterns of a user's mouse interactions. Unlike simple click-tracking, this research focuses on complex motor-skill features:
-\begin{itemize}
-    \item \textbf{Movement Efficiency:} The ratio of the straight-line distance to the actual path taken (analyzing hand jitter and curvature).
-    \item \textbf{Velocity \& Acceleration Profiles:} The rate of speed change as the cursor approaches a target (e.g., users often decelerate differently when clicking a button).
-    \item \textbf{Click-to-Click Latency:} The timing between releasing a button and moving to the next location.
-    \item \textbf{Drag-and-Drop characteristics::} The pressure and speed consistency during sustained click events.
-\end{itemize}
-
-
-
-\subsubsection{Recurrent Neural Networks (RNNs) \& LSTMs}
-\paragraph{} Since keystroke data is inherently sequential (a time-series of events), standard feed-forward networks often fail to capture temporal dependencies. \acp{RNN}, and specifically \ac{LSTM} networks, are theoretically suited for this task as they maintain a "memory" of previous inputs, allowing them to model complex, non-linear typing rhythms over time \cite{kiyani2020continuous, zareen2018user}.
 
 
 
 \subsubsection{Johnson-Lindenstrauss (JL) Lemma} 
 \paragraph{} To address the "curse of dimensionality" and system latency, this research utilizes the \ac{JL} Lemma \cite{johnson1984extensions}. This mathematical theorem states that points in a high-dimensional space can be projected into a lower-dimensional space using Orthogonal Random Projections while approximately preserving the Euclidean distances between them. This allows for lightweight processing without significant loss of accuracy.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \resizebox{\textwidth}{!}{%
     \begin{tikzpicture}[scale=1.0, >=Latex]
@@ -205,8 +184,6 @@
 \end{figure}
 
 
-\subsubsection{Homomorphic Encryption (HE)} 
-\paragraph{} To ensure privacy, the system employs \ac{HE} \cite{cheon2017homomorphic, cheon2017homomorphic}, a cryptographic form that allows computations to be performed on encrypted data without first decrypting it. This ensures that the user's raw biometric template is never exposed in plaintext during the authentication process \cite{rahman2021scalable}.
 
 % Discuss the fundamental theories and technologies relevant to your work.
 % For example, explain the basics of RNNs, Behavioral Biometrics, or Authentication protocols.
@@ -372,7 +349,7 @@ This study provides the first empirical validation of \ac{Deep SVDD} \cite{ruff2
 \subsubsection{Constraints}
    
     \begin{itemize}
-        \item \textbf{Hardware Limitations:} The proposed model must be lightweight enough to run on standard consumer hardware (e.g., a laptop with a mid-range \ac{GPU} like an \ac{RTX} 3050) without causing noticeable input lag.
+        \item \textbf{Hardware Limitations:} While Model Training will utilize a standard consumer laptop (RTX 3050 GPU) to handle the optimization of the Deep SVDD parameters, the Inference Phase (the actual authentication) is constrained to run on the CPU with a target latency of <200ms. This simulates the processing power of a mid-range mobile processor, ensuring the framework is truly lightweight
         \item \textbf{Data Availability:} The research is constrained by the use of public datasets (e.g., \ac{SU-AIS} \ac{BB-MAS} \cite{suais2019bbmas}) that may not perfectly reflect the specific "free-text" behavior required for continuous authentication.
         \item \textbf{Encryption Overhead:} \ac{HE} \cite{cheon2017homomorphic} introduces significant computational overhead. The system is constrained to optimize this trade-off to ensure the authentication decision happens within a usable timeframe (e.g., under 200ms per window) \cite{rahman2021scalable}.
     \end{itemize}
